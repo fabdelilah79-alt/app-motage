@@ -88,17 +88,6 @@ export const COMMON_FIELDS: FieldDescriptor<SceneElement>[] = [
 
 export const TEXT_FIELDS: FieldDescriptor<TextElement>[] = [
   {
-    id: 'text',
-    labelKey: 'fields.text',
-    tab: 'content',
-    kind: 'textarea',
-    get: (element) => element.content.map((run) => run.text).join(''),
-    set: (element, value) => {
-      // Phase 2 : le texte devient un seul segment (le texte riche arrive en phase 3).
-      element.content = [{ kind: 'text', text: String(value), style: element.content[0]?.style }];
-    },
-  },
-  {
     id: 'lang',
     labelKey: 'fields.lang',
     tab: 'content',
@@ -162,6 +151,33 @@ export const TEXT_FIELDS: FieldDescriptor<TextElement>[] = [
     get: (element) => element.style.align,
     set: (element, value) => {
       if (value === 'start' || value === 'center' || value === 'end') element.style.align = value;
+    },
+  },
+  {
+    id: 'letterSpacing',
+    labelKey: 'fields.letterSpacing',
+    tab: 'style',
+    kind: 'number',
+    min: -0.2,
+    max: 1,
+    step: 0.01,
+    get: (element) => element.style.letterSpacing,
+    set: (element, value) => {
+      element.style.letterSpacing = Number(value);
+    },
+  },
+  {
+    id: 'textTransform',
+    labelKey: 'fields.textTransform',
+    tab: 'style',
+    kind: 'select',
+    options: [
+      { value: 'none', labelKey: 'fields.transformNone' },
+      { value: 'uppercase', labelKey: 'fields.transformUppercase' },
+    ],
+    get: (element) => element.style.textTransform,
+    set: (element, value) => {
+      if (value === 'none' || value === 'uppercase') element.style.textTransform = value;
     },
   },
   {

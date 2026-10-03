@@ -46,6 +46,7 @@ export const createProject = (options: NewProjectOptions, newId: IdGenerator = r
     title: options.title,
     format,
     defaultLang: options.defaultLang,
+    digits: 'latin',
     assets: [],
     scenes: [createScene(format, newId)],
   };
@@ -84,6 +85,9 @@ export const createTextElement = (
     color: '#0f172a',
     align: 'center',
     lineHeight: 1.4,
+    letterSpacing: 0,
+    textTransform: 'none',
+    effects: {},
   },
 });
 

@@ -31,6 +31,8 @@ export const projectSchema = z.object({
   title: z.string(),
   format: formatSchema,
   defaultLang: langSchema,
+  /** Chiffres des textes arabes : 0-9 (« latin ») ou ٠-٩ (« arabic-indic »). */
+  digits: z.enum(['latin', 'arabic-indic']).default('latin'),
   assets: z.array(assetSchema).default([]),
   scenes: z.array(sceneSchema).min(1),
 });

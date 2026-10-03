@@ -2,17 +2,24 @@ import { Copy, Trash2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { SceneElement } from '../../shared/schema';
 import { useEditorStore } from '../store/editorStore';
+import { useProject } from '../store/selectors';
 import { Button } from '../ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { AnimationTab } from './AnimationTab';
 import { FieldControl } from './FieldControl';
 import { fieldsFor, type FieldDescriptor, type FieldValue } from './fieldDescriptors';
+import { FontPicker } from './text/FontPicker';
+import { RichTextEditor } from './text/RichTextEditor';
+import { StylePresetPicker } from './text/StylePresetPicker';
+import { SuggestedDuration } from './text/SuggestedDuration';
+import { TextEffectsEditor } from './text/TextEffectsEditor';
 
 type Props = { element: SceneElement; fps: number };
 
 /** Propriétés de l'élément sélectionné : Contenu · Style · Animation. */
 export const ElementProperties = ({ element, fps }: Props) => {
   const { t } = useTranslation();
+  const { format } = useProject();
   const updateElement = useEditorStore((state) => state.updateElement);
   const removeElement = useEditorStore((state) => state.removeElement);
   const duplicateElement = useEditorStore((state) => state.duplicateElement);
@@ -65,10 +72,15 @@ export const ElementProperties = ({ element, fps }: Props) => {
           <TabsTrigger value="animation">{t('properties.animation')}</TabsTrigger>
         </TabsList>
         <TabsContent value="content" className="flex flex-col gap-3">
+          {element.type === 'text' ? <RichTextEditor element={element} /> : null}
+          {element.type === 'text' ? <SuggestedDuration element={element} fps={fps} /> : null}
           {renderTab('content')}
         </TabsContent>
-        <TabsContent value="style" className="grid grid-cols-2 content-start gap-3">
-          {renderTab('style')}
+        <TabsContent value="style" className="flex flex-col gap-4">
+          {element.type === 'text' ? <StylePresetPicker element={element} format={format} /> : null}
+          {element.type === 'text' ? <FontPicker element={element} /> : null}
+          <div className="grid grid-cols-2 content-start gap-3">{renderTab('style')}</div>
+          {element.type === 'text' ? <TextEffectsEditor element={element} /> : null}
         </TabsContent>
         <TabsContent value="animation">
           <AnimationTab element={element} fps={fps} />

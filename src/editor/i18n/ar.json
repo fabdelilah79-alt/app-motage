@@ -68,7 +68,9 @@
     "importImage": "استيراد صورة",
     "uploading": "جارٍ الاستيراد…",
     "dropHelp": "… أو اسحب صورك وأفلتها هنا (PNG، JPG، WebP، GIF، SVG).",
-    "addToScene": "إضافة إلى المشهد"
+    "addToScene": "إضافة إلى المشهد",
+    "presets": "أنماط النص",
+    "presetsHelp": "يضيف نصًا منسقًا مسبقًا بلغة المشروع الرئيسية."
   },
   "properties": {
     "content": "المحتوى",
@@ -106,7 +108,11 @@
     "lineHeight": "تباعد الأسطر",
     "fit": "الملاءمة",
     "fitContain": "احتواء (الصورة كاملة)",
-    "fitCover": "تغطية (ملء المساحة)"
+    "fitCover": "تغطية (ملء المساحة)",
+    "letterSpacing": "تباعد الحروف (em)",
+    "textTransform": "حالة الأحرف",
+    "transformNone": "عادية",
+    "transformUppercase": "أحرف كبيرة"
   },
   "animation": {
     "help": "اختر كيف يظهر العنصر وكيف يختفي.",
@@ -120,7 +126,8 @@
       "right": "اليمين",
       "top": "الأعلى",
       "bottom": "الأسفل"
-    }
+    },
+    "letterFallback": "في العربية، يُستبدل «حرفًا بحرف» تلقائيًا بـ«كلمة بكلمة» حتى تبقى الحروف متصلة."
   },
   "scene": {
     "title": "المشهد {{number}}",
@@ -176,5 +183,67 @@
     "createProject": "تعذّر إنشاء المشروع.",
     "loadProject": "تعذّر فتح هذا المشروع.",
     "upload": "فشل استيراد الصورة (الصيغ المقبولة: PNG، JPG، WebP، GIF، SVG)."
+  },
+  "richText": {
+    "help": "يمكن أن يجمع النص بين مقاطع منسقة وصيغ رياضية (LaTeX).",
+    "text": "نص",
+    "formula": "صيغة",
+    "remove": "حذف هذا المقطع",
+    "color": "لون",
+    "bold": "عريض",
+    "highlight": "تظليل",
+    "addText": "نص",
+    "addFormula": "صيغة",
+    "latexHelp": "صيغة بلغة LaTeX، مثال: E_c = \\frac{1}{2} m v^2"
+  },
+  "text": {
+    "suggestedDuration": "مدة القراءة المقترحة: {{duration}}",
+    "apply": "تطبيق",
+    "font": "الخط",
+    "defaultFont": "الخط الافتراضي",
+    "chooseFont": "اختيار خط",
+    "presets": "نمط جاهز",
+    "effects": "التأثيرات"
+  },
+  "fontCategories": {
+    "modern": "حديث / عناوين",
+    "classic": "كلاسيكي / قراءة",
+    "display": "ملصقات / هندسي",
+    "handwritten": "خط يدوي / زخرفي",
+    "mono": "برمجة / بيانات"
+  },
+  "effects": {
+    "stroke": "حدود",
+    "shadow": "ظل",
+    "glow": "توهج (نيون)",
+    "gradient": "تدرج لوني",
+    "background": "خلفية",
+    "highlight": "تظليل (قلم)",
+    "underline": "تسطير",
+    "color": "اللون",
+    "width": "السُمك",
+    "blur": "التمويه",
+    "offsetX": "إزاحة X",
+    "offsetY": "إزاحة Y",
+    "radius": "نصف القطر",
+    "from": "اللون 1",
+    "to": "اللون 2",
+    "angle": "الزاوية (°)",
+    "kind": "الشكل",
+    "padding": "الهامش الداخلي",
+    "thickness": "السُمك",
+    "kinds": {
+      "band": "شريط",
+      "pill": "كبسولة",
+      "card": "بطاقة"
+    }
+  },
+  "projectSettings": {
+    "title": "إعدادات المشروع",
+    "open": "إعدادات المشروع",
+    "digits": "الأرقام في النصوص العربية",
+    "digitsHelp": "الأعداد المتبوعة بوحدة لاتينية (مثل 12,5 m/s) والصيغ تحتفظ بالأرقام 0-9.",
+    "digitsLatin": "0 1 2 3 (أرقام لاتينية)",
+    "digitsArabic": "٠ ١ ٢ ٣ (أرقام عربية مشرقية)"
   }
 }

@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import type { AnimationRef } from '../../shared/schema';
+import type { AnimationRef, SceneElement } from '../../shared/schema';
 import { framesToSeconds, secondsToFrames } from '../../shared/time';
 import { ANIMATION_PRESETS } from '../../video/animations/registry';
 import type { AnimationCategory } from '../../video/animations/types';
@@ -13,6 +13,7 @@ const SIDES = ['left', 'right', 'top', 'bottom'] as const;
 
 type Props = {
   category: AnimationCategory;
+  element: SceneElement;
   value: AnimationRef | undefined;
   fps: number;
   onChange: (value: AnimationRef | undefined) => void;
@@ -25,10 +26,16 @@ const defaultParamsOf = (presetId: string): Record<string, unknown> => {
 };
 
 /** Un menu « Apparition » ou « Disparition » : préréglage, durée et sens éventuel. */
-export const AnimationSlot = ({ category, value, fps, onChange }: Props) => {
+export const AnimationSlot = ({ category, element, value, fps, onChange }: Props) => {
   const { t, i18n } = useTranslation();
   const lang = i18n.language as UiLang;
-  const presets = Object.values(ANIMATION_PRESETS).filter((item) => item.category === category);
+  const presets = Object.values(ANIMATION_PRESETS).filter(
+    (item) =>
+      item.category === category &&
+      (item.compatibleElements === 'all' || item.compatibleElements.includes(element.type)),
+  );
+  const preset = value ? ANIMATION_PRESETS[value.presetId] : undefined;
+  const isArabic = element.type === 'text' && element.lang === 'ar';
   const options = [
     { value: NONE, label: t('animation.none') },
     ...presets.map((item) => ({ value: item.id, label: item.name[lang] ?? item.name.fr })),
@@ -37,10 +44,10 @@ export const AnimationSlot = ({ category, value, fps, onChange }: Props) => {
   const side = typeof params.side === 'string' ? params.side : undefined;
 
   const selectPreset = (presetId: string) => {
-    const preset = ANIMATION_PRESETS[presetId];
+    const chosen = ANIMATION_PRESETS[presetId];
     onChange(
-      preset
-        ? { presetId, duration: preset.defaultDuration, delay: 0, easing: 'smooth', params: {} }
+      chosen
+        ? { presetId, duration: chosen.defaultDuration, delay: 0, easing: 'smooth', params: {} }
         : undefined,
     );
   };
@@ -55,6 +62,9 @@ export const AnimationSlot = ({ category, value, fps, onChange }: Props) => {
           onChange={(event) => selectPreset(event.target.value)}
         />
       </Field>
+      {preset && !preset.arabicCompatible && isArabic ? (
+        <p className="text-xs text-amber-300">{t('animation.letterFallback')}</p>
+      ) : null}
       {value ? (
         <Field label={t('fields.inSeconds', { label: t('fields.duration') })}>
           <NumberInput

@@ -68,7 +68,9 @@
     "importImage": "Importer une image",
     "uploading": "Import en cours…",
     "dropHelp": "… ou glissez-déposez vos images ici (PNG, JPG, WebP, GIF, SVG).",
-    "addToScene": "Ajouter à la scène"
+    "addToScene": "Ajouter à la scène",
+    "presets": "Styles de texte",
+    "presetsHelp": "Ajoute un texte déjà mis en forme, dans la langue principale du projet."
   },
   "properties": {
     "content": "Contenu",
@@ -106,7 +108,11 @@
     "lineHeight": "Interligne",
     "fit": "Ajustement",
     "fitContain": "Contenir (image entière)",
-    "fitCover": "Couvrir (remplir la zone)"
+    "fitCover": "Couvrir (remplir la zone)",
+    "letterSpacing": "Espacement des lettres (em)",
+    "textTransform": "Casse",
+    "transformNone": "Normale",
+    "transformUppercase": "MAJUSCULES"
   },
   "animation": {
     "help": "Choisissez comment l'élément apparaît et disparaît.",
@@ -120,7 +126,8 @@
       "right": "La droite",
       "top": "Le haut",
       "bottom": "Le bas"
-    }
+    },
+    "letterFallback": "En arabe, « lettre par lettre » est remplacé automatiquement par « mot par mot » pour que les lettres restent liées."
   },
   "scene": {
     "title": "Scène {{number}}",
@@ -176,5 +183,67 @@
     "createProject": "Impossible de créer le projet.",
     "loadProject": "Impossible d'ouvrir ce projet.",
     "upload": "L'import de l'image a échoué (formats acceptés : PNG, JPG, WebP, GIF, SVG)."
+  },
+  "richText": {
+    "help": "Un texte peut mêler des segments stylés et des formules (LaTeX).",
+    "text": "Texte",
+    "formula": "Formule",
+    "remove": "Supprimer ce segment",
+    "color": "Couleur",
+    "bold": "Gras",
+    "highlight": "Surligner",
+    "addText": "Texte",
+    "addFormula": "Formule",
+    "latexHelp": "Formule en LaTeX, ex. : E_c = \\frac{1}{2} m v^2"
+  },
+  "text": {
+    "suggestedDuration": "Durée de lecture conseillée : {{duration}}",
+    "apply": "Appliquer",
+    "font": "Police",
+    "defaultFont": "Police par défaut",
+    "chooseFont": "Choisir une police",
+    "presets": "Style prédéfini",
+    "effects": "Effets"
+  },
+  "fontCategories": {
+    "modern": "Moderne / titres",
+    "classic": "Classique / lecture",
+    "display": "Affiche / géométrique",
+    "handwritten": "Calligraphique / manuscrit",
+    "mono": "Code / données"
+  },
+  "effects": {
+    "stroke": "Contour",
+    "shadow": "Ombre",
+    "glow": "Lueur (néon)",
+    "gradient": "Dégradé",
+    "background": "Fond",
+    "highlight": "Surlignage (marqueur)",
+    "underline": "Soulignement",
+    "color": "Couleur",
+    "width": "Épaisseur",
+    "blur": "Flou",
+    "offsetX": "Décalage X",
+    "offsetY": "Décalage Y",
+    "radius": "Rayon",
+    "from": "Couleur 1",
+    "to": "Couleur 2",
+    "angle": "Angle (°)",
+    "kind": "Forme",
+    "padding": "Marge intérieure",
+    "thickness": "Épaisseur",
+    "kinds": {
+      "band": "Bandeau",
+      "pill": "Pastille",
+      "card": "Carte"
+    }
+  },
+  "projectSettings": {
+    "title": "Paramètres du projet",
+    "open": "Paramètres du projet",
+    "digits": "Chiffres dans les textes arabes",
+    "digitsHelp": "Les nombres suivis d'une unité latine (ex. 12,5 m/s) et les formules gardent les chiffres 0-9.",
+    "digitsLatin": "0 1 2 3 (chiffres latins)",
+    "digitsArabic": "٠ ١ ٢ ٣ (chiffres arabes orientaux)"
   }
 }

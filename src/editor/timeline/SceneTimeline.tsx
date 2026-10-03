@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { SceneElement } from '../../shared/schema';
+import { plainText } from '../../shared/textContent';
 import { usePreviewProject } from '../canvas/usePreviewProject';
 import { useElementSize } from '../hooks/useElementSize';
 import { usePlayerState } from '../hooks/usePlayerFrame';
@@ -18,12 +19,7 @@ const useElementLabel = () => {
   const { t } = useTranslation();
   return (element: SceneElement) => {
     if (element.name) return element.name;
-    if (element.type === 'text') {
-      return element.content
-        .map((run) => run.text)
-        .join('')
-        .slice(0, 30);
-    }
+    if (element.type === 'text') return plainText(element.content).slice(0, 30);
     return t(`elementTypes.${element.type}`);
   };
 };

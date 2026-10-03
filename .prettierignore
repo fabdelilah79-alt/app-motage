@@ -8,3 +8,4 @@ skills-lock.json
 **/*.md
 templates
 .e2e-data
+src/video/text/fontCatalog.ts

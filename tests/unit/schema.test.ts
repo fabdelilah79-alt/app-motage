@@ -13,6 +13,11 @@ describe('schéma du projet', () => {
     expect(new Set(langs)).toEqual(new Set(['fr', 'ar', 'en']));
   });
 
+  it('donne la valeur par défaut des nouveaux réglages aux anciens projets', () => {
+    const project = parseProject(makeProjectInput());
+    expect(project.digits).toBe('latin');
+  });
+
   it('applique les valeurs par défaut', () => {
     const project = parseProject(
       makeProjectInput({
@@ -43,7 +48,14 @@ describe('schéma du projet', () => {
       throw new Error('élément texte attendu');
     }
     expect(element.direction).toBe('auto');
-    expect(element.style).toMatchObject({ fontSize: 64, fontWeight: 400, align: 'start' });
+    expect(element.style).toMatchObject({
+      fontSize: 64,
+      fontWeight: 400,
+      align: 'start',
+      letterSpacing: 0,
+      textTransform: 'none',
+      effects: {},
+    });
   });
 
   it('refuse un projet sans scène', () => {

@@ -37,7 +37,7 @@ const createBundle = async (): Promise<string> => {
 };
 
 /** Prépare le code de la vidéo (bundle) une seule fois par démarrage du serveur. */
-const getServeUrl = (): Promise<string> => {
+export const getServeUrl = (): Promise<string> => {
   serveUrlPromise ??= createBundle().catch((error: unknown) => {
     serveUrlPromise = null;
     throw error;

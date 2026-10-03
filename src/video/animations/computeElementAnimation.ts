@@ -22,6 +22,7 @@ const combine = (a: AnimationFrame, b: AnimationFrame): AnimationFrame => ({
   translateX: a.translateX + b.translateX,
   translateY: a.translateY + b.translateY,
   scale: a.scale * b.scale,
+  reveal: b.reveal ?? a.reveal,
 });
 
 /**

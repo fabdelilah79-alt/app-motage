@@ -26,6 +26,7 @@ type EditorState = {
   selectScene: (sceneId: string) => void;
   selectElement: (elementId: string | null) => void;
   renameProject: (title: string) => void;
+  setDigits: (digits: Project['digits']) => void;
   addScene: () => void;
   duplicateScene: (sceneId: string) => void;
   removeScene: (sceneId: string) => void;
@@ -86,6 +87,11 @@ export const useEditorStore = create<EditorState>()(
             if (state.project && title.trim()) {
               state.project.title = title;
             }
+          }),
+
+        setDigits: (digits) =>
+          set((state) => {
+            if (state.project) state.project.digits = digits;
           }),
 
         addScene: () =>

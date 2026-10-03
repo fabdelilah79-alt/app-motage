@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import { useCurrentFrame } from 'remotion';
 import type { SceneElement } from '../../shared/schema';
 import { computeElementAnimation } from '../animations/computeElementAnimation';
+import type { AnimationFrame } from '../animations/types';
 import { ELEMENT_VIEWS } from './registry';
 
 /** Place un élément dans la scène et applique ses animations (frame relative à l'élément). */
@@ -9,7 +10,10 @@ export const ElementLayer: FC<{ element: SceneElement }> = ({ element }) => {
   const frame = useCurrentFrame();
   const { transform, timing } = element;
   const animation = computeElementAnimation(element.animations, timing.duration, frame);
-  const View = ELEMENT_VIEWS[element.type] as FC<{ element: SceneElement }>;
+  const View = ELEMENT_VIEWS[element.type] as FC<{
+    element: SceneElement;
+    animation: AnimationFrame;
+  }>;
 
   return (
     <div
@@ -27,7 +31,7 @@ export const ElementLayer: FC<{ element: SceneElement }> = ({ element }) => {
         ].join(' '),
       }}
     >
-      <View element={element} />
+      <View element={element} animation={animation} />
     </div>
   );
 };

@@ -1,0 +1,498 @@
+{
+  "schemaVersion": 1,
+  "id": "test-typographie",
+  "title": "Test typographie (phase 3)",
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+  "defaultLang": "ar",
+  "digits": "latin",
+  "assets": [],
+  "scenes": [
+    {
+      "id": "scene-arabe",
+      "name": "Arabe : ordre bidi et animations",
+      "durationInFrames": 150,
+      "background": {
+        "type": "color",
+        "color": "#ffffff"
+      },
+      "elements": [
+        {
+          "id": "ar-mixte",
+          "type": "text",
+          "name": "ar-mixte",
+          "lang": "ar",
+          "transform": {
+            "x": 100,
+            "y": 40,
+            "width": 1720,
+            "height": 140
+          },
+          "timing": {
+            "from": 0,
+            "duration": 150
+          },
+          "animations": {},
+          "content": [
+            {
+              "kind": "text",
+              "text": "سرعة الجسم 12,5 m/s، وطاقته الحركية "
+            },
+            {
+              "kind": "math",
+              "latex": "E_c = \\frac{1}{2} m v^2"
+            },
+            {
+              "kind": "text",
+              "text": " تساوي 78 J تقريبًا."
+            }
+          ],
+          "style": {
+            "fontSize": 56,
+            "color": "#0f172a",
+            "align": "start",
+            "lineHeight": 1.5
+          }
+        },
+        {
+          "id": "ar-machine-a-ecrire",
+          "type": "text",
+          "name": "ar-machine-a-ecrire",
+          "lang": "ar",
+          "transform": {
+            "x": 100,
+            "y": 220,
+            "width": 1720,
+            "height": 110
+          },
+          "timing": {
+            "from": 0,
+            "duration": 150
+          },
+          "animations": {
+            "enter": {
+              "presetId": "enter.typewriter",
+              "duration": 90,
+              "easing": "linear"
+            }
+          },
+          "content": [
+            {
+              "kind": "text",
+              "text": "آلة كاتبة: الحروف العربية تبقى متصلة دائمًا"
+            }
+          ],
+          "style": {
+            "fontSize": 54,
+            "color": "#0f172a",
+            "align": "start",
+            "lineHeight": 1.5
+          }
+        },
+        {
+          "id": "ar-mot-par-mot",
+          "type": "text",
+          "name": "ar-mot-par-mot",
+          "lang": "ar",
+          "transform": {
+            "x": 100,
+            "y": 360,
+            "width": 1720,
+            "height": 110
+          },
+          "timing": {
+            "from": 0,
+            "duration": 150
+          },
+          "animations": {
+            "enter": {
+              "presetId": "enter.word",
+              "duration": 90,
+              "easing": "linear"
+            }
+          },
+          "content": [
+            {
+              "kind": "text",
+              "text": "كلمة بكلمة: السقوط الحر حركة "
+            },
+            {
+              "kind": "text",
+              "text": "متسارعة",
+              "style": {
+                "color": "#dc2626",
+                "fontWeight": 700
+              }
+            },
+            {
+              "kind": "text",
+              "text": " بانتظام"
+            }
+          ],
+          "style": {
+            "fontSize": 54,
+            "color": "#0f172a",
+            "align": "start",
+            "lineHeight": 1.5
+          }
+        },
+        {
+          "id": "ar-lettre-repli",
+          "type": "text",
+          "name": "ar-lettre-repli",
+          "lang": "ar",
+          "transform": {
+            "x": 100,
+            "y": 500,
+            "width": 1720,
+            "height": 110
+          },
+          "timing": {
+            "from": 0,
+            "duration": 150
+          },
+          "animations": {
+            "enter": {
+              "presetId": "enter.letter",
+              "duration": 90,
+              "easing": "linear"
+            }
+          },
+          "content": [
+            {
+              "kind": "text",
+              "text": "حرفًا بحرف ← يصبح كلمة بكلمة تلقائيًا"
+            }
+          ],
+          "style": {
+            "fontSize": 54,
+            "color": "#0f172a",
+            "align": "start",
+            "lineHeight": 1.5
+          }
+        },
+        {
+          "id": "ar-rideau",
+          "type": "text",
+          "name": "ar-rideau",
+          "lang": "ar",
+          "transform": {
+            "x": 100,
+            "y": 640,
+            "width": 1720,
+            "height": 110
+          },
+          "timing": {
+            "from": 0,
+            "duration": 150
+          },
+          "animations": {
+            "enter": {
+              "presetId": "enter.mask",
+              "duration": 90,
+              "easing": "linear"
+            }
+          },
+          "content": [
+            {
+              "kind": "text",
+              "text": "ستار يكشف النص من اليمين إلى اليسار"
+            }
+          ],
+          "style": {
+            "fontSize": 54,
+            "color": "#0f172a",
+            "align": "start",
+            "lineHeight": 1.5
+          }
+        },
+        {
+          "id": "ar-lignes",
+          "type": "text",
+          "name": "ar-lignes",
+          "lang": "ar",
+          "transform": {
+            "x": 100,
+            "y": 780,
+            "width": 1720,
+            "height": 260
+          },
+          "timing": {
+            "from": 0,
+            "duration": 150
+          },
+          "animations": {
+            "enter": {
+              "presetId": "enter.line",
+              "duration": 90,
+              "easing": "linear"
+            }
+          },
+          "content": [
+            {
+              "kind": "text",
+              "text": "السطر الأول: القوة\nالسطر الثاني: الكتلة\nالسطر الثالث: التسارع"
+            }
+          ],
+          "style": {
+            "fontSize": 46,
+            "color": "#0f172a",
+            "align": "start",
+            "lineHeight": 1.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-effets",
+      "name": "Latin, encadrés et effets",
+      "durationInFrames": 150,
+      "background": {
+        "type": "color",
+        "color": "#f8fafc"
+      },
+      "transitionIn": {
+        "type": "fade",
+        "durationInFrames": 10
+      },
+      "elements": [
+        {
+          "id": "fr-lettre",
+          "type": "text",
+          "name": "fr-lettre",
+          "lang": "fr",
+          "transform": {
+            "x": 100,
+            "y": 60,
+            "width": 1720,
+            "height": 110
+          },
+          "timing": {
+            "from": 0,
+            "duration": 150
+          },
+          "animations": {
+            "enter": {
+              "presetId": "enter.letter",
+              "duration": 60,
+              "easing": "linear"
+            }
+          },
+          "content": [
+            {
+              "kind": "text",
+              "text": "Lettre par lettre (texte latin)"
+            }
+          ],
+          "style": {
+            "fontSize": 64,
+            "color": "#0f172a",
+            "align": "start",
+            "lineHeight": 1.5
+          }
+        },
+        {
+          "id": "fr-definition",
+          "type": "text",
+          "name": "fr-definition",
+          "lang": "fr",
+          "transform": {
+            "x": 100,
+            "y": 220,
+            "width": 1720,
+            "height": 200
+          },
+          "timing": {
+            "from": 0,
+            "duration": 150
+          },
+          "animations": {
+            "enter": {
+              "presetId": "enter.word",
+              "duration": 60,
+              "easing": "linear"
+            }
+          },
+          "content": [
+            {
+              "kind": "text",
+              "text": "Définition : l'accélération est "
+            },
+            {
+              "kind": "math",
+              "latex": "\\vec{a} = \\frac{d\\vec{v}}{dt}"
+            },
+            {
+              "kind": "text",
+              "text": ", en m/s²."
+            }
+          ],
+          "style": {
+            "fontSize": 52,
+            "color": "#0c4a6e",
+            "align": "start",
+            "lineHeight": 1.5,
+            "effects": {
+              "background": {
+                "kind": "card",
+                "color": "#e0f2fe",
+                "padding": 32
+              }
+            }
+          }
+        },
+        {
+          "id": "fr-effets",
+          "type": "text",
+          "name": "fr-effets",
+          "lang": "fr",
+          "transform": {
+            "x": 100,
+            "y": 480,
+            "width": 1720,
+            "height": 160
+          },
+          "timing": {
+            "from": 0,
+            "duration": 150
+          },
+          "animations": {
+            "enter": {
+              "presetId": "enter.mask",
+              "duration": 45,
+              "easing": "linear"
+            }
+          },
+          "content": [
+            {
+              "kind": "text",
+              "text": "Dégradé + contour + ombre"
+            }
+          ],
+          "style": {
+            "fontSize": 96,
+            "color": "#0f172a",
+            "align": "center",
+            "lineHeight": 1.5,
+            "fontId": "poppins",
+            "fontWeight": 700,
+            "effects": {
+              "gradient": {
+                "from": "#2563eb",
+                "to": "#db2777",
+                "angle": 90
+              },
+              "stroke": {
+                "color": "#0f172a",
+                "width": 2
+              },
+              "shadow": {
+                "color": "#94a3b8",
+                "blur": 8,
+                "offsetX": 4,
+                "offsetY": 6
+              }
+            }
+          }
+        },
+        {
+          "id": "ar-amiri",
+          "type": "text",
+          "name": "ar-amiri",
+          "lang": "ar",
+          "transform": {
+            "x": 100,
+            "y": 700,
+            "width": 1720,
+            "height": 140
+          },
+          "timing": {
+            "from": 0,
+            "duration": 150
+          },
+          "animations": {
+            "enter": {
+              "presetId": "enter.typewriter",
+              "duration": 60,
+              "easing": "linear"
+            }
+          },
+          "content": [
+            {
+              "kind": "text",
+              "text": "خط أميري: "
+            },
+            {
+              "kind": "text",
+              "text": "قانون نيوتن الثاني",
+              "style": {
+                "highlight": "#fde047"
+              }
+            },
+            {
+              "kind": "text",
+              "text": " F = m·a"
+            }
+          ],
+          "style": {
+            "fontSize": 60,
+            "color": "#0f172a",
+            "align": "start",
+            "lineHeight": 1.5,
+            "fontId": "amiri"
+          }
+        },
+        {
+          "id": "ar-neon",
+          "type": "text",
+          "name": "ar-neon",
+          "lang": "ar",
+          "transform": {
+            "x": 100,
+            "y": 880,
+            "width": 1720,
+            "height": 150
+          },
+          "timing": {
+            "from": 0,
+            "duration": 150
+          },
+          "animations": {
+            "enter": {
+              "presetId": "enter.word",
+              "duration": 30,
+              "easing": "linear"
+            }
+          },
+          "content": [
+            {
+              "kind": "text",
+              "text": "توهج نيون"
+            }
+          ],
+          "style": {
+            "fontSize": 90,
+            "color": "#f0f9ff",
+            "align": "center",
+            "lineHeight": 1.5,
+            "fontId": "lalezar",
+            "effects": {
+              "glow": {
+                "color": "#0ea5e9",
+                "radius": 16
+              },
+              "background": {
+                "kind": "band",
+                "color": "#0f172a",
+                "padding": 12
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -50,6 +50,11 @@ const DYNAMIC_KEYS = [
   'elementTypes.text',
   'elementTypes.image',
   ...['x', 'y', 'width', 'height'].map((key) => `fields.${key}`),
+  ...['modern', 'classic', 'display', 'handwritten', 'mono'].map((c) => `fontCategories.${c}`),
+  ...['stroke', 'shadow', 'glow', 'gradient', 'background', 'highlight', 'underline'].map(
+    (key) => `effects.${key}`,
+  ),
+  ...['band', 'pill', 'card'].map((kind) => `effects.kinds.${kind}`),
 ];
 
 describe('traductions de l’interface', () => {

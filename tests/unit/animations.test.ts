@@ -13,10 +13,15 @@ const preset = (id: string) => {
 };
 
 describe('registre des animations', () => {
-  it('contient les préréglages Fondu et Glisser (apparition et disparition)', () => {
+  it('contient Fondu, Glisser et les apparitions de texte', () => {
     expect(Object.keys(ANIMATION_PRESETS).sort()).toEqual([
       'enter.fade',
+      'enter.letter',
+      'enter.line',
+      'enter.mask',
       'enter.slide',
+      'enter.typewriter',
+      'enter.word',
       'exit.fade',
       'exit.slide',
     ]);
@@ -27,7 +32,16 @@ describe('registre des animations', () => {
       expect(item.id.startsWith(`${item.category}.`)).toBe(true);
       expect(item.name.fr && item.name.ar && item.name.en).toBeTruthy();
       expect(item.defaultDuration).toBeGreaterThan(0);
-      expect(item.arabicCompatible).toBe(true);
+      // Seul « lettre par lettre » est incompatible avec l'arabe (repli sur « mot par mot »).
+      expect(item.arabicCompatible).toBe(item.id !== 'enter.letter');
+    }
+  });
+
+  it('les apparitions de texte transmettent leur progression au rendu du texte', () => {
+    for (const mode of ['typewriter', 'word', 'line', 'letter', 'mask']) {
+      const item = preset(`enter.${mode}`);
+      expect(item.compatibleElements).toEqual(['text']);
+      expect(item.run(0.4, {})).toEqual({ ...NEUTRAL_FRAME, reveal: { mode, progress: 0.4 } });
     }
   });
 });

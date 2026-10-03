@@ -68,7 +68,9 @@
     "importImage": "Import an image",
     "uploading": "Importing…",
     "dropHelp": "… or drop your images here (PNG, JPG, WebP, GIF, SVG).",
-    "addToScene": "Add to the scene"
+    "addToScene": "Add to the scene",
+    "presets": "Text styles",
+    "presetsHelp": "Adds a ready-styled text in the project's main language."
   },
   "properties": {
     "content": "Content",
@@ -106,7 +108,11 @@
     "lineHeight": "Line height",
     "fit": "Fit",
     "fitContain": "Contain (whole image)",
-    "fitCover": "Cover (fill the area)"
+    "fitCover": "Cover (fill the area)",
+    "letterSpacing": "Letter spacing (em)",
+    "textTransform": "Case",
+    "transformNone": "Normal",
+    "transformUppercase": "UPPERCASE"
   },
   "animation": {
     "help": "Choose how the element appears and disappears.",
@@ -120,7 +126,8 @@
       "right": "The right",
       "top": "The top",
       "bottom": "The bottom"
-    }
+    },
+    "letterFallback": "In Arabic, “letter by letter” is automatically replaced by “word by word” so letters stay joined."
   },
   "scene": {
     "title": "Scene {{number}}",
@@ -176,5 +183,67 @@
     "createProject": "Could not create the project.",
     "loadProject": "Could not open this project.",
     "upload": "Image import failed (accepted formats: PNG, JPG, WebP, GIF, SVG)."
+  },
+  "richText": {
+    "help": "A text can mix styled segments and formulas (LaTeX).",
+    "text": "Text",
+    "formula": "Formula",
+    "remove": "Remove this segment",
+    "color": "Color",
+    "bold": "Bold",
+    "highlight": "Highlight",
+    "addText": "Text",
+    "addFormula": "Formula",
+    "latexHelp": "LaTeX formula, e.g. E_k = \\frac{1}{2} m v^2"
+  },
+  "text": {
+    "suggestedDuration": "Suggested reading time: {{duration}}",
+    "apply": "Apply",
+    "font": "Font",
+    "defaultFont": "Default font",
+    "chooseFont": "Choose a font",
+    "presets": "Text style",
+    "effects": "Effects"
+  },
+  "fontCategories": {
+    "modern": "Modern / titles",
+    "classic": "Classic / reading",
+    "display": "Poster / geometric",
+    "handwritten": "Calligraphic / handwritten",
+    "mono": "Code / data"
+  },
+  "effects": {
+    "stroke": "Outline",
+    "shadow": "Shadow",
+    "glow": "Glow (neon)",
+    "gradient": "Gradient",
+    "background": "Background",
+    "highlight": "Highlighter",
+    "underline": "Underline",
+    "color": "Color",
+    "width": "Width",
+    "blur": "Blur",
+    "offsetX": "X offset",
+    "offsetY": "Y offset",
+    "radius": "Radius",
+    "from": "Color 1",
+    "to": "Color 2",
+    "angle": "Angle (°)",
+    "kind": "Shape",
+    "padding": "Padding",
+    "thickness": "Thickness",
+    "kinds": {
+      "band": "Band",
+      "pill": "Pill",
+      "card": "Card"
+    }
+  },
+  "projectSettings": {
+    "title": "Project settings",
+    "open": "Project settings",
+    "digits": "Digits in Arabic texts",
+    "digitsHelp": "Numbers followed by a Latin unit (e.g. 12.5 m/s) and formulas keep the digits 0-9.",
+    "digitsLatin": "0 1 2 3 (Latin digits)",
+    "digitsArabic": "٠ ١ ٢ ٣ (Eastern Arabic digits)"
   }
 }

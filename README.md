@@ -21,6 +21,17 @@ npm run dev
 
 Puis ouvrir <http://localhost:5173> dans le navigateur. Pour arrêter : `Ctrl + C` dans le terminal.
 
+## Vérifier le rendu du texte (captures)
+
+```bash
+npm run stills:typography
+```
+
+Crée des images PNG de la scène de test `templates/typography-test.json` (arabe + formule +
+nombre avec unité, toutes les animations de texte) à plusieurs instants, dans
+`PhysiMotion/exports/captures-typographie_…`. Les lettres arabes doivent rester liées sur
+toutes les images.
+
 ## Utiliser l'éditeur (en bref)
 
 1. **Nouveau projet** : choisir un nom, un format (16:9, 9:16, 1:1) et la langue principale.

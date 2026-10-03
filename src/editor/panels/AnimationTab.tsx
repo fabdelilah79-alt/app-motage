@@ -22,12 +22,14 @@ export const AnimationTab = ({ element, fps }: Props) => {
       <p className="text-xs text-slate-400">{t('animation.help')}</p>
       <AnimationSlot
         category="enter"
+        element={element}
         value={element.animations.enter}
         fps={fps}
         onChange={(value) => setSlot('enter', value)}
       />
       <AnimationSlot
         category="exit"
+        element={element}
         value={element.animations.exit}
         fps={fps}
         onChange={(value) => setSlot('exit', value)}

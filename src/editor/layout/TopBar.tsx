@@ -1,4 +1,4 @@
-import { ArrowLeft, Clapperboard, Film, Redo2, Save, Undo2 } from 'lucide-react';
+import { ArrowLeft, Clapperboard, Film, Redo2, Save, Settings, Undo2 } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ExportDialog } from '../export/ExportDialog';
@@ -11,6 +11,7 @@ import { useProject } from '../store/selectors';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { ProjectSettingsDialog } from './ProjectSettingsDialog';
 
 type Props = { saveStatus: SaveStatus; onSave: () => void };
 
@@ -23,6 +24,7 @@ export const TopBar = ({ saveStatus, onSave }: Props) => {
   const { canUndo, canRedo } = useHistoryAvailability();
   const render = useRenderJob();
   const [exportOpen, setExportOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   const startExport = () => {
     setExportOpen(true);
@@ -83,12 +85,22 @@ export const TopBar = ({ saveStatus, onSave }: Props) => {
           )}
           {t(previewMode === 'full' ? 'topBar.backToScene' : 'topBar.previewAll')}
         </Button>
+        <Button
+          size="icon"
+          variant="ghost"
+          onClick={() => setSettingsOpen(true)}
+          aria-label={t('projectSettings.open')}
+          data-testid="project-settings"
+        >
+          <Settings size={18} aria-hidden />
+        </Button>
         <LanguageSwitcher />
         <Button variant="primary" onClick={startExport} data-testid="export-button">
           {t('topBar.export')}
         </Button>
       </div>
 
+      <ProjectSettingsDialog open={settingsOpen} onOpenChange={setSettingsOpen} />
       <ExportDialog
         open={exportOpen}
         onOpenChange={setExportOpen}

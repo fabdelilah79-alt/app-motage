@@ -1,12 +1,18 @@
 import type { z } from 'zod';
 import type { ElementType, Lang } from '../../shared/schema';
 
+/** Révélation progressive d'un texte (machine à écrire, mot par mot, rideau…). */
+export type RevealMode = 'typewriter' | 'word' | 'line' | 'letter' | 'mask';
+export type TextReveal = { mode: RevealMode; progress: number };
+
 /** État visuel produit par une animation à un instant donné (valeurs neutres = aucun effet). */
 export type AnimationFrame = {
   opacity: number;
   translateX: number;
   translateY: number;
   scale: number;
+  /** Uniquement pour les textes : partie du texte déjà révélée. */
+  reveal?: TextReveal;
 };
 
 export const NEUTRAL_FRAME: AnimationFrame = { opacity: 1, translateX: 0, translateY: 0, scale: 1 };
