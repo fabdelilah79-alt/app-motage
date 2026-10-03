@@ -1,8 +1,14 @@
 import { Player } from '@remotion/player';
 import type { CSSProperties, FC } from 'react';
-import { HELLO_COMPOSITION, HelloComposition } from '../video/demo/HelloComposition';
+import demoTemplate from '../../templates/demo.json';
+import { parseProject } from '../shared/schema';
+import { computeProjectDuration } from '../shared/timeline';
+import { ProjectVideo } from '../video/ProjectVideo';
 
-// Phase 0 : simple page d'aperçu. La vraie disposition de l'éditeur arrive en phase 2.
+// Phase 1 : aperçu du projet de démonstration. La vraie disposition de l'éditeur arrive en phase 2.
+const demoProject = parseProject(demoTemplate);
+const inputProps = { project: demoProject };
+
 const pageStyle: CSSProperties = {
   minHeight: '100vh',
   margin: 0,
@@ -26,11 +32,12 @@ export const App: FC = () => (
     <h1 style={{ textAlign: 'center', fontWeight: 600 }}>PhysiMotion Studio</h1>
     <div style={playerWrapperStyle}>
       <Player
-        component={HelloComposition}
-        durationInFrames={HELLO_COMPOSITION.durationInFrames}
-        fps={HELLO_COMPOSITION.fps}
-        compositionWidth={HELLO_COMPOSITION.width}
-        compositionHeight={HELLO_COMPOSITION.height}
+        component={ProjectVideo}
+        inputProps={inputProps}
+        durationInFrames={computeProjectDuration(demoProject)}
+        fps={demoProject.format.fps}
+        compositionWidth={demoProject.format.width}
+        compositionHeight={demoProject.format.height}
         style={{ width: '100%' }}
         controls
         loop

@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "id": "demo",
+  "title": "Démonstration — La chute libre",
+  "format": { "width": 1920, "height": 1080, "fps": 30 },
+  "defaultLang": "fr",
+  "assets": [
+    { "id": "img-chute", "kind": "image", "name": "Schéma de la chute libre", "src": "demo/chute-libre.svg" }
+  ],
+  "scenes": [
+    {
+      "id": "scene-fr",
+      "name": "Titre (français)",
+      "durationInFrames": 120,
+      "background": {
+        "type": "linear-gradient",
+        "angle": 135,
+        "stops": [
+          { "color": "#0f172a", "position": 0 },
+          { "color": "#1e3a8a", "position": 100 }
+        ]
+      },
+      "elements": [
+        {
+          "id": "fr-title",
+          "type": "text",
+          "name": "Titre",
+          "lang": "fr",
+          "transform": { "x": 160, "y": 330, "width": 1600, "height": 200 },
+          "timing": { "from": 0, "duration": 120 },
+          "animations": {
+            "enter": { "presetId": "enter.fade", "duration": 20 }
+          },
+          "content": [{ "kind": "text", "text": "La chute libre" }],
+          "style": { "fontSize": 130, "fontWeight": 700, "color": "#f8fafc", "align": "center" }
+        },
+        {
+          "id": "fr-subtitle",
+          "type": "text",
+          "name": "Sous-titre",
+          "lang": "fr",
+          "transform": { "x": 160, "y": 560, "width": 1600, "height": 160 },
+          "timing": { "from": 15, "duration": 105 },
+          "animations": {
+            "enter": {
+              "presetId": "enter.slide",
+              "duration": 20,
+              "params": { "side": "bottom", "distance": 80 }
+            },
+            "exit": { "presetId": "exit.fade", "duration": 15 }
+          },
+          "content": [
+            { "kind": "text", "text": "Un objet lâché tombe sous l'effet de son " },
+            { "kind": "text", "text": "poids", "style": { "color": "#fb923c", "fontWeight": 700 } }
+          ],
+          "style": { "fontSize": 60, "color": "#cbd5e1", "align": "center" }
+        }
+      ]
+    },
+    {
+      "id": "scene-ar",
+      "name": "Explication (arabe)",
+      "durationInFrames": 150,
+      "background": { "type": "color", "color": "#f1f5f9" },
+      "transitionIn": { "type": "fade", "durationInFrames": 15 },
+      "elements": [
+        {
+          "id": "ar-image",
+          "type": "image",
+          "name": "Schéma",
+          "assetId": "img-chute",
+          "fit": "contain",
+          "transform": { "x": 160, "y": 240, "width": 600, "height": 600 },
+          "timing": { "from": 0, "duration": 150 },
+          "animations": {
+            "enter": {
+              "presetId": "enter.slide",
+              "duration": 25,
+              "params": { "side": "left", "distance": 200 }
+            }
+          }
+        },
+        {
+          "id": "ar-title",
+          "type": "text",
+          "name": "Titre",
+          "lang": "ar",
+          "transform": { "x": 860, "y": 250, "width": 900, "height": 200 },
+          "timing": { "from": 10, "duration": 140 },
+          "animations": {
+            "enter": {
+              "presetId": "enter.slide",
+              "duration": 20,
+              "params": { "side": "right", "distance": 120 }
+            }
+          },
+          "content": [{ "kind": "text", "text": "السقوط الحر" }],
+          "style": { "fontSize": 120, "fontWeight": 700, "color": "#1e3a8a", "align": "start" }
+        },
+        {
+          "id": "ar-body",
+          "type": "text",
+          "name": "Explication",
+          "lang": "ar",
+          "transform": { "x": 860, "y": 480, "width": 900, "height": 320 },
+          "timing": { "from": 30, "duration": 120 },
+          "animations": {
+            "enter": { "presetId": "enter.fade", "duration": 25 }
+          },
+          "content": [
+            { "kind": "text", "text": "يسقط الجسم تحت تأثير " },
+            { "kind": "text", "text": "وزنه", "style": { "color": "#ea580c", "fontWeight": 700 } },
+            { "kind": "text", "text": " فقط، دون أي احتكاك مع الهواء." }
+          ],
+          "style": { "fontSize": 64, "color": "#0f172a", "align": "start", "lineHeight": 1.6 }
+        }
+      ]
+    },
+    {
+      "id": "scene-en",
+      "name": "Conclusion (anglais)",
+      "durationInFrames": 120,
+      "background": {
+        "type": "linear-gradient",
+        "angle": 180,
+        "stops": [
+          { "color": "#312e81", "position": 0 },
+          { "color": "#0f172a", "position": 100 }
+        ]
+      },
+      "transitionIn": { "type": "slide", "durationInFrames": 20, "direction": "from-right" },
+      "elements": [
+        {
+          "id": "en-title",
+          "type": "text",
+          "name": "Title",
+          "lang": "en",
+          "transform": { "x": 160, "y": 300, "width": 1600, "height": 200 },
+          "timing": { "from": 0, "duration": 120 },
+          "animations": {
+            "enter": { "presetId": "enter.fade", "duration": 20 }
+          },
+          "content": [{ "kind": "text", "text": "Free fall" }],
+          "style": { "fontSize": 130, "fontWeight": 700, "color": "#f8fafc", "align": "center" }
+        },
+        {
+          "id": "en-body",
+          "type": "text",
+          "name": "Key idea",
+          "lang": "en",
+          "transform": { "x": 160, "y": 530, "width": 1600, "height": 200 },
+          "timing": { "from": 20, "duration": 100 },
+          "animations": {
+            "enter": {
+              "presetId": "enter.slide",
+              "duration": 20,
+              "params": { "side": "bottom", "distance": 80 }
+            },
+            "exit": { "presetId": "exit.slide", "duration": 15, "params": { "side": "top" } }
+          },
+          "content": [
+            { "kind": "text", "text": "Without air, all objects fall with the " },
+            { "kind": "text", "text": "same acceleration", "style": { "color": "#facc15", "fontWeight": 700 } },
+            { "kind": "text", "text": "." }
+          ],
+          "style": { "fontSize": 60, "color": "#e2e8f0", "align": "center" }
+        }
+      ]
+    }
+  ]
+}

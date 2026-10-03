@@ -16,14 +16,20 @@
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
     "test": "vitest run",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "render:demo": "tsx server/render-demo.ts"
   },
   "dependencies": {
+    "@remotion/bundler": "4.0.532",
+    "@remotion/fonts": "4.0.532",
     "@remotion/player": "4.0.532",
+    "@remotion/renderer": "4.0.532",
+    "@remotion/transitions": "4.0.532",
     "fastify": "5.12.5",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "remotion": "4.0.532"
+    "remotion": "4.0.532",
+    "zod": "4.6.5"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

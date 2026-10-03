@@ -21,6 +21,17 @@ npm run dev
 
 Puis ouvrir <http://localhost:5173> dans le navigateur. Pour arrêter : `Ctrl + C` dans le terminal.
 
+## Créer la vidéo de démonstration (MP4)
+
+```bash
+npm run render:demo
+```
+
+La vidéo est enregistrée dans le dossier `PhysiMotion/exports` de votre dossier personnel
+(le chemin exact s'affiche à la fin). La toute première fois, un navigateur spécial (Chrome
+Headless, environ 100 Mo) est téléchargé automatiquement : il faut donc une connexion Internet
+une seule fois.
+
 ## Vérifications
 
 | Commande                                        | Ce qu'elle vérifie                               |
