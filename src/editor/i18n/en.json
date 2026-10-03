@@ -1,0 +1,180 @@
+{
+  "app": {
+    "name": "PhysiMotion Studio",
+    "tagline": "Motion-design explainer videos for physics"
+  },
+  "common": {
+    "backHome": "Back to home",
+    "cancel": "Cancel",
+    "close": "Close",
+    "loading": "Loading…"
+  },
+  "uiLangs": {
+    "fr": "Français",
+    "ar": "العربية",
+    "en": "English"
+  },
+  "langs": {
+    "fr": "French",
+    "ar": "Arabic",
+    "en": "English"
+  },
+  "formats": {
+    "landscape": "Landscape 16:9 (YouTube)",
+    "portrait": "Vertical 9:16 (Shorts, Reels, Status)",
+    "square": "Square 1:1"
+  },
+  "home": {
+    "newProject": "New project",
+    "recentProjects": "Recent projects",
+    "noProjects": "No projects yet: create your first video!",
+    "open": "Open",
+    "duplicate": "Duplicate",
+    "updatedAt": "Modified {{date}}",
+    "copyTitle": "{{title}} (copy)"
+  },
+  "newProject": {
+    "title": "New project",
+    "name": "Project name",
+    "format": "Video format",
+    "language": "Main language",
+    "create": "Create project",
+    "defaultTitle": "My new video"
+  },
+  "topBar": {
+    "projectName": "Project name",
+    "undo": "Undo (Ctrl+Z)",
+    "redo": "Redo (Ctrl+Y)",
+    "uiLanguage": "Interface language",
+    "export": "Export video",
+    "previewAll": "Watch the whole video",
+    "backToScene": "Back to the scene",
+    "save": {
+      "saved": "Saved",
+      "pending": "Unsaved changes",
+      "saving": "Saving…",
+      "error": "Saving failed"
+    }
+  },
+  "library": {
+    "text": "Text",
+    "media": "Media",
+    "textHelp": "Click to add a text in the middle of the scene.",
+    "addText": {
+      "fr": "French text",
+      "ar": "Arabic text",
+      "en": "English text"
+    },
+    "importImage": "Import an image",
+    "uploading": "Importing…",
+    "dropHelp": "… or drop your images here (PNG, JPG, WebP, GIF, SVG).",
+    "addToScene": "Add to the scene"
+  },
+  "properties": {
+    "content": "Content",
+    "style": "Style",
+    "animation": "Animation",
+    "duplicate": "Duplicate (Ctrl+D)",
+    "delete": "Delete (Del)"
+  },
+  "elementTypes": {
+    "text": "Text",
+    "image": "Image"
+  },
+  "fields": {
+    "start": "Start",
+    "duration": "Duration",
+    "inSeconds": "{{label}} (s)",
+    "inPercent": "{{label}} (%)",
+    "x": "X position",
+    "y": "Y position",
+    "width": "Width",
+    "height": "Height",
+    "rotation": "Rotation (°)",
+    "opacity": "Opacity",
+    "text": "Text",
+    "lang": "Text language",
+    "fontSize": "Size",
+    "fontWeight": "Weight",
+    "weightRegular": "Regular",
+    "weightBold": "Bold",
+    "color": "Color",
+    "align": "Alignment",
+    "alignStart": "Line start",
+    "alignCenter": "Centered",
+    "alignEnd": "Line end",
+    "lineHeight": "Line height",
+    "fit": "Fit",
+    "fitContain": "Contain (whole image)",
+    "fitCover": "Cover (fill the area)"
+  },
+  "animation": {
+    "help": "Choose how the element appears and disappears.",
+    "none": "None",
+    "enter": "Entrance",
+    "exit": "Exit",
+    "sideEnter": "Comes from",
+    "sideExit": "Leaves towards",
+    "sides": {
+      "left": "The left",
+      "right": "The right",
+      "top": "The top",
+      "bottom": "The bottom"
+    }
+  },
+  "scene": {
+    "title": "Scene {{number}}",
+    "name": "Scene name",
+    "namePlaceholder": "E.g. Introduction",
+    "background": "Background",
+    "backgroundColor": "Solid color",
+    "backgroundGradient": "Gradient",
+    "colorFrom": "Color 1",
+    "colorTo": "Color 2",
+    "angle": "Angle (°)",
+    "transition": "Incoming transition",
+    "transitions": {
+      "none": "Straight cut",
+      "fade": "Fade",
+      "slide": "Slide"
+    },
+    "direction": "Slide direction",
+    "directions": {
+      "from-left": "From the left",
+      "from-right": "From the right",
+      "from-top": "From the top",
+      "from-bottom": "From the bottom"
+    },
+    "help": "Click an element on the canvas to edit its properties.",
+    "add": "Scene",
+    "duplicate": "Duplicate scene",
+    "delete": "Delete scene",
+    "editTransition": "Edit transition"
+  },
+  "timeline": {
+    "play": "Play (Space)",
+    "pause": "Pause (Space)",
+    "toStart": "Back to start",
+    "fullPreview": "Whole video preview",
+    "empty": "No elements: add a text or an image from the library."
+  },
+  "export": {
+    "title": "Export video (MP4)",
+    "cancel": "Cancel export",
+    "savedTo": "File saved:",
+    "failedHelp": "Check that the local server is running (npm run dev), then try again.",
+    "status": {
+      "bundling": "Preparing the video…",
+      "rendering": "Rendering frames… {{percent}} %",
+      "done": "The video is ready!",
+      "error": "The export failed.",
+      "cancelled": "Export cancelled."
+    }
+  },
+  "errors": {
+    "serverUnreachable": "The local server is not responding. Run “npm run dev” and reload the page.",
+    "createProject": "Could not create the project.",
+    "loadProject": "Could not open this project.",
+    "upload": "Image import failed (accepted formats: PNG, JPG, WebP, GIF, SVG)."
+  }
+}

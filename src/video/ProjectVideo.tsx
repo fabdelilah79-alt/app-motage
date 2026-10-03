@@ -10,6 +10,8 @@ import { SceneView } from './scenes/SceneView';
 
 export type ProjectVideoProps = {
   project: Project;
+  /** Adresse du serveur local pour les médias importés ('' dans l'éditeur). */
+  filesBaseUrl?: string;
 };
 
 const renderTransition = (sceneId: string, transition: SceneTransition, duration: number) => {
@@ -28,7 +30,7 @@ const renderTransition = (sceneId: string, transition: SceneTransition, duration
 };
 
 /** Composition racine : scènes enchaînées avec leurs transitions (aperçu ET rendu MP4). */
-export const ProjectVideo: FC<ProjectVideoProps> = ({ project }) => {
+export const ProjectVideo: FC<ProjectVideoProps> = ({ project, filesBaseUrl = '' }) => {
   const { fps } = useVideoConfig();
   const items: ReactNode[] = [];
 
@@ -51,7 +53,9 @@ export const ProjectVideo: FC<ProjectVideoProps> = ({ project }) => {
   });
 
   return (
-    <ProjectAssetsContext.Provider value={project.assets}>
+    <ProjectAssetsContext.Provider
+      value={{ assets: project.assets, projectId: project.id, filesBaseUrl }}
+    >
       <AbsoluteFill style={{ backgroundColor: '#000000' }}>
         <TransitionSeries>{items}</TransitionSeries>
       </AbsoluteFill>

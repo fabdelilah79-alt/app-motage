@@ -1,4 +1,5 @@
-import { SERVER_PORT, buildServer } from './app';
+import { buildServer } from './app';
+import { SERVER_PORT } from './config';
 
 const server = buildServer({ logger: true });
 

@@ -21,6 +21,25 @@ npm run dev
 
 Puis ouvrir <http://localhost:5173> dans le navigateur. Pour arrêter : `Ctrl + C` dans le terminal.
 
+## Utiliser l'éditeur (en bref)
+
+1. **Nouveau projet** : choisir un nom, un format (16:9, 9:16, 1:1) et la langue principale.
+2. **Bibliothèque** (à gauche) : cliquer sur « Texte en arabe / français / anglais » ou importer une image.
+3. **Canevas** (au centre) : cliquer sur un élément pour le sélectionner, puis le déplacer,
+   l'agrandir ou le faire pivoter avec les poignées.
+4. **Propriétés** (à droite) : onglets Contenu, Style et Animation (apparition / disparition).
+   Sans élément sélectionné : durée, fond et transition de la scène.
+5. **En bas** : les scènes (glisser pour les réordonner) et la timeline de la scène (glisser une
+   barre pour changer le moment d'apparition, tirer ses bords pour changer sa durée).
+6. **Exporter la vidéo** (en haut à droite) : le fichier MP4 est rangé dans `PhysiMotion/exports`.
+
+Les projets sont enregistrés automatiquement (5 s après chaque modification) dans
+`PhysiMotion/projets` de votre dossier personnel.
+
+Raccourcis : Espace (lecture), Ctrl+Z / Ctrl+Y (annuler / rétablir), Ctrl+S (enregistrer),
+Suppr (supprimer), Ctrl+D (dupliquer), Ctrl+C / Ctrl+V (copier / coller), flèches (déplacer,
+Maj = ×10).
+
 ## Créer la vidéo de démonstration (MP4)
 
 ```bash
@@ -42,3 +61,7 @@ une seule fois.
 | `npm test`                                      | Tests unitaires                                  |
 | `npx playwright install chromium` (une fois)    | Installe le navigateur des tests bout en bout    |
 | `npm run test:e2e`                              | Tests bout en bout (ouvre l'application)         |
+
+Avant `npm run test:e2e`, arrêter `npm run dev` : les tests lancent leur propre copie de
+l'application, avec un dossier de données séparé (`.e2e-data`). Le test d'export fabrique un
+vrai MP4 et peut prendre quelques minutes.

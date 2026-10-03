@@ -1,47 +1,22 @@
-import { Player } from '@remotion/player';
-import type { CSSProperties, FC } from 'react';
-import demoTemplate from '../../templates/demo.json';
-import { parseProject } from '../shared/schema';
-import { computeProjectDuration } from '../shared/timeline';
-import { ProjectVideo } from '../video/ProjectVideo';
+import { DirectionProvider } from '@radix-ui/react-direction';
+import type { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useHashRoute } from './hooks/useHashRoute';
+import { uiDirection } from './i18n';
+import { EditorScreen } from './screens/EditorScreen';
+import { HomeScreen } from './screens/HomeScreen';
 
-// Phase 1 : aperçu du projet de démonstration. La vraie disposition de l'éditeur arrive en phase 2.
-const demoProject = parseProject(demoTemplate);
-const inputProps = { project: demoProject };
+export const App: FC = () => {
+  const { i18n } = useTranslation();
+  const route = useHashRoute();
 
-const pageStyle: CSSProperties = {
-  minHeight: '100vh',
-  margin: 0,
-  padding: 24,
-  boxSizing: 'border-box',
-  background: '#0b1120',
-  color: '#e2e8f0',
-  fontFamily: 'system-ui, sans-serif',
+  return (
+    <DirectionProvider dir={uiDirection(i18n.language)}>
+      {route.name === 'project' ? (
+        <EditorScreen key={route.projectId} projectId={route.projectId} />
+      ) : (
+        <HomeScreen />
+      )}
+    </DirectionProvider>
+  );
 };
-
-const playerWrapperStyle: CSSProperties = {
-  maxWidth: 1100,
-  margin: '0 auto',
-  borderRadius: 12,
-  overflow: 'hidden',
-  boxShadow: '0 10px 40px rgba(0, 0, 0, 0.5)',
-};
-
-export const App: FC = () => (
-  <main style={pageStyle}>
-    <h1 style={{ textAlign: 'center', fontWeight: 600 }}>PhysiMotion Studio</h1>
-    <div style={playerWrapperStyle}>
-      <Player
-        component={ProjectVideo}
-        inputProps={inputProps}
-        durationInFrames={computeProjectDuration(demoProject)}
-        fps={demoProject.format.fps}
-        compositionWidth={demoProject.format.width}
-        compositionHeight={demoProject.format.height}
-        style={{ width: '100%' }}
-        controls
-        loop
-      />
-    </div>
-  </main>
-);

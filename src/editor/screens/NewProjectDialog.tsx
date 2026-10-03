@@ -1,0 +1,76 @@
+import { useState, type FormEvent } from 'react';
+import { useTranslation } from 'react-i18next';
+import { FORMAT_PRESET_IDS, type FormatPresetId } from '../../shared/formats';
+import { LANGS, type Lang } from '../../shared/schema';
+import { api } from '../api/client';
+import { openProject } from '../hooks/useHashRoute';
+import { Button } from '../ui/button';
+import { Dialog } from '../ui/dialog';
+import { Field } from '../ui/field';
+import { Input } from '../ui/input';
+import { NativeSelect } from '../ui/native-select';
+
+type Props = { open: boolean; onOpenChange: (open: boolean) => void };
+
+export const NewProjectDialog = ({ open, onOpenChange }: Props) => {
+  const { t } = useTranslation();
+  const [title, setTitle] = useState(() => t('newProject.defaultTitle'));
+  const [formatId, setFormatId] = useState<FormatPresetId>('landscape');
+  const [defaultLang, setDefaultLang] = useState<Lang>('fr');
+  const [busy, setBusy] = useState(false);
+  const [failed, setFailed] = useState(false);
+
+  const onSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    setBusy(true);
+    setFailed(false);
+    try {
+      const project = await api.createProject({ title: title.trim(), formatId, defaultLang });
+      openProject(project.id);
+    } catch {
+      setFailed(true);
+      setBusy(false);
+    }
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange} title={t('newProject.title')}>
+      <form className="flex flex-col gap-4" onSubmit={(event) => void onSubmit(event)}>
+        <Field label={t('newProject.name')}>
+          <Input
+            data-testid="new-project-title"
+            value={title}
+            required
+            maxLength={120}
+            onChange={(event) => setTitle(event.target.value)}
+          />
+        </Field>
+        <Field label={t('newProject.format')}>
+          <NativeSelect
+            data-testid="new-project-format"
+            value={formatId}
+            onChange={(event) => setFormatId(event.target.value as FormatPresetId)}
+            options={FORMAT_PRESET_IDS.map((id) => ({ value: id, label: t(`formats.${id}`) }))}
+          />
+        </Field>
+        <Field label={t('newProject.language')}>
+          <NativeSelect
+            data-testid="new-project-language"
+            value={defaultLang}
+            onChange={(event) => setDefaultLang(event.target.value as Lang)}
+            options={LANGS.map((lang) => ({ value: lang, label: t(`langs.${lang}`) }))}
+          />
+        </Field>
+        {failed ? <p className="text-sm text-rose-400">{t('errors.createProject')}</p> : null}
+        <div className="flex justify-end gap-2">
+          <Button variant="ghost" onClick={() => onOpenChange(false)}>
+            {t('common.cancel')}
+          </Button>
+          <Button type="submit" variant="primary" disabled={busy} data-testid="new-project-submit">
+            {t('newProject.create')}
+          </Button>
+        </div>
+      </form>
+    </Dialog>
+  );
+};

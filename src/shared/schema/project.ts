@@ -15,7 +15,12 @@ export const assetSchema = z.object({
   id: idSchema,
   kind: z.enum(['image']),
   name: z.string().default(''),
-  /** Chemin relatif au dossier public (ex. « demo/chute-libre.svg ») ou URL complète. */
+  /**
+   * « public » : fichier livré avec l'application (dossier public/, ex. « demo/chute-libre.svg »).
+   * « project » : fichier importé, rangé dans le dossier du projet (ex. « assets/photo.png »).
+   */
+  storage: z.enum(['public', 'project']).default('public'),
+  /** Chemin relatif (selon `storage`) ou URL complète. */
   src: z.string().min(1),
 });
 export type Asset = z.infer<typeof assetSchema>;

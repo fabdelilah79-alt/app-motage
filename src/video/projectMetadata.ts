@@ -13,6 +13,6 @@ export const calculateProjectMetadata: CalculateMetadataFunction<ProjectVideoPro
     width: project.format.width,
     height: project.format.height,
     fps: project.format.fps,
-    props: { project },
+    props: { ...props, project },
   };
 };

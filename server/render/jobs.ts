@@ -1,19 +1,11 @@
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
+import { isRenderFinished, type RenderJobState } from '../../src/shared/render';
 import type { Project } from '../../src/shared/schema';
 import { buildOutputFileName } from './outputFileName';
 import type { RenderCallbacks, RenderFunction } from './renderProject';
 
-export type RenderStatus = 'bundling' | 'rendering' | 'done' | 'error' | 'cancelled';
-
-export type RenderJobState = {
-  id: string;
-  status: RenderStatus;
-  /** Progression de 0 à 1 (arrondie au centième). */
-  progress: number;
-  outputPath: string;
-  error: string | null;
-};
+export type { RenderJobState };
 
 type Listener = (state: RenderJobState) => void;
 
@@ -24,8 +16,7 @@ type Job = {
   listeners: Set<Listener>;
 };
 
-export const isFinished = (status: RenderStatus): boolean =>
-  status === 'done' || status === 'error' || status === 'cancelled';
+export const isFinished = isRenderFinished;
 
 export type RenderJobManager = {
   start: (project: Project) => RenderJobState;

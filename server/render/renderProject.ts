@@ -1,6 +1,7 @@
 import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import type { Project } from '../../src/shared/schema';
+import { FILES_BASE_URL } from '../config';
 import { ROOT_DIR } from '../paths';
 
 export const COMPOSITION_ID = 'ProjectVideo';
@@ -49,7 +50,7 @@ export const renderProject: RenderFunction = async (project, outputLocation, cal
   callbacks.onStage?.('bundling');
   const serveUrl = await getServeUrl();
   const { renderMedia, selectComposition } = await import('@remotion/renderer');
-  const inputProps = { project };
+  const inputProps = { project, filesBaseUrl: FILES_BASE_URL };
   const composition = await selectComposition({ serveUrl, id: COMPOSITION_ID, inputProps });
 
   callbacks.onStage?.('rendering');

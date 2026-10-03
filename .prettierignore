@@ -7,3 +7,4 @@ package-lock.json
 skills-lock.json
 **/*.md
 templates
+.e2e-data

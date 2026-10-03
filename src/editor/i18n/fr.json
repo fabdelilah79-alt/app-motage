@@ -1,0 +1,180 @@
+{
+  "app": {
+    "name": "PhysiMotion Studio",
+    "tagline": "Vidéos explicatives de physique en motion design"
+  },
+  "common": {
+    "backHome": "Retour à l'accueil",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "loading": "Chargement…"
+  },
+  "uiLangs": {
+    "fr": "Français",
+    "ar": "العربية",
+    "en": "English"
+  },
+  "langs": {
+    "fr": "Français",
+    "ar": "Arabe",
+    "en": "Anglais"
+  },
+  "formats": {
+    "landscape": "Paysage 16:9 (YouTube)",
+    "portrait": "Vertical 9:16 (Shorts, Reels, Statuts)",
+    "square": "Carré 1:1"
+  },
+  "home": {
+    "newProject": "Nouveau projet",
+    "recentProjects": "Projets récents",
+    "noProjects": "Aucun projet pour l'instant : créez votre première vidéo !",
+    "open": "Ouvrir",
+    "duplicate": "Dupliquer",
+    "updatedAt": "Modifié le {{date}}",
+    "copyTitle": "{{title}} (copie)"
+  },
+  "newProject": {
+    "title": "Nouveau projet",
+    "name": "Nom du projet",
+    "format": "Format de la vidéo",
+    "language": "Langue principale",
+    "create": "Créer le projet",
+    "defaultTitle": "Ma nouvelle vidéo"
+  },
+  "topBar": {
+    "projectName": "Nom du projet",
+    "undo": "Annuler (Ctrl+Z)",
+    "redo": "Rétablir (Ctrl+Y)",
+    "uiLanguage": "Langue de l'interface",
+    "export": "Exporter la vidéo",
+    "previewAll": "Voir toute la vidéo",
+    "backToScene": "Revenir à la scène",
+    "save": {
+      "saved": "Enregistré",
+      "pending": "Modifications en attente",
+      "saving": "Enregistrement…",
+      "error": "Échec de l'enregistrement"
+    }
+  },
+  "library": {
+    "text": "Texte",
+    "media": "Médias",
+    "textHelp": "Cliquez pour ajouter un texte au centre de la scène.",
+    "addText": {
+      "fr": "Texte en français",
+      "ar": "Texte en arabe",
+      "en": "Texte en anglais"
+    },
+    "importImage": "Importer une image",
+    "uploading": "Import en cours…",
+    "dropHelp": "… ou glissez-déposez vos images ici (PNG, JPG, WebP, GIF, SVG).",
+    "addToScene": "Ajouter à la scène"
+  },
+  "properties": {
+    "content": "Contenu",
+    "style": "Style",
+    "animation": "Animation",
+    "duplicate": "Dupliquer (Ctrl+D)",
+    "delete": "Supprimer (Suppr)"
+  },
+  "elementTypes": {
+    "text": "Texte",
+    "image": "Image"
+  },
+  "fields": {
+    "start": "Début",
+    "duration": "Durée",
+    "inSeconds": "{{label}} (s)",
+    "inPercent": "{{label}} (%)",
+    "x": "Position X",
+    "y": "Position Y",
+    "width": "Largeur",
+    "height": "Hauteur",
+    "rotation": "Rotation (°)",
+    "opacity": "Opacité",
+    "text": "Texte",
+    "lang": "Langue du texte",
+    "fontSize": "Taille",
+    "fontWeight": "Graisse",
+    "weightRegular": "Normal",
+    "weightBold": "Gras",
+    "color": "Couleur",
+    "align": "Alignement",
+    "alignStart": "Début de ligne",
+    "alignCenter": "Centré",
+    "alignEnd": "Fin de ligne",
+    "lineHeight": "Interligne",
+    "fit": "Ajustement",
+    "fitContain": "Contenir (image entière)",
+    "fitCover": "Couvrir (remplir la zone)"
+  },
+  "animation": {
+    "help": "Choisissez comment l'élément apparaît et disparaît.",
+    "none": "Aucune",
+    "enter": "Apparition",
+    "exit": "Disparition",
+    "sideEnter": "Arrive par",
+    "sideExit": "Part vers",
+    "sides": {
+      "left": "La gauche",
+      "right": "La droite",
+      "top": "Le haut",
+      "bottom": "Le bas"
+    }
+  },
+  "scene": {
+    "title": "Scène {{number}}",
+    "name": "Nom de la scène",
+    "namePlaceholder": "Ex. : Introduction",
+    "background": "Fond",
+    "backgroundColor": "Couleur unie",
+    "backgroundGradient": "Dégradé",
+    "colorFrom": "Couleur 1",
+    "colorTo": "Couleur 2",
+    "angle": "Angle (°)",
+    "transition": "Transition d'entrée",
+    "transitions": {
+      "none": "Coupe franche",
+      "fade": "Fondu",
+      "slide": "Glissement"
+    },
+    "direction": "Sens du glissement",
+    "directions": {
+      "from-left": "Depuis la gauche",
+      "from-right": "Depuis la droite",
+      "from-top": "Depuis le haut",
+      "from-bottom": "Depuis le bas"
+    },
+    "help": "Cliquez sur un élément du canevas pour modifier ses propriétés.",
+    "add": "Scène",
+    "duplicate": "Dupliquer la scène",
+    "delete": "Supprimer la scène",
+    "editTransition": "Modifier la transition"
+  },
+  "timeline": {
+    "play": "Lecture (Espace)",
+    "pause": "Pause (Espace)",
+    "toStart": "Revenir au début",
+    "fullPreview": "Aperçu de toute la vidéo",
+    "empty": "Aucun élément : ajoutez un texte ou une image depuis la bibliothèque."
+  },
+  "export": {
+    "title": "Exporter la vidéo (MP4)",
+    "cancel": "Annuler l'export",
+    "savedTo": "Fichier enregistré :",
+    "failedHelp": "Vérifiez que le serveur local est lancé (npm run dev), puis réessayez.",
+    "status": {
+      "bundling": "Préparation de la vidéo…",
+      "rendering": "Fabrication des images… {{percent}} %",
+      "done": "La vidéo est prête !",
+      "error": "L'export a échoué.",
+      "cancelled": "Export annulé."
+    }
+  },
+  "errors": {
+    "serverUnreachable": "Le serveur local ne répond pas. Lancez « npm run dev » puis rechargez la page.",
+    "createProject": "Impossible de créer le projet.",
+    "loadProject": "Impossible d'ouvrir ce projet.",
+    "upload": "L'import de l'image a échoué (formats acceptés : PNG, JPG, WebP, GIF, SVG)."
+  }
+}

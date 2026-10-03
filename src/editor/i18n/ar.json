@@ -1,0 +1,180 @@
+{
+  "app": {
+    "name": "PhysiMotion Studio",
+    "tagline": "فيديوهات تعليمية متحركة لمادة الفيزياء"
+  },
+  "common": {
+    "backHome": "العودة إلى الصفحة الرئيسية",
+    "cancel": "إلغاء",
+    "close": "إغلاق",
+    "loading": "جارٍ التحميل…"
+  },
+  "uiLangs": {
+    "fr": "Français",
+    "ar": "العربية",
+    "en": "English"
+  },
+  "langs": {
+    "fr": "الفرنسية",
+    "ar": "العربية",
+    "en": "الإنجليزية"
+  },
+  "formats": {
+    "landscape": "أفقي 16:9 (يوتيوب)",
+    "portrait": "عمودي 9:16 (شورتس، ريلز، حالات)",
+    "square": "مربع 1:1"
+  },
+  "home": {
+    "newProject": "مشروع جديد",
+    "recentProjects": "المشاريع الأخيرة",
+    "noProjects": "لا توجد مشاريع بعد: أنشئ أول فيديو لك!",
+    "open": "فتح",
+    "duplicate": "نسخ",
+    "updatedAt": "آخر تعديل: {{date}}",
+    "copyTitle": "{{title}} (نسخة)"
+  },
+  "newProject": {
+    "title": "مشروع جديد",
+    "name": "اسم المشروع",
+    "format": "مقاس الفيديو",
+    "language": "اللغة الرئيسية",
+    "create": "إنشاء المشروع",
+    "defaultTitle": "الفيديو الجديد"
+  },
+  "topBar": {
+    "projectName": "اسم المشروع",
+    "undo": "تراجع (Ctrl+Z)",
+    "redo": "إعادة (Ctrl+Y)",
+    "uiLanguage": "لغة الواجهة",
+    "export": "تصدير الفيديو",
+    "previewAll": "مشاهدة الفيديو كاملًا",
+    "backToScene": "العودة إلى المشهد",
+    "save": {
+      "saved": "تم الحفظ",
+      "pending": "تعديلات غير محفوظة",
+      "saving": "جارٍ الحفظ…",
+      "error": "فشل الحفظ"
+    }
+  },
+  "library": {
+    "text": "نص",
+    "media": "وسائط",
+    "textHelp": "انقر لإضافة نص في وسط المشهد.",
+    "addText": {
+      "fr": "نص بالفرنسية",
+      "ar": "نص بالعربية",
+      "en": "نص بالإنجليزية"
+    },
+    "importImage": "استيراد صورة",
+    "uploading": "جارٍ الاستيراد…",
+    "dropHelp": "… أو اسحب صورك وأفلتها هنا (PNG، JPG، WebP، GIF، SVG).",
+    "addToScene": "إضافة إلى المشهد"
+  },
+  "properties": {
+    "content": "المحتوى",
+    "style": "التنسيق",
+    "animation": "الحركة",
+    "duplicate": "نسخ (Ctrl+D)",
+    "delete": "حذف (Del)"
+  },
+  "elementTypes": {
+    "text": "نص",
+    "image": "صورة"
+  },
+  "fields": {
+    "start": "البداية",
+    "duration": "المدة",
+    "inSeconds": "{{label}} (ثانية)",
+    "inPercent": "{{label}} (%)",
+    "x": "الموضع X",
+    "y": "الموضع Y",
+    "width": "العرض",
+    "height": "الارتفاع",
+    "rotation": "الدوران (°)",
+    "opacity": "الشفافية",
+    "text": "النص",
+    "lang": "لغة النص",
+    "fontSize": "الحجم",
+    "fontWeight": "سُمك الخط",
+    "weightRegular": "عادي",
+    "weightBold": "عريض",
+    "color": "اللون",
+    "align": "المحاذاة",
+    "alignStart": "بداية السطر",
+    "alignCenter": "في الوسط",
+    "alignEnd": "نهاية السطر",
+    "lineHeight": "تباعد الأسطر",
+    "fit": "الملاءمة",
+    "fitContain": "احتواء (الصورة كاملة)",
+    "fitCover": "تغطية (ملء المساحة)"
+  },
+  "animation": {
+    "help": "اختر كيف يظهر العنصر وكيف يختفي.",
+    "none": "بدون",
+    "enter": "الظهور",
+    "exit": "الاختفاء",
+    "sideEnter": "يأتي من",
+    "sideExit": "يذهب نحو",
+    "sides": {
+      "left": "اليسار",
+      "right": "اليمين",
+      "top": "الأعلى",
+      "bottom": "الأسفل"
+    }
+  },
+  "scene": {
+    "title": "المشهد {{number}}",
+    "name": "اسم المشهد",
+    "namePlaceholder": "مثال: مقدمة",
+    "background": "الخلفية",
+    "backgroundColor": "لون موحد",
+    "backgroundGradient": "تدرج لوني",
+    "colorFrom": "اللون 1",
+    "colorTo": "اللون 2",
+    "angle": "الزاوية (°)",
+    "transition": "الانتقال إلى المشهد",
+    "transitions": {
+      "none": "قطع مباشر",
+      "fade": "تلاشٍ",
+      "slide": "انزلاق"
+    },
+    "direction": "اتجاه الانزلاق",
+    "directions": {
+      "from-left": "من اليسار",
+      "from-right": "من اليمين",
+      "from-top": "من الأعلى",
+      "from-bottom": "من الأسفل"
+    },
+    "help": "انقر على عنصر في اللوحة لتعديل خصائصه.",
+    "add": "مشهد",
+    "duplicate": "نسخ المشهد",
+    "delete": "حذف المشهد",
+    "editTransition": "تعديل الانتقال"
+  },
+  "timeline": {
+    "play": "تشغيل (مسافة)",
+    "pause": "إيقاف مؤقت (مسافة)",
+    "toStart": "العودة إلى البداية",
+    "fullPreview": "معاينة الفيديو كاملًا",
+    "empty": "لا توجد عناصر: أضف نصًا أو صورة من المكتبة."
+  },
+  "export": {
+    "title": "تصدير الفيديو (MP4)",
+    "cancel": "إلغاء التصدير",
+    "savedTo": "تم حفظ الملف في:",
+    "failedHelp": "تأكد من تشغيل الخادم المحلي (npm run dev) ثم أعد المحاولة.",
+    "status": {
+      "bundling": "جارٍ تحضير الفيديو…",
+      "rendering": "جارٍ إنتاج الصور… {{percent}} %",
+      "done": "الفيديو جاهز!",
+      "error": "فشل التصدير.",
+      "cancelled": "تم إلغاء التصدير."
+    }
+  },
+  "errors": {
+    "serverUnreachable": "الخادم المحلي لا يستجيب. شغّل «npm run dev» ثم أعد تحميل الصفحة.",
+    "createProject": "تعذّر إنشاء المشروع.",
+    "loadProject": "تعذّر فتح هذا المشروع.",
+    "upload": "فشل استيراد الصورة (الصيغ المقبولة: PNG، JPG، WebP، GIF، SVG)."
+  }
+}
