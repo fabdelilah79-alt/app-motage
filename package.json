@@ -1,0 +1,47 @@
+{
+  "name": "physimotion-studio",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Création de vidéos explicatives de physique en motion design (fr / ar / en).",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail --names editor,server --prefix-colors cyan,magenta \"npm:dev:editor\" \"npm:dev:server\"",
+    "dev:editor": "vite",
+    "dev:server": "tsx watch server/index.ts",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@remotion/player": "4.0.532",
+    "fastify": "5.12.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "remotion": "4.0.532"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.63.0",
+    "@types/node": "26.6.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "concurrently": "10.0.5",
+    "eslint": "10.12.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "globals": "17.13.0",
+    "prettier": "3.9.9",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.0",
+    "vite": "8.3.2",
+    "vitest": "5.0.3"
+  }
+}

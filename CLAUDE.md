@@ -11,6 +11,7 @@ Le plan complet est dans **`PLAN.md`** : le lire avant toute tâche importante.
 - Avant d'utiliser une API Remotion dont tu n'es pas sûr, consulter les **skills Remotion** (docs à jour) plutôt que de deviner.
 - En cas de doute sur un choix produit (ergonomie, comportement), **demander** plutôt que supposer.
 - À la fin de chaque phase : typecheck + lint + tests au vert, critères de validation prouvés, mise à jour du **Journal d'avancement** ci-dessous, commit `phase N: <titre>`.
+- **Consigne de l'utilisateur (2026-10-03)** : Claude écrit le code pas à pas mais **n'exécute pas lui-même** les tests, le lint, le typecheck ni l'application ; c'est l'utilisateur qui teste. Donner à chaque fois la liste précise des commandes à lancer.
 
 ## Commandes
 | Commande | Rôle |
@@ -18,9 +19,10 @@ Le plan complet est dans **`PLAN.md`** : le lire avant toute tâche importante.
 | `npm run dev` | Lance l'éditeur (Vite, :5173) et le serveur local (Fastify, :3210) |
 | `npm run typecheck` | Vérification TypeScript |
 | `npm run lint` | ESLint + Prettier |
+| `npm run format` | Corrige automatiquement la mise en forme (Prettier) |
 | `npm test` | Tests unitaires (Vitest) |
 | `npm run test:e2e` | Tests bout en bout (Playwright) |
-| `npm run render:demo` | Rend `templates/demo.json` en MP4 dans `~/PhysiMotion/exports/` |
+| `npm run render:demo` | Rend `templates/demo.json` en MP4 dans `~/PhysiMotion/exports/` (à créer en phase 1) |
 
 (Créer ces scripts en phase 0–1 et tenir ce tableau à jour.)
 
@@ -68,4 +70,4 @@ Le plan complet est dans **`PLAN.md`** : le lire avant toute tâche importante.
 
 ## Journal d'avancement
 <!-- Claude Code : ajouter une ligne par phase terminée : date, phase, ce qui a été fait, points en suspens. -->
-- _(aucune phase terminée pour l'instant)_
+- **2026-10-03 — Phase 0 (Fondations)** : Vite + React 19 + TypeScript strict, ESLint (règles d'invariants sur `src/video` : pas d'import de l'éditeur, pas de `Math.random`/`Date.now`/minuteurs, pas de `<img>`/`<video>`/`<audio>`), Prettier, Vitest, Playwright ; Remotion 4.0.532 épinglé (`remotion`, `@remotion/player`) ; skills Remotion installés dans `.claude/skills` ; arborescence de la section 4 ; serveur Fastify minimal (`/api/health`, port 3210, relayé par Vite) ; `npm run dev` lance les deux ; page avec `<Player>` « Bonjour / مرحبا / Hello » en fondu. Tests écrits : `fade`, `/api/health`, e2e de la page d'accueil. **En suspens** : code non exécuté par Claude (consigne utilisateur) → validation par l'utilisateur ; pas encore de `package-lock.json` (créé au premier `npm install`) ; polices système provisoires (polices locales en phase 1).
