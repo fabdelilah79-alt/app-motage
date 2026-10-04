@@ -11,6 +11,7 @@ import { cn } from '../ui/cn';
 import { PlaybackControls } from './PlaybackControls';
 import { TimelineBar } from './TimelineBar';
 import { TimelineRuler } from './TimelineRuler';
+import { VoiceoverRow } from './VoiceoverRow';
 
 const LABEL_WIDTH = 150;
 
@@ -51,6 +52,11 @@ export const SceneTimeline = () => {
       <div dir="ltr" className="flex min-h-0 flex-1 overflow-y-auto px-3 pb-2">
         <div className="shrink-0" style={{ width: LABEL_WIDTH }}>
           <div className="h-6" />
+          {sceneMode && sceneMode.voiceover ? (
+            <p className="h-8 truncate pe-2 text-start text-xs leading-8 text-emerald-300">
+              {t('timeline.voiceover')}
+            </p>
+          ) : null}
           {sceneMode
             ? sceneMode.elements.map((element) => (
                 <button
@@ -70,6 +76,7 @@ export const SceneTimeline = () => {
         </div>
         <div ref={trackRef} className="relative min-w-0 flex-1">
           <TimelineRuler durationInFrames={duration} fps={fps} pixelsPerFrame={pixelsPerFrame} />
+          {sceneMode ? <VoiceoverRow scene={sceneMode} pixelsPerFrame={pixelsPerFrame} /> : null}
           {sceneMode
             ? sceneMode.elements.map((element) => (
                 <div key={element.id} className="relative h-8 border-b border-slate-800/60">

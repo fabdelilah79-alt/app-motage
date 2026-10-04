@@ -23,7 +23,7 @@ test('créer un projet, le remplir et exporter un MP4', async ({ page }) => {
   await expect(page.locator('[lang="ar"]', { hasText: 'اكتب نصك هنا' }).first()).toBeAttached();
 
   await page.getByTestId('tab-media').click();
-  await page.getByTestId('upload-image').setInputFiles(IMAGE);
+  await page.getByTestId('upload-media').setInputFiles(IMAGE);
   await expect(page.getByTestId('element-box')).toHaveCount(2);
 
   await page.getByTestId('save-status').click();

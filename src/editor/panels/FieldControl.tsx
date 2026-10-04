@@ -26,6 +26,19 @@ export const FieldControl = <E,>({ descriptor, element, fps, onChange }: Props<E
   const numeric = { min: descriptor.min, max: descriptor.max, step: descriptor.step };
 
   switch (descriptor.kind) {
+    case 'boolean':
+      return (
+        <label className="flex items-center gap-2 self-end pb-2 text-xs text-slate-300">
+          <input
+            type="checkbox"
+            data-testid={testId}
+            className="h-4 w-4 accent-sky-500"
+            checked={value === true}
+            onChange={(event) => change(event.target.checked)}
+          />
+          {label}
+        </label>
+      );
     case 'textarea':
       return (
         <Field label={label}>

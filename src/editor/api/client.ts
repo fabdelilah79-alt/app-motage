@@ -41,6 +41,26 @@ const sendJson = (method: string, data: unknown): RequestInit => ({
 
 const projectUrl = (id: string) => `/api/projects/${encodeURIComponent(id)}`;
 
+export type MediaMeta = Asset['meta'];
+
+const TYPES_BY_EXTENSION: Readonly<Record<string, string>> = {
+  json: 'application/x-lottie+json',
+  mp3: 'audio/mpeg',
+  wav: 'audio/wav',
+  m4a: 'audio/mp4',
+  ogg: 'audio/ogg',
+  mp4: 'video/mp4',
+  webm: 'video/webm',
+  mov: 'video/quicktime',
+};
+
+/** Type envoyé au serveur : celui du fichier, sinon déduit de l'extension (Lottie = .json). */
+export const uploadContentType = (file: Blob, name: string): string => {
+  const extension = name.split('.').pop()?.toLowerCase() ?? '';
+  if (extension === 'json') return 'application/x-lottie+json';
+  return file.type || TYPES_BY_EXTENSION[extension] || 'application/octet-stream';
+};
+
 export const api = {
   listProjects: async (): Promise<ProjectSummary[]> =>
     z.array(projectSummarySchema).parse(await requestJson('/api/projects')),
@@ -61,9 +81,15 @@ export const api = {
   duplicateProject: async (id: string, title: string): Promise<Project> =>
     parseProject(await requestJson(`${projectUrl(id)}/duplicate`, sendJson('POST', { title }))),
 
-  uploadImage: async (projectId: string, file: File): Promise<Asset> => {
-    const url = `${projectUrl(projectId)}/assets?name=${encodeURIComponent(file.name)}`;
-    const init = { method: 'POST', headers: { 'Content-Type': file.type }, body: file };
+  /** Envoie un média (image, GIF, vidéo, son, Lottie) avec ses mesures (durée, dimensions). */
+  uploadMedia: async (projectId: string, file: Blob, name: string, meta: MediaMeta) => {
+    const query = new URLSearchParams({ name });
+    if (meta.durationInSeconds) query.set('duration', String(meta.durationInSeconds));
+    if (meta.width) query.set('width', String(meta.width));
+    if (meta.height) query.set('height', String(meta.height));
+    const url = `${projectUrl(projectId)}/assets?${query.toString()}`;
+    const headers = { 'Content-Type': uploadContentType(file, name) };
+    const init = { method: 'POST', headers, body: file };
     return assetSchema.parse(await requestJson(url, init));
   },
 

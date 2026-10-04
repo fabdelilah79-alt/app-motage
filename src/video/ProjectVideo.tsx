@@ -6,6 +6,7 @@ import { AbsoluteFill, useVideoConfig } from 'remotion';
 import type { Project, SceneTransition } from '../shared/schema';
 import { getTransitionDuration } from '../shared/timeline';
 import { ProjectAssetsContext } from './ProjectAssetsContext';
+import { ProjectAudio } from './ProjectAudio';
 import { ProjectSettingsContext } from './ProjectSettingsContext';
 import { SceneView } from './scenes/SceneView';
 
@@ -60,6 +61,7 @@ export const ProjectVideo: FC<ProjectVideoProps> = ({ project, filesBaseUrl = ''
       <ProjectSettingsContext.Provider value={{ digits: project.digits }}>
         <AbsoluteFill style={{ backgroundColor: '#000000' }}>
           <TransitionSeries>{items}</TransitionSeries>
+          <ProjectAudio project={project} />
         </AbsoluteFill>
       </ProjectSettingsContext.Provider>
     </ProjectAssetsContext.Provider>

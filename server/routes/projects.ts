@@ -8,7 +8,8 @@ import {
   type ProjectStore,
 } from '../projects/projectStore';
 
-const MAX_IMAGE_BYTES = 50 * 1024 * 1024;
+/** Taille maximale d'un média importé (les vidéos peuvent être lourdes). */
+const MAX_MEDIA_BYTES = 1024 * 1024 * 1024;
 
 const newProjectSchema = z.object({
   title: z.string().trim().min(1).max(120),
@@ -17,7 +18,14 @@ const newProjectSchema = z.object({
 });
 const saveSchema = z.object({ project: z.unknown() });
 const duplicateSchema = z.object({ title: z.string().trim().min(1).max(120) });
-const uploadQuerySchema = z.object({ name: z.string().min(1).max(200).default('image') });
+const optionalPositive = z.coerce.number().positive().optional();
+const uploadQuerySchema = z.object({
+  name: z.string().min(1).max(200).default('media'),
+  // Mesures faites par le navigateur avant l'envoi (durée d'un son ou d'une vidéo, dimensions).
+  duration: optionalPositive,
+  width: optionalPositive,
+  height: optionalPositive,
+});
 
 type IdParams = { Params: { id: string } };
 
@@ -35,10 +43,10 @@ const sendError = (reply: FastifyReply, error: unknown) => {
 
 /** Projets enregistrés sur le disque : liste, création, lecture, sauvegarde, copie, images. */
 export const registerProjectRoutes = (app: FastifyInstance, store: ProjectStore) => {
-  // Les images importées arrivent telles quelles dans le corps de la requête.
+  // Les médias importés arrivent tels quels dans le corps de la requête.
   app.addContentTypeParser(
-    /^image\//,
-    { parseAs: 'buffer', bodyLimit: MAX_IMAGE_BYTES },
+    /^(image|video|audio)\/|^application\/x-lottie\+json/,
+    { parseAs: 'buffer', bodyLimit: MAX_MEDIA_BYTES },
     (_request, body, done) => done(null, body),
   );
 
@@ -81,12 +89,13 @@ export const registerProjectRoutes = (app: FastifyInstance, store: ProjectStore)
 
   app.post<IdParams>('/api/projects/:id/assets', async (request, reply) => {
     try {
-      const { name } = uploadQuerySchema.parse(request.query);
+      const { name, duration, width, height } = uploadQuerySchema.parse(request.query);
       const contentType = (request.headers['content-type'] ?? '').split(';')[0] ?? '';
       if (!Buffer.isBuffer(request.body)) {
         throw new UnsupportedFileError(contentType);
       }
-      const asset = await store.addImage(request.params.id, name, contentType, request.body);
+      const meta = { durationInSeconds: duration, width, height };
+      const asset = await store.addAsset(request.params.id, name, contentType, request.body, meta);
       return reply.code(201).send(asset);
     } catch (error) {
       return sendError(reply, error);

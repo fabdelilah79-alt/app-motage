@@ -3,7 +3,7 @@ import path from 'node:path';
 import { createProject, randomId, type IdGenerator } from '../../src/shared/factories';
 import type { FormatPresetId } from '../../src/shared/formats';
 import { parseProject, type Asset, type Lang, type Project } from '../../src/shared/schema';
-import { IMAGE_EXTENSIONS, PROJECT_ID_PATTERN, assetFileName, newProjectId } from './fileNames';
+import { MEDIA_TYPES, PROJECT_ID_PATTERN, assetFileName, newProjectId } from './fileNames';
 
 export type ProjectSummary = { id: string; title: string; updatedAt: string };
 
@@ -98,26 +98,29 @@ export const createProjectStore = (projectsDir: string, newId: IdGenerator = ran
     return copy;
   };
 
-  const addImage = async (
+  /** Enregistre un média importé dans assets/ et renvoie sa description pour le projet. */
+  const addAsset = async (
     id: string,
     originalName: string,
     contentType: string,
     data: Buffer,
+    meta: Asset['meta'] = {},
   ): Promise<Asset> => {
-    const extension = IMAGE_EXTENSIONS[contentType];
-    if (!extension) {
+    const type = MEDIA_TYPES[contentType];
+    if (!type) {
       throw new UnsupportedFileError(contentType);
     }
     await read(id);
-    const fileName = assetFileName(originalName, extension, newId());
+    const fileName = assetFileName(originalName, type.extension, newId());
     await mkdir(path.join(projectDir(id), ASSETS_DIR), { recursive: true });
     await writeFile(path.join(projectDir(id), ASSETS_DIR, fileName), data);
     return {
       id: `asset-${newId()}`,
-      kind: 'image',
+      kind: type.kind,
       name: originalName,
       storage: 'project',
       src: `${ASSETS_DIR}/${fileName}`,
+      meta,
     };
   };
 
@@ -128,7 +131,7 @@ export const createProjectStore = (projectsDir: string, newId: IdGenerator = ran
     return file.startsWith(dir + path.sep) ? file : null;
   };
 
-  return { list, create, read, save, duplicate, addImage, resolveFile };
+  return { list, create, read, save, duplicate, addAsset, resolveFile };
 };
 
 export type ProjectStore = ReturnType<typeof createProjectStore>;

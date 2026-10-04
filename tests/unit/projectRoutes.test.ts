@@ -79,6 +79,28 @@ describe('routes des projets et des fichiers', () => {
     expect(escape.statusCode).toBe(404);
   });
 
+  it('sert une partie d’un fichier (Range) avec les en-têtes CORS pour le rendu', async () => {
+    const project = await createProject();
+    const upload = await server.inject({
+      method: 'POST',
+      url: `/api/projects/${project.id}/assets?name=voix.wav&duration=2.5`,
+      headers: { 'content-type': 'audio/wav' },
+      payload: Buffer.from('0123456789'),
+    });
+    const asset = upload.json<{ kind: string; src: string; meta: { durationInSeconds: number } }>();
+    expect(asset).toMatchObject({ kind: 'audio', meta: { durationInSeconds: 2.5 } });
+
+    const url = `/files/${project.id}/${asset.src}`;
+    const part = await server.inject({ method: 'GET', url, headers: { range: 'bytes=2-5' } });
+    expect(part.statusCode).toBe(206);
+    expect(part.body).toBe('2345');
+    expect(part.headers['content-range']).toBe('bytes 2-5/10');
+    expect(part.headers['access-control-allow-origin']).toBe('*');
+
+    const outside = await server.inject({ method: 'GET', url, headers: { range: 'bytes=50-60' } });
+    expect(outside.statusCode).toBe(416);
+  });
+
   it('duplique un projet', async () => {
     const project = await createProject();
     const copy = await server.inject({

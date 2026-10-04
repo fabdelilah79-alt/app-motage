@@ -70,7 +70,9 @@
     "dropHelp": "… or drop your images here (PNG, JPG, WebP, GIF, SVG).",
     "addToScene": "Add to the scene",
     "presets": "Text styles",
-    "presetsHelp": "Adds a ready-styled text in the project's main language."
+    "presetsHelp": "Adds a ready-styled text in the project's main language.",
+    "shapes": "Shapes",
+    "audio": "Audio"
   },
   "properties": {
     "content": "Content",
@@ -81,7 +83,12 @@
   },
   "elementTypes": {
     "text": "Text",
-    "image": "Image"
+    "image": "Image",
+    "video": "Video",
+    "gif": "Animated GIF",
+    "lottie": "Lottie animation",
+    "icon": "Icon",
+    "shape": "Shape"
   },
   "fields": {
     "start": "Start",
@@ -127,7 +134,8 @@
       "top": "The top",
       "bottom": "The bottom"
     },
-    "letterFallback": "In Arabic, “letter by letter” is automatically replaced by “word by word” so letters stay joined."
+    "letterFallback": "In Arabic, “letter by letter” is automatically replaced by “word by word” so letters stay joined.",
+    "sound": "Sound on entrance"
   },
   "scene": {
     "title": "Scene {{number}}",
@@ -163,7 +171,8 @@
     "pause": "Pause (Space)",
     "toStart": "Back to start",
     "fullPreview": "Whole video preview",
-    "empty": "No elements: add a text or an image from the library."
+    "empty": "No elements: add a text or an image from the library.",
+    "voiceover": "Voice-over"
   },
   "export": {
     "title": "Export video (MP4)",
@@ -182,7 +191,7 @@
     "serverUnreachable": "The local server is not responding. Run “npm run dev” and reload the page.",
     "createProject": "Could not create the project.",
     "loadProject": "Could not open this project.",
-    "upload": "Image import failed (accepted formats: PNG, JPG, WebP, GIF, SVG)."
+    "upload": "Import failed: check the file format (images, GIF, MP4, WebM, MOV, MP3, WAV, M4A, Lottie JSON)."
   },
   "richText": {
     "help": "A text can mix styled segments and formulas (LaTeX).",
@@ -245,5 +254,87 @@
     "digitsHelp": "Numbers followed by a Latin unit (e.g. 12.5 m/s) and formulas keep the digits 0-9.",
     "digitsLatin": "0 1 2 3 (Latin digits)",
     "digitsArabic": "٠ ١ ٢ ٣ (Eastern Arabic digits)"
+  },
+  "media": {
+    "import": "Import media",
+    "dropHelp": "… or drop your files here: images, GIFs, videos (MP4, WebM, MOV), sounds (MP3, WAV, M4A) and Lottie animations (JSON).",
+    "search": "Search media",
+    "removeUnused": "Remove unused media ({{count}})",
+    "useAsMusic": "Background music",
+    "useAsVoice": "Scene voice-over",
+    "fits": {
+      "contain": "Contain (whole media)",
+      "cover": "Cover (fill the area)"
+    },
+    "mask": "Mask",
+    "masks": {
+      "none": "None",
+      "rounded": "Rounded corners",
+      "circle": "Circle"
+    },
+    "cornerRadius": "Corner radius",
+    "shadow": "Drop shadow",
+    "crop": {
+      "top": "Crop top (%)",
+      "right": "Crop right (%)",
+      "bottom": "Crop bottom (%)",
+      "left": "Crop left (%)"
+    },
+    "kenBurnsZoom": "Ken Burns: zoom (1 = none)",
+    "kenBurnsPanX": "Ken Burns: horizontal pan",
+    "kenBurnsPanY": "Ken Burns: vertical pan",
+    "trimStart": "Start in the video",
+    "playbackRate": "Speed",
+    "volume": "Volume",
+    "muted": "Muted",
+    "loop": "Loop",
+    "strokeWidth": "Stroke width"
+  },
+  "shapes": {
+    "title": "Shapes",
+    "icons": "Icons",
+    "kind": "Shape",
+    "fill": "Fill",
+    "stroke": "Outline",
+    "sides": "Sides / points",
+    "kinds": {
+      "rectangle": "Rectangle",
+      "circle": "Circle",
+      "polygon": "Polygon",
+      "star": "Star",
+      "line": "Line",
+      "arrow": "Arrow",
+      "curvedArrow": "Curved arrow",
+      "bubble": "Bubble"
+    }
+  },
+  "audio": {
+    "music": "Background music",
+    "musicHelp": "Import a sound in the Media tab, then choose “Background music”.",
+    "remove": "Remove",
+    "volume": "Volume",
+    "duckLevel": "Volume under voice",
+    "fadeIn": "Fade in",
+    "fadeOut": "Fade out",
+    "ducking": "Lower the music during the voice-over",
+    "voiceover": "Scene {{number}} voice-over",
+    "script": "Text to read",
+    "scriptPlaceholder": "Write here what you are going to say…",
+    "record": "Record voice",
+    "recordAgain": "Record again",
+    "stop": "Stop ({{seconds}} s)",
+    "micDenied": "Microphone not allowed: accept the browser request, then try again.",
+    "recordFailed": "Recording failed. Try again.",
+    "offset": "Voice start",
+    "fitScene": "Fit the scene length to the voice",
+    "recordingName": "voice-over-scene-{{number}}",
+    "sfx": "Sound effects",
+    "sfxHelp": "Click to listen. To add one, select an element, then open the Animation tab."
+  },
+  "sfx": {
+    "whoosh": "Whoosh",
+    "pop": "Pop",
+    "click": "Click",
+    "ding": "Ding"
   }
 }

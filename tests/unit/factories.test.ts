@@ -1,10 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import {
-  createImageElement,
-  createProject,
-  createScene,
-  createTextElement,
-} from '../../src/shared/factories';
+import { createProject, createScene, createTextElement } from '../../src/shared/factories';
+import { createImageElement } from '../../src/shared/mediaFactories';
 import { FORMAT_PRESETS } from '../../src/shared/formats';
 import { projectSchema, sceneElementSchema, sceneSchema } from '../../src/shared/schema';
 
@@ -35,6 +31,7 @@ describe('création d’objets par défaut', () => {
       name: 'photo.png',
       storage: 'project' as const,
       src: 'assets/photo.png',
+      meta: {},
     };
     const image = createImageElement(format, 150, asset, newId);
     expect(sceneElementSchema.parse(image)).toEqual(image);

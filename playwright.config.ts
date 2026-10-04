@@ -6,7 +6,19 @@ export default defineConfig({
   use: {
     baseURL: 'http://localhost:5173',
   },
-  projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
+  projects: [
+    {
+      name: 'chromium',
+      use: {
+        ...devices['Desktop Chrome'],
+        // Micro simulé (son de test) pour le scénario d'enregistrement de la voix off.
+        permissions: ['microphone'],
+        launchOptions: {
+          args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream'],
+        },
+      },
+    },
+  ],
   webServer: {
     command: 'npm run dev',
     url: 'http://localhost:5173',

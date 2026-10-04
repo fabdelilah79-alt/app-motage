@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { idSchema, positiveFrameCountSchema } from './common';
 import { sceneElementSchema } from './element';
+import { voiceoverSchema } from './media';
 
 export const gradientStopSchema = z.object({
   color: z.string(),
@@ -48,5 +49,6 @@ export const sceneSchema = z.object({
   elements: z.array(sceneElementSchema).default([]),
   /** Texte de la voix off / notes de l'enseignant. */
   script: z.string().optional(),
+  voiceover: voiceoverSchema.optional(),
 });
 export type Scene = z.infer<typeof sceneSchema>;

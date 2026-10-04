@@ -1,8 +1,13 @@
 import type { FC } from 'react';
 import type { ElementType, SceneElement } from '../../shared/schema';
 import type { AnimationFrame } from '../animations/types';
+import { GifElementView } from './GifElementView';
+import { IconElementView } from './IconElementView';
 import { ImageElementView } from './ImageElementView';
+import { LottieElementView } from './LottieElementView';
+import { ShapeElementView } from './ShapeElementView';
 import { TextElementView } from './TextElementView';
+import { VideoElementView } from './VideoElementView';
 
 type ElementViewRegistry = {
   [Type in ElementType]: FC<{
@@ -16,4 +21,9 @@ type ElementViewRegistry = {
 export const ELEMENT_VIEWS: ElementViewRegistry = {
   text: TextElementView,
   image: ImageElementView,
+  video: VideoElementView,
+  gif: GifElementView,
+  lottie: LottieElementView,
+  icon: IconElementView,
+  shape: ShapeElementView,
 };

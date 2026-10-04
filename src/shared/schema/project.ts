@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { idSchema, langSchema } from './common';
+import { audioTrackSchema } from './media';
 import { sceneSchema } from './scene';
 
 export const CURRENT_SCHEMA_VERSION = 1;
@@ -11,9 +12,12 @@ export const formatSchema = z.object({
 });
 export type ProjectFormat = z.infer<typeof formatSchema>;
 
+export const assetKindSchema = z.enum(['image', 'gif', 'video', 'audio', 'lottie']);
+export type AssetKind = z.infer<typeof assetKindSchema>;
+
 export const assetSchema = z.object({
   id: idSchema,
-  kind: z.enum(['image']),
+  kind: assetKindSchema,
   name: z.string().default(''),
   /**
    * « public » : fichier livré avec l'application (dossier public/, ex. « demo/chute-libre.svg »).
@@ -22,6 +26,14 @@ export const assetSchema = z.object({
   storage: z.enum(['public', 'project']).default('public'),
   /** Chemin relatif (selon `storage`) ou URL complète. */
   src: z.string().min(1),
+  /** Informations mesurées à l'import (durée des sons et vidéos, dimensions). */
+  meta: z
+    .object({
+      durationInSeconds: z.number().positive().optional(),
+      width: z.number().positive().optional(),
+      height: z.number().positive().optional(),
+    })
+    .prefault({}),
 });
 export type Asset = z.infer<typeof assetSchema>;
 
@@ -34,6 +46,8 @@ export const projectSchema = z.object({
   /** Chiffres des textes arabes : 0-9 (« latin ») ou ٠-٩ (« arabic-indic »). */
   digits: z.enum(['latin', 'arabic-indic']).default('latin'),
   assets: z.array(assetSchema).default([]),
+  /** Musiques de fond (atténuées automatiquement sous les voix off). */
+  audioTracks: z.array(audioTrackSchema).default([]),
   scenes: z.array(sceneSchema).min(1),
 });
 export type Project = z.infer<typeof projectSchema>;

@@ -41,21 +41,42 @@ describe('projets enregistrés sur le disque', () => {
   it('duplique un projet avec ses fichiers', async () => {
     const store = createProjectStore(dir, newId);
     const original = await store.create(input('Ondes'));
-    const asset = await store.addImage(original.id, 'schéma.svg', 'image/svg+xml', svg);
+    const asset = await store.addAsset(original.id, 'schéma.svg', 'image/svg+xml', svg);
     const copy = await store.duplicate(original.id, 'Ondes (copie)');
     expect(copy.id).not.toBe(original.id);
     const copiedFile = store.resolveFile(copy.id, asset.src);
     expect(copiedFile && (await readFile(copiedFile, 'utf8'))).toBe('<svg/>');
   });
 
+  it('reconnaît le type des médias importés (vidéo, son, GIF, Lottie)', async () => {
+    const store = createProjectStore(dir, newId);
+    const project = await store.create(input('Médias'));
+    const kinds = await Promise.all(
+      [
+        ['clip.mp4', 'video/mp4'],
+        ['voix.wav', 'audio/wav'],
+        ['anim.gif', 'image/gif'],
+        ['anim.json', 'application/x-lottie+json'],
+      ].map(async ([name = '', type = '']) => {
+        const asset = await store.addAsset(project.id, name, type, svg);
+        return asset.kind;
+      }),
+    );
+    expect(kinds).toEqual(['video', 'audio', 'gif', 'lottie']);
+    const withMeta = await store.addAsset(project.id, 'v.wav', 'audio/wav', svg, {
+      durationInSeconds: 3.5,
+    });
+    expect(withMeta.meta).toEqual({ durationInSeconds: 3.5 });
+  });
+
   it('range les images importées dans assets/ avec un nom sûr', async () => {
     const store = createProjectStore(dir, newId);
     const project = await store.create(input('Optique'));
     const name = 'Lentille Convergente.PNG';
-    const asset = await store.addImage(project.id, name, 'image/png', svg);
+    const asset = await store.addAsset(project.id, name, 'image/png', svg);
     expect(asset).toMatchObject({ kind: 'image', storage: 'project', name });
     expect(asset.src).toMatch(/^assets\/id\d{4}-lentille-convergente\.png$/);
-    const executable = store.addImage(project.id, 'x.exe', 'application/x-msdownload', svg);
+    const executable = store.addAsset(project.id, 'x.exe', 'application/x-msdownload', svg);
     await expect(executable).rejects.toBeInstanceOf(UnsupportedFileError);
   });
 

@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import type { AnimationRef, SceneElement } from '../../shared/schema';
 import { useEditorStore } from '../store/editorStore';
 import { AnimationSlot } from './AnimationSlot';
+import { SoundSlot } from './SoundSlot';
 
 type Props = { element: SceneElement; fps: number };
 
@@ -34,6 +35,7 @@ export const AnimationTab = ({ element, fps }: Props) => {
         fps={fps}
         onChange={(value) => setSlot('exit', value)}
       />
+      <SoundSlot element={element} />
     </div>
   );
 };

@@ -70,7 +70,9 @@
     "dropHelp": "… ou glissez-déposez vos images ici (PNG, JPG, WebP, GIF, SVG).",
     "addToScene": "Ajouter à la scène",
     "presets": "Styles de texte",
-    "presetsHelp": "Ajoute un texte déjà mis en forme, dans la langue principale du projet."
+    "presetsHelp": "Ajoute un texte déjà mis en forme, dans la langue principale du projet.",
+    "shapes": "Formes",
+    "audio": "Audio"
   },
   "properties": {
     "content": "Contenu",
@@ -81,7 +83,12 @@
   },
   "elementTypes": {
     "text": "Texte",
-    "image": "Image"
+    "image": "Image",
+    "video": "Vidéo",
+    "gif": "GIF animé",
+    "lottie": "Animation Lottie",
+    "icon": "Icône",
+    "shape": "Forme"
   },
   "fields": {
     "start": "Début",
@@ -127,7 +134,8 @@
       "top": "Le haut",
       "bottom": "Le bas"
     },
-    "letterFallback": "En arabe, « lettre par lettre » est remplacé automatiquement par « mot par mot » pour que les lettres restent liées."
+    "letterFallback": "En arabe, « lettre par lettre » est remplacé automatiquement par « mot par mot » pour que les lettres restent liées.",
+    "sound": "Son à l'apparition"
   },
   "scene": {
     "title": "Scène {{number}}",
@@ -163,7 +171,8 @@
     "pause": "Pause (Espace)",
     "toStart": "Revenir au début",
     "fullPreview": "Aperçu de toute la vidéo",
-    "empty": "Aucun élément : ajoutez un texte ou une image depuis la bibliothèque."
+    "empty": "Aucun élément : ajoutez un texte ou une image depuis la bibliothèque.",
+    "voiceover": "Voix off"
   },
   "export": {
     "title": "Exporter la vidéo (MP4)",
@@ -182,7 +191,7 @@
     "serverUnreachable": "Le serveur local ne répond pas. Lancez « npm run dev » puis rechargez la page.",
     "createProject": "Impossible de créer le projet.",
     "loadProject": "Impossible d'ouvrir ce projet.",
-    "upload": "L'import de l'image a échoué (formats acceptés : PNG, JPG, WebP, GIF, SVG)."
+    "upload": "L'import a échoué : vérifiez le format du fichier (images, GIF, MP4, WebM, MOV, MP3, WAV, M4A, JSON Lottie)."
   },
   "richText": {
     "help": "Un texte peut mêler des segments stylés et des formules (LaTeX).",
@@ -245,5 +254,87 @@
     "digitsHelp": "Les nombres suivis d'une unité latine (ex. 12,5 m/s) et les formules gardent les chiffres 0-9.",
     "digitsLatin": "0 1 2 3 (chiffres latins)",
     "digitsArabic": "٠ ١ ٢ ٣ (chiffres arabes orientaux)"
+  },
+  "media": {
+    "import": "Importer un média",
+    "dropHelp": "… ou glissez-déposez vos fichiers ici : images, GIF, vidéos (MP4, WebM, MOV), sons (MP3, WAV, M4A) et animations Lottie (JSON).",
+    "search": "Rechercher un média",
+    "removeUnused": "Supprimer les médias inutilisés ({{count}})",
+    "useAsMusic": "Musique de fond",
+    "useAsVoice": "Voix off de la scène",
+    "fits": {
+      "contain": "Contenir (média entier)",
+      "cover": "Couvrir (remplir la zone)"
+    },
+    "mask": "Masque",
+    "masks": {
+      "none": "Aucun",
+      "rounded": "Coins arrondis",
+      "circle": "Cercle"
+    },
+    "cornerRadius": "Arrondi des coins",
+    "shadow": "Ombre portée",
+    "crop": {
+      "top": "Recadrer en haut (%)",
+      "right": "Recadrer à droite (%)",
+      "bottom": "Recadrer en bas (%)",
+      "left": "Recadrer à gauche (%)"
+    },
+    "kenBurnsZoom": "Ken Burns : zoom (1 = aucun)",
+    "kenBurnsPanX": "Ken Burns : glissement horizontal",
+    "kenBurnsPanY": "Ken Burns : glissement vertical",
+    "trimStart": "Début dans la vidéo",
+    "playbackRate": "Vitesse",
+    "volume": "Volume",
+    "muted": "Muet",
+    "loop": "Boucle",
+    "strokeWidth": "Épaisseur du trait"
+  },
+  "shapes": {
+    "title": "Formes",
+    "icons": "Icônes",
+    "kind": "Forme",
+    "fill": "Remplissage",
+    "stroke": "Contour",
+    "sides": "Côtés / branches",
+    "kinds": {
+      "rectangle": "Rectangle",
+      "circle": "Cercle",
+      "polygon": "Polygone",
+      "star": "Étoile",
+      "line": "Ligne",
+      "arrow": "Flèche",
+      "curvedArrow": "Flèche courbe",
+      "bubble": "Bulle"
+    }
+  },
+  "audio": {
+    "music": "Musique de fond",
+    "musicHelp": "Importez un son dans l'onglet Médias puis choisissez « Musique de fond ».",
+    "remove": "Retirer",
+    "volume": "Volume",
+    "duckLevel": "Volume sous la voix",
+    "fadeIn": "Fondu d'entrée",
+    "fadeOut": "Fondu de sortie",
+    "ducking": "Baisser la musique pendant la voix off",
+    "voiceover": "Voix off de la scène {{number}}",
+    "script": "Texte à lire",
+    "scriptPlaceholder": "Écrivez ici ce que vous allez dire…",
+    "record": "Enregistrer la voix",
+    "recordAgain": "Réenregistrer la voix",
+    "stop": "Arrêter ({{seconds}} s)",
+    "micDenied": "Le micro n'est pas autorisé : acceptez la demande du navigateur, puis réessayez.",
+    "recordFailed": "L'enregistrement a échoué. Réessayez.",
+    "offset": "Début de la voix",
+    "fitScene": "Caler la durée de la scène sur la voix",
+    "recordingName": "voix-off-scene-{{number}}",
+    "sfx": "Effets sonores",
+    "sfxHelp": "Cliquez pour écouter. Pour en ajouter un, sélectionnez un élément puis l'onglet Animation."
+  },
+  "sfx": {
+    "whoosh": "Whoosh",
+    "pop": "Pop",
+    "click": "Clic",
+    "ding": "Ding"
   }
 }

@@ -1,8 +1,6 @@
 import { FORMAT_PRESETS, type FormatPresetId } from './formats';
 import {
   CURRENT_SCHEMA_VERSION,
-  type Asset,
-  type ImageElement,
   type Lang,
   type Project,
   type ProjectFormat,
@@ -48,6 +46,7 @@ export const createProject = (options: NewProjectOptions, newId: IdGenerator = r
     defaultLang: options.defaultLang,
     digits: 'latin',
     assets: [],
+    audioTracks: [],
     scenes: [createScene(format, newId)],
   };
   return project;
@@ -91,37 +90,8 @@ export const createTextElement = (
   },
 });
 
-/** Image centrée (40 % de la largeur), visible pendant toute la scène. */
-export const createImageElement = (
-  format: ProjectFormat,
-  sceneDuration: number,
-  asset: Asset,
-  newId: IdGenerator = randomId,
-): ImageElement => {
-  const size = Math.round(Math.min(format.width, format.height) * 0.5);
-  return {
-    id: `image-${newId()}`,
-    type: 'image',
-    name: asset.name,
-    locked: false,
-    hidden: false,
-    assetId: asset.id,
-    fit: 'contain',
-    transform: {
-      x: Math.round((format.width - size) / 2),
-      y: Math.round((format.height - size) / 2),
-      width: size,
-      height: size,
-      rotation: 0,
-      scale: 1,
-      opacity: 1,
-    },
-    timing: { from: 0, duration: sceneDuration },
-    animations: { enter: enterFade() },
-  };
-};
-
-const enterFade = () => ({
+/** Apparition par défaut d'un nouvel élément : fondu de 0,5 s. */
+export const enterFade = () => ({
   presetId: 'enter.fade',
   duration: 15,
   delay: 0,

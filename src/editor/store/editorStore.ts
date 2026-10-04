@@ -3,6 +3,7 @@ import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import { createScene, randomId } from '../../shared/factories';
 import {
+  projectSchema,
   sceneElementSchema,
   sceneSchema,
   type Asset,
@@ -26,6 +27,8 @@ type EditorState = {
   selectScene: (sceneId: string) => void;
   selectElement: (elementId: string | null) => void;
   renameProject: (title: string) => void;
+  /** Modification libre du projet, validée par le schéma (ignorée si invalide). */
+  updateProject: (recipe: (project: Project) => void) => void;
   setDigits: (digits: Project['digits']) => void;
   addScene: () => void;
   duplicateScene: (sceneId: string) => void;
@@ -89,6 +92,14 @@ export const useEditorStore = create<EditorState>()(
             }
           }),
 
+        updateProject: (recipe) =>
+          set((state) => {
+            if (!state.project) return;
+            const candidate = mutations.cloneDeep(state.project);
+            recipe(candidate);
+            const parsed = projectSchema.safeParse(candidate);
+            if (parsed.success) state.project = parsed.data;
+          }),
         setDigits: (digits) =>
           set((state) => {
             if (state.project) state.project.digits = digits;

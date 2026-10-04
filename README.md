@@ -42,7 +42,11 @@ toutes les images.
    Sans élément sélectionné : durée, fond et transition de la scène.
 5. **En bas** : les scènes (glisser pour les réordonner) et la timeline de la scène (glisser une
    barre pour changer le moment d'apparition, tirer ses bords pour changer sa durée).
-6. **Exporter la vidéo** (en haut à droite) : le fichier MP4 est rangé dans `PhysiMotion/exports`.
+6. **Médias** : importer images, GIF, vidéos, sons et animations Lottie (bouton ou glisser-déposer).
+   Un son peut devenir la musique de fond ou la voix off de la scène.
+7. **Audio** : écrire le texte de la voix off, l'enregistrer au micro, puis « Caler la durée de la
+   scène sur la voix ». La musique baisse automatiquement pendant la voix.
+8. **Exporter la vidéo** (en haut à droite) : le fichier MP4 est rangé dans `PhysiMotion/exports`.
 
 Les projets sont enregistrés automatiquement (5 s après chaque modification) dans
 `PhysiMotion/projets` de votre dossier personnel.

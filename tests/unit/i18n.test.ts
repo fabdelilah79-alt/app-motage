@@ -55,6 +55,14 @@ const DYNAMIC_KEYS = [
     (key) => `effects.${key}`,
   ),
   ...['band', 'pill', 'card'].map((kind) => `effects.kinds.${kind}`),
+  ...['video', 'gif', 'lottie', 'icon', 'shape'].map((type) => `elementTypes.${type}`),
+  ...['contain', 'cover'].map((fit) => `media.fits.${fit}`),
+  ...['none', 'rounded', 'circle'].map((mask) => `media.masks.${mask}`),
+  ...['top', 'right', 'bottom', 'left'].map((side) => `media.crop.${side}`),
+  ...['rectangle', 'circle', 'polygon', 'star', 'line', 'arrow', 'curvedArrow', 'bubble'].map(
+    (shape) => `shapes.kinds.${shape}`,
+  ),
+  ...['whoosh', 'pop', 'click', 'ding'].map((sfx) => `sfx.${sfx}`),
 ];
 
 describe('traductions de l’interface', () => {
@@ -81,7 +89,10 @@ describe('traductions de l’interface', () => {
         if (match[1]) used.add(match[1]);
       }
     }
-    const missing = [...used].filter((key) => !frKeys.includes(key));
+    // Une clé peut aussi être un préfixe de groupe (ex. « media.fits », complété dans le code).
+    const missing = [...used].filter(
+      (key) => !frKeys.includes(key) && !frKeys.some((known) => known.startsWith(`${key}.`)),
+    );
     expect(missing).toEqual([]);
   });
 });
