@@ -1,6 +1,10 @@
 import { TransitionSeries, linearTiming } from '@remotion/transitions';
 import { fade } from '@remotion/transitions/fade';
+import { clockWipe } from '@remotion/transitions/clock-wipe';
+import { flip } from '@remotion/transitions/flip';
+import { iris } from '@remotion/transitions/iris';
 import { slide } from '@remotion/transitions/slide';
+import { wipe } from '@remotion/transitions/wipe';
 import type { FC, ReactNode } from 'react';
 import { AbsoluteFill, useVideoConfig } from 'remotion';
 import type { Project, SceneTransition } from '../shared/schema';
@@ -9,6 +13,7 @@ import { ProjectAssetsContext } from './ProjectAssetsContext';
 import { ProjectAudio } from './ProjectAudio';
 import { ProjectSettingsContext } from './ProjectSettingsContext';
 import { SceneView } from './scenes/SceneView';
+import { zoom } from './scenes/zoomPresentation';
 
 export type ProjectVideoProps = {
   project: Project;
@@ -16,31 +21,56 @@ export type ProjectVideoProps = {
   filesBaseUrl?: string;
 };
 
-const renderTransition = (sceneId: string, transition: SceneTransition, duration: number) => {
+type Size = { width: number; height: number };
+
+/** Transition qui mène à une scène (balayage, zoom, retournement, horloge, iris…). */
+const renderTransition = (
+  sceneId: string,
+  transition: SceneTransition,
+  duration: number,
+  size: Size,
+) => {
   const key = `transition-${sceneId}`;
   const timing = linearTiming({ durationInFrames: duration });
-  if (transition.type === 'slide') {
-    return (
-      <TransitionSeries.Transition
-        key={key}
-        presentation={slide({ direction: transition.direction })}
-        timing={timing}
-      />
-    );
+  const { direction } = transition;
+  switch (transition.type) {
+    case 'slide':
+      return (
+        <TransitionSeries.Transition key={key} presentation={slide({ direction })} timing={timing} />
+      );
+    case 'wipe':
+      return (
+        <TransitionSeries.Transition key={key} presentation={wipe({ direction })} timing={timing} />
+      );
+    case 'flip':
+      return (
+        <TransitionSeries.Transition key={key} presentation={flip({ direction })} timing={timing} />
+      );
+    case 'zoom':
+      return <TransitionSeries.Transition key={key} presentation={zoom()} timing={timing} />;
+    case 'clockWipe':
+      return (
+        <TransitionSeries.Transition key={key} presentation={clockWipe(size)} timing={timing} />
+      );
+    case 'iris':
+      return <TransitionSeries.Transition key={key} presentation={iris(size)} timing={timing} />;
+    case 'fade':
+    case 'none':
+      return <TransitionSeries.Transition key={key} presentation={fade()} timing={timing} />;
   }
-  return <TransitionSeries.Transition key={key} presentation={fade()} timing={timing} />;
 };
 
 /** Composition racine : scènes enchaînées avec leurs transitions (aperçu ET rendu MP4). */
 export const ProjectVideo: FC<ProjectVideoProps> = ({ project, filesBaseUrl = '' }) => {
-  const { fps } = useVideoConfig();
+  const { fps, width, height } = useVideoConfig();
   const items: ReactNode[] = [];
 
   project.scenes.forEach((scene, index) => {
     const previous = index > 0 ? project.scenes[index - 1] : undefined;
     const transitionDuration = previous ? getTransitionDuration(previous, scene) : 0;
     if (scene.transitionIn && transitionDuration > 0) {
-      items.push(renderTransition(scene.id, scene.transitionIn, transitionDuration));
+      const size = { width, height };
+      items.push(renderTransition(scene.id, scene.transitionIn, transitionDuration, size));
     }
     items.push(
       <TransitionSeries.Sequence

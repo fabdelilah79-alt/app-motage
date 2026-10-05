@@ -1,7 +1,8 @@
 import { z } from 'zod';
 import type { Lang } from '../../../shared/schema';
 import { definePreset } from '../definePreset';
-import { NEUTRAL_FRAME, type RevealMode } from '../types';
+import { NEUTRAL_FRAME } from '../frame';
+import type { RevealMode } from '../types';
 
 const noParams = z.object({});
 

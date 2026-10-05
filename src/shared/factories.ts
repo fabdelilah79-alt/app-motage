@@ -27,6 +27,7 @@ export const createScene = (format: ProjectFormat, newId: IdGenerator = randomId
   durationInFrames: DEFAULT_SCENE_SECONDS * format.fps,
   background: { type: 'color', color: '#f8fafc' },
   elements: [],
+  camera: [],
 });
 
 type NewProjectOptions = {
@@ -76,7 +77,7 @@ export const createTextElement = (
     opacity: 1,
   },
   timing: { from: 0, duration: sceneDuration },
-  animations: { enter: enterFade() },
+  animations: { enter: enterFade(), emphasis: [] },
   content: [{ kind: 'text', text: DEFAULT_TEXT[lang] }],
   style: {
     fontSize: Math.round(format.height / 15),
@@ -97,4 +98,5 @@ export const enterFade = () => ({
   delay: 0,
   easing: 'smooth' as const,
   params: {},
+  repeat: 1,
 });

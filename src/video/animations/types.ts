@@ -5,19 +5,55 @@ import type { ElementType, Lang } from '../../shared/schema';
 export type RevealMode = 'typewriter' | 'word' | 'line' | 'letter' | 'mask';
 export type TextReveal = { mode: RevealMode; progress: number };
 
-/** État visuel produit par une animation à un instant donné (valeurs neutres = aucun effet). */
+/** Masque rectangulaire : pourcentage caché depuis chaque bord. */
+export type ClipInsets = { top: number; right: number; bottom: number; left: number };
+
+/** Décoration dessinée autour d'un élément (mises en valeur). */
+export type DecorationKind = 'highlight' | 'underline' | 'circle' | 'arrow';
+export type Decoration = { kind: DecorationKind; progress: number; color: string };
+
+/**
+ * État visuel produit par les animations à un instant donné.
+ * Les valeurs de NEUTRAL_FRAME n'ont aucun effet ; les champs facultatifs sont des effets
+ * particuliers que seuls certains éléments savent afficher.
+ */
 export type AnimationFrame = {
   opacity: number;
   translateX: number;
   translateY: number;
   scale: number;
+  scaleX: number;
+  scaleY: number;
+  /** Rotations en degrés (rotateX / rotateY : retournement 3D). */
+  rotate: number;
+  rotateX: number;
+  rotateY: number;
+  /** Flou en pixels. */
+  blur: number;
+  clip?: ClipInsets;
+  glow?: { radius: number; color: string };
+  /** Intensité du « glitch » (0 à 1). */
+  glitch?: number;
   /** Uniquement pour les textes : partie du texte déjà révélée. */
   reveal?: TextReveal;
+  /** Formes et icônes : tracé du contour puis remplissage (0 à 1). */
+  draw?: { stroke: number; fill: number };
+  /** Changement de couleur progressif (0 = couleur d'origine). */
+  colorShift?: { color: string; amount: number };
+  /** Couleur imposée par les images clés du mode Avancé. */
+  colorOverride?: string;
+  decoration?: Decoration;
+  /** Textes : les nombres défilent de 0 jusqu'à leur valeur (0 à 1). */
+  counter?: number;
 };
 
-export const NEUTRAL_FRAME: AnimationFrame = { opacity: 1, translateX: 0, translateY: 0, scale: 1 };
+export type AnimationCategory = 'enter' | 'emphasis' | 'exit' | 'motion';
 
-export type AnimationCategory = 'enter' | 'emphasis' | 'exit';
+/** Description d'un paramètre réglable dans l'interface (libellés traduits par l'éditeur). */
+export type ParamField =
+  | { key: string; kind: 'select'; options: readonly string[] }
+  | { key: string; kind: 'number'; min: number; max: number; step: number }
+  | { key: string; kind: 'color' };
 
 type PresetMetadata = {
   /** Identifiant stocké dans le projet, ex. « enter.fade ». */
@@ -29,6 +65,10 @@ type PresetMetadata = {
   compatibleElements: 'all' | readonly ElementType[];
   /** false si l'animation découpe le texte d'une façon qui casse les liaisons arabes. */
   arabicCompatible: boolean;
+  /** Paramètres proposés dans l'interface. */
+  paramFields?: readonly ParamField[];
+  /** Mise en valeur / mouvement : l'état final est conservé après l'animation. */
+  holdAfter?: boolean;
 };
 
 /** Définition d'un préréglage : une fonction pure de la progression (0 → 1) et des paramètres. */

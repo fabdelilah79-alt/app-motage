@@ -55,7 +55,7 @@ export const createImageElement = (
     kenBurns: { zoom: 1, panX: 0, panY: 0 },
     transform: centeredTransform(format, size.width, size.height),
     timing: { from: 0, duration: sceneDuration },
-    animations: { enter: enterFade() },
+    animations: { enter: enterFade(), emphasis: [] },
   };
 };
 
@@ -71,7 +71,7 @@ export const createMediaElement = (
     assetId: asset.id,
     transform: centeredTransform(format, size.width, size.height),
     timing: { from: 0, duration: sceneDuration },
-    animations: { enter: enterFade() },
+    animations: { enter: enterFade(), emphasis: [] },
   };
   switch (asset.kind) {
     case 'image':
@@ -130,7 +130,7 @@ export const createIconElement = (
     strokeWidth: 2,
     transform: centeredTransform(format, size, size),
     timing: { from: 0, duration: sceneDuration },
-    animations: { enter: enterFade() },
+    animations: { enter: enterFade(), emphasis: [] },
   };
 };
 
@@ -152,6 +152,6 @@ export const createShapeElement = (
     sides: shape === 'star' ? 5 : 6,
     transform: centeredTransform(format, size * (flat ? 1.6 : 1), flat ? size * 0.5 : size),
     timing: { from: 0, duration: sceneDuration },
-    animations: { enter: enterFade() },
+    animations: { enter: enterFade(), emphasis: [] },
   };
 };

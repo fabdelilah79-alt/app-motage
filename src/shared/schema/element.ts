@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { elementAnimationsSchema } from './animation';
+import { elementAnimationsSchema, propertyKeyframesSchema } from './animation';
 import { frameCountSchema, idSchema, langSchema, positiveFrameCountSchema } from './common';
 import { cropSchema, elementSoundSchema, kenBurnsSchema, mediaFrameShape } from './media';
 import { textRunSchema, textStyleSchema } from './text';
@@ -33,6 +33,8 @@ const elementBaseShape = {
   animations: elementAnimationsSchema.prefault({}),
   /** Effet sonore joué au début de l'apparition. */
   sound: elementSoundSchema.optional(),
+  /** Images clés du mode Avancé. */
+  keyframes: propertyKeyframesSchema.optional(),
 };
 
 export const textElementSchema = z.object({
@@ -136,4 +138,5 @@ export const sceneElementSchema = z.discriminatedUnion('type', [
   shapeElementSchema,
 ]);
 export type SceneElement = z.infer<typeof sceneElementSchema>;
+export type SceneElementInput = z.input<typeof sceneElementSchema>;
 export type ElementType = SceneElement['type'];

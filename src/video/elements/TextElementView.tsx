@@ -1,5 +1,6 @@
 import type { CSSProperties, FC } from 'react';
 import type { TextElement } from '../../shared/schema';
+import { animatedColor } from '../animations/frameStyles';
 import type { AnimationFrame } from '../animations/types';
 import { useProjectSettings } from '../ProjectSettingsContext';
 import {
@@ -10,6 +11,7 @@ import {
   strokeShadowStyles,
 } from '../text/effectStyles';
 import { fontStackFor } from '../text/fontStack';
+import { countRuns } from '../text/counter';
 import { RichText } from '../text/RichText';
 
 const JUSTIFY = { start: 'flex-start', center: 'center', end: 'flex-end' } as const;
@@ -32,7 +34,7 @@ export const TextElementView: FC<{ element: TextElement; animation: AnimationFra
     fontFamily: fontStackFor(style, lang),
     fontSize: style.fontSize,
     fontWeight: style.fontWeight,
-    color: style.color,
+    color: animatedColor(style.color, animation),
     lineHeight: style.lineHeight,
     textAlign: style.align,
     whiteSpace: 'pre-wrap',
@@ -65,7 +67,11 @@ export const TextElementView: FC<{ element: TextElement; animation: AnimationFra
         <span style={fill}>
           <span style={effects.gradient ? gradientFillStyle(effects.gradient) : undefined}>
             <RichText
-              runs={element.content}
+              runs={
+                animation.counter === undefined
+                  ? element.content
+                  : countRuns(element.content, animation.counter)
+              }
               lang={lang}
               rtl={rtl}
               arabicIndicDigits={isArabic && digits === 'arabic-indic'}

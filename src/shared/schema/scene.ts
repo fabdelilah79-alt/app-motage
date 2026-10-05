@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { cameraMoveSchema } from './animation';
 import { idSchema, positiveFrameCountSchema } from './common';
 import { sceneElementSchema } from './element';
 import { voiceoverSchema } from './media';
@@ -20,7 +21,16 @@ export const backgroundSchema = z.discriminatedUnion('type', [
 ]);
 export type Background = z.infer<typeof backgroundSchema>;
 
-export const transitionTypeSchema = z.enum(['none', 'fade', 'slide']);
+export const transitionTypeSchema = z.enum([
+  'none',
+  'fade',
+  'slide',
+  'wipe',
+  'zoom',
+  'flip',
+  'clockWipe',
+  'iris',
+]);
 export type TransitionType = z.infer<typeof transitionTypeSchema>;
 
 export const transitionDirectionSchema = z.enum([
@@ -50,5 +60,8 @@ export const sceneSchema = z.object({
   /** Texte de la voix off / notes de l'enseignant. */
   script: z.string().optional(),
   voiceover: voiceoverSchema.optional(),
+  /** Mouvements de caméra (zoom sur une zone, panoramique, travelling, retour au plan large). */
+  camera: z.array(cameraMoveSchema).default([]),
 });
 export type Scene = z.infer<typeof sceneSchema>;
+export type SceneInput = z.input<typeof sceneSchema>;
