@@ -135,7 +135,64 @@
       "bottom": "Le bas"
     },
     "letterFallback": "En arabe, « lettre par lettre » est remplacé automatiquement par « mot par mot » pour que les lettres restent liées.",
-    "sound": "Son à l'apparition"
+    "sound": "Son à l'apparition",
+    "emphasis": "Mises en valeur et mouvements",
+    "addEmphasis": "Ajouter une mise en valeur ou un mouvement",
+    "choose": "Choisir…",
+    "remove": "Retirer",
+    "hoverHelp": "Passez la souris sur une vignette pour voir l'animation.",
+    "easing": "Accélération",
+    "delay": "Délai",
+    "endOffset": "Avance sur la fin",
+    "start": "Début",
+    "repeat": "Répétitions",
+    "advancedMode": "Mode avancé (images clés)",
+    "pointsHelp": "Points « x,y » séparés par des espaces, en pixels, à partir de la position de départ.",
+    "categories": {
+      "enter": "Apparitions",
+      "emphasis": "Mises en valeur",
+      "motion": "Mouvements",
+      "exit": "Disparitions"
+    },
+    "params": {
+      "side": "Côté",
+      "distance": "Distance (px)",
+      "angle": "Angle (°)",
+      "axis": "Axe",
+      "amount": "Ampleur",
+      "intensity": "Intensité (px)",
+      "factor": "Facteur",
+      "color": "Couleur",
+      "radius": "Rayon (px)",
+      "dx": "Déplacement horizontal (px)",
+      "dy": "Déplacement vertical (px)",
+      "form": "Forme du chemin",
+      "width": "Largeur (px)",
+      "height": "Hauteur (px)",
+      "points": "Points du chemin",
+      "amplitude": "Amplitude (px)"
+    },
+    "options": {
+      "left": "Gauche",
+      "right": "Droite",
+      "top": "Haut",
+      "bottom": "Bas",
+      "horizontal": "Horizontal",
+      "vertical": "Vertical",
+      "arc": "Arc (parabole)",
+      "wave": "Vague",
+      "zigzag": "Zigzag",
+      "loop": "Boucle",
+      "custom": "Points saisis"
+    },
+    "easings": {
+      "smooth": "Douce",
+      "snappy": "Vive",
+      "bounce": "Rebond",
+      "elastic": "Élastique",
+      "linear": "Constante",
+      "slow": "Ralentie"
+    }
   },
   "scene": {
     "title": "Scène {{number}}",
@@ -151,9 +208,14 @@
     "transitions": {
       "none": "Coupe franche",
       "fade": "Fondu",
-      "slide": "Glissement"
+      "slide": "Glissement",
+      "wipe": "Balayage",
+      "zoom": "Zoom",
+      "flip": "Retournement",
+      "clockWipe": "Horloge",
+      "iris": "Iris"
     },
-    "direction": "Sens du glissement",
+    "direction": "Sens",
     "directions": {
       "from-left": "Depuis la gauche",
       "from-right": "Depuis la droite",
@@ -336,5 +398,36 @@
     "pop": "Pop",
     "click": "Clic",
     "ding": "Ding"
+  },
+  "keyframes": {
+    "help": "Placez la tête de lecture, réglez la valeur, puis ajoutez une image clé. Entre deux images clés, la valeur change progressivement.",
+    "addAt": "Image clé à {{time}}",
+    "time": "Temps (s)",
+    "value": "Valeur",
+    "remove": "Supprimer l'image clé",
+    "properties": {
+      "x": "Position X",
+      "y": "Position Y",
+      "scale": "Échelle",
+      "rotation": "Rotation (°)",
+      "opacity": "Opacité (0 à 1)",
+      "color": "Couleur"
+    }
+  },
+  "camera": {
+    "title": "Caméra",
+    "help": "Zoomez sur une zone de la scène, déplacez le regard puis revenez au plan large.",
+    "kind": "Mouvement",
+    "kinds": {
+      "zoom": "Zoom sur une zone",
+      "pan": "Panoramique",
+      "travelling": "Travelling",
+      "reset": "Retour au plan large"
+    },
+    "zoom": "Zoom (1 = plan large)",
+    "centerX": "Centre horizontal (%)",
+    "centerY": "Centre vertical (%)",
+    "add": "Ajouter un mouvement de caméra",
+    "remove": "Retirer ce mouvement"
   }
 }

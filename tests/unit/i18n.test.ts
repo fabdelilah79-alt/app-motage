@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import ar from '../../src/editor/i18n/ar.json';
 import en from '../../src/editor/i18n/en.json';
 import fr from '../../src/editor/i18n/fr.json';
+import { PRESET_LIST } from '../../src/video/animations/registry';
 
 const flatKeys = (value: unknown, prefix = ''): string[] =>
   typeof value === 'object' && value !== null
@@ -44,7 +45,11 @@ const DYNAMIC_KEYS = [
   ...['saved', 'pending', 'saving', 'error'].map((s) => `topBar.save.${s}`),
   ...['none', 'fade', 'slide'].map((type) => `scene.transitions.${type}`),
   ...['from-left', 'from-right', 'from-top', 'from-bottom'].map((d) => `scene.directions.${d}`),
-  ...['left', 'right', 'top', 'bottom'].map((side) => `animation.sides.${side}`),
+  ...['enter', 'emphasis', 'motion', 'exit'].map((c) => `animation.categories.${c}`),
+  ...['smooth', 'snappy', 'bounce', 'elastic', 'linear', 'slow'].map((e) => `animation.easings.${e}`),
+  ...['zoom', 'pan', 'travelling', 'reset'].map((kind) => `camera.kinds.${kind}`),
+  ...['x', 'y', 'scale', 'rotation', 'opacity', 'color'].map((p) => `keyframes.properties.${p}`),
+  ...['wipe', 'zoom', 'flip', 'clockWipe', 'iris'].map((type) => `scene.transitions.${type}`),
   'animation.enter',
   'animation.exit',
   'elementTypes.text',
@@ -64,6 +69,15 @@ const DYNAMIC_KEYS = [
   ),
   ...['whoosh', 'pop', 'click', 'ding'].map((sfx) => `sfx.${sfx}`),
 ];
+
+/** Réglages et options des préréglages d'animation (métadonnées du registre). */
+const presetKeys = PRESET_LIST.flatMap((item) =>
+  (item.paramFields ?? []).flatMap((field) => [
+    `animation.params.${field.key}`,
+    ...(field.kind === 'select' ? field.options.map((option) => `animation.options.${option}`) : []),
+  ]),
+);
+DYNAMIC_KEYS.push(...presetKeys);
 
 describe('traductions de l’interface', () => {
   const frKeys = flatKeys(fr).sort();

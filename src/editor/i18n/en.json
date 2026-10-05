@@ -135,7 +135,64 @@
       "bottom": "The bottom"
     },
     "letterFallback": "In Arabic, “letter by letter” is automatically replaced by “word by word” so letters stay joined.",
-    "sound": "Sound on entrance"
+    "sound": "Sound on entrance",
+    "emphasis": "Emphasis and motion",
+    "addEmphasis": "Add an emphasis or a motion",
+    "choose": "Choose…",
+    "remove": "Remove",
+    "hoverHelp": "Hover a thumbnail to watch the animation.",
+    "easing": "Easing",
+    "delay": "Delay",
+    "endOffset": "Before the end",
+    "start": "Start",
+    "repeat": "Repeats",
+    "advancedMode": "Advanced mode (keyframes)",
+    "pointsHelp": "“x,y” points separated by spaces, in pixels, from the starting position.",
+    "categories": {
+      "enter": "Entrances",
+      "emphasis": "Emphasis",
+      "motion": "Motion",
+      "exit": "Exits"
+    },
+    "params": {
+      "side": "Side",
+      "distance": "Distance (px)",
+      "angle": "Angle (°)",
+      "axis": "Axis",
+      "amount": "Amount",
+      "intensity": "Intensity (px)",
+      "factor": "Factor",
+      "color": "Color",
+      "radius": "Radius (px)",
+      "dx": "Horizontal move (px)",
+      "dy": "Vertical move (px)",
+      "form": "Path shape",
+      "width": "Width (px)",
+      "height": "Height (px)",
+      "points": "Path points",
+      "amplitude": "Amplitude (px)"
+    },
+    "options": {
+      "left": "Left",
+      "right": "Right",
+      "top": "Top",
+      "bottom": "Bottom",
+      "horizontal": "Horizontal",
+      "vertical": "Vertical",
+      "arc": "Arc (parabola)",
+      "wave": "Wave",
+      "zigzag": "Zigzag",
+      "loop": "Loop",
+      "custom": "Typed points"
+    },
+    "easings": {
+      "smooth": "Smooth",
+      "snappy": "Snappy",
+      "bounce": "Bounce",
+      "elastic": "Elastic",
+      "linear": "Constant",
+      "slow": "Slow start"
+    }
   },
   "scene": {
     "title": "Scene {{number}}",
@@ -151,9 +208,14 @@
     "transitions": {
       "none": "Straight cut",
       "fade": "Fade",
-      "slide": "Slide"
+      "slide": "Slide",
+      "wipe": "Wipe",
+      "zoom": "Zoom",
+      "flip": "Flip",
+      "clockWipe": "Clock",
+      "iris": "Iris"
     },
-    "direction": "Slide direction",
+    "direction": "Direction",
     "directions": {
       "from-left": "From the left",
       "from-right": "From the right",
@@ -336,5 +398,36 @@
     "pop": "Pop",
     "click": "Click",
     "ding": "Ding"
+  },
+  "keyframes": {
+    "help": "Move the playhead, set the value, then add a keyframe. Between two keyframes the value changes smoothly.",
+    "addAt": "Keyframe at {{time}}",
+    "time": "Time (s)",
+    "value": "Value",
+    "remove": "Delete keyframe",
+    "properties": {
+      "x": "X position",
+      "y": "Y position",
+      "scale": "Scale",
+      "rotation": "Rotation (°)",
+      "opacity": "Opacity (0 to 1)",
+      "color": "Color"
+    }
+  },
+  "camera": {
+    "title": "Camera",
+    "help": "Zoom into an area of the scene, move the view, then go back to the wide shot.",
+    "kind": "Move",
+    "kinds": {
+      "zoom": "Zoom into an area",
+      "pan": "Pan",
+      "travelling": "Tracking shot",
+      "reset": "Back to wide shot"
+    },
+    "zoom": "Zoom (1 = wide shot)",
+    "centerX": "Horizontal center (%)",
+    "centerY": "Vertical center (%)",
+    "add": "Add a camera move",
+    "remove": "Remove this move"
   }
 }

@@ -18,7 +18,8 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "render:demo": "tsx server/render-demo.ts",
-    "stills:typography": "tsx server/render-stills.ts"
+    "stills:typography": "tsx server/render-stills.ts",
+    "render:gallery": "tsx server/render-gallery.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "6.3.1",

@@ -20,10 +20,13 @@ type EditorState = {
   project: Project | null;
   selection: Selection;
   previewMode: PreviewMode;
+  /** Mode Avancé : images clés par propriété (masqué par défaut). */
+  advancedMode: boolean;
   clipboard: SceneElement | null;
   loadProject: (project: Project) => void;
   closeProject: () => void;
   setPreviewMode: (mode: PreviewMode) => void;
+  setAdvancedMode: (enabled: boolean) => void;
   selectScene: (sceneId: string) => void;
   selectElement: (elementId: string | null) => void;
   renameProject: (title: string) => void;
@@ -68,6 +71,7 @@ export const useEditorStore = create<EditorState>()(
         project: null,
         selection: { sceneId: null, elementId: null },
         previewMode: 'scene',
+        advancedMode: false,
         clipboard: null,
 
         loadProject: (project) => {
@@ -79,6 +83,7 @@ export const useEditorStore = create<EditorState>()(
           useEditorStore.temporal.getState().clear();
         },
         setPreviewMode: (mode) => set({ previewMode: mode }),
+        setAdvancedMode: (enabled) => set({ advancedMode: enabled }),
         selectScene: (sceneId) => set({ selection: { sceneId, elementId: null } }),
         selectElement: (elementId) =>
           set((state) => {

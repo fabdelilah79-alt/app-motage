@@ -55,6 +55,15 @@ Raccourcis : Espace (lecture), Ctrl+Z / Ctrl+Y (annuler / rétablir), Ctrl+S (en
 Suppr (supprimer), Ctrl+D (dupliquer), Ctrl+C / Ctrl+V (copier / coller), flèches (déplacer,
 Maj = ×10).
 
+## Voir toutes les animations (galerie)
+
+```bash
+npm run render:gallery
+```
+
+Fabrique une vidéo MP4 qui présente chaque animation (apparitions, mises en valeur, mouvements,
+disparitions) avec son nom, dans `PhysiMotion/exports`.
+
 ## Créer la vidéo de démonstration (MP4)
 
 ```bash

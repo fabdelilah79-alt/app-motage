@@ -1,11 +1,18 @@
 import { useTranslation } from 'react-i18next';
-import type { SceneTransition, TransitionDirection, TransitionType } from '../../shared/schema';
+import {
+  transitionTypeSchema,
+  type SceneTransition,
+  type TransitionDirection,
+  type TransitionType,
+} from '../../shared/schema';
 import { framesToSeconds, secondsToFrames } from '../../shared/time';
 import { Field } from '../ui/field';
 import { NativeSelect } from '../ui/native-select';
 import { NumberInput } from '../ui/number-input';
 
-const TYPES: readonly TransitionType[] = ['none', 'fade', 'slide'];
+const TYPES: readonly TransitionType[] = transitionTypeSchema.options;
+/** Transitions qui ont un sens (glissement, balayage, retournement). */
+const DIRECTED: readonly TransitionType[] = ['slide', 'wipe', 'flip'];
 const DIRECTIONS: readonly TransitionDirection[] = [
   'from-left',
   'from-right',
@@ -53,7 +60,7 @@ export const TransitionFields = ({ transition, fps, onChange }: Props) => {
           />
         </Field>
       ) : null}
-      {current.type === 'slide' ? (
+      {DIRECTED.includes(current.type) ? (
         <Field label={t('scene.direction')}>
           <NativeSelect
             value={current.direction}

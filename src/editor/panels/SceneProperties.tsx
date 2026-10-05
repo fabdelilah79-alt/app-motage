@@ -6,6 +6,7 @@ import { Field } from '../ui/field';
 import { Input } from '../ui/input';
 import { NumberInput } from '../ui/number-input';
 import { BackgroundFields } from './BackgroundFields';
+import { CameraEditor } from './CameraEditor';
 import { TransitionFields } from './TransitionFields';
 
 type Props = { scene: Scene; index: number; fps: number };
@@ -58,6 +59,7 @@ export const SceneProperties = ({ scene, index, fps }: Props) => {
           }
         />
       ) : null}
+      <CameraEditor scene={scene} fps={fps} />
       <p className="text-xs text-slate-400">{t('scene.help')}</p>
     </div>
   );
