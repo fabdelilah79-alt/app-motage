@@ -5,15 +5,19 @@ import { flip } from '@remotion/transitions/flip';
 import { iris } from '@remotion/transitions/iris';
 import { slide } from '@remotion/transitions/slide';
 import { wipe } from '@remotion/transitions/wipe';
-import type { FC, ReactNode } from 'react';
+import { useMemo, type FC, type ReactNode } from 'react';
 import { AbsoluteFill, useVideoConfig } from 'remotion';
 import type { Project, SceneTransition } from '../shared/schema';
 import { getTransitionDuration } from '../shared/timeline';
+import { BrandLogo } from './brand/BrandLogo';
 import { ProjectAssetsContext } from './ProjectAssetsContext';
 import { ProjectAudio } from './ProjectAudio';
 import { ProjectSettingsContext } from './ProjectSettingsContext';
 import { SceneView } from './scenes/SceneView';
 import { zoom } from './scenes/zoomPresentation';
+import { applyThemeColors } from './themes/applyTheme';
+import { ThemeContext } from './themes/ThemeContext';
+import { resolveTheme } from './themes/themes';
 
 export type ProjectVideoProps = {
   project: Project;
@@ -63,10 +67,16 @@ const renderTransition = (
 /** Composition racine : scènes enchaînées avec leurs transitions (aperçu ET rendu MP4). */
 export const ProjectVideo: FC<ProjectVideoProps> = ({ project, filesBaseUrl = '' }) => {
   const { fps, width, height } = useVideoConfig();
+  const theme = useMemo(
+    () => resolveTheme(project.themeId, project.themeOverrides),
+    [project.themeId, project.themeOverrides],
+  );
+  // Les couleurs « theme.xxx » des scènes deviennent les couleurs réelles du thème.
+  const scenes = useMemo(() => applyThemeColors(project.scenes, theme), [project.scenes, theme]);
   const items: ReactNode[] = [];
 
-  project.scenes.forEach((scene, index) => {
-    const previous = index > 0 ? project.scenes[index - 1] : undefined;
+  scenes.forEach((scene, index) => {
+    const previous = index > 0 ? scenes[index - 1] : undefined;
     const transitionDuration = previous ? getTransitionDuration(previous, scene) : 0;
     if (scene.transitionIn && transitionDuration > 0) {
       const size = { width, height };
@@ -88,11 +98,16 @@ export const ProjectVideo: FC<ProjectVideoProps> = ({ project, filesBaseUrl = ''
     <ProjectAssetsContext.Provider
       value={{ assets: project.assets, projectId: project.id, filesBaseUrl }}
     >
-      <ProjectSettingsContext.Provider value={{ digits: project.digits }}>
-        <AbsoluteFill style={{ backgroundColor: '#000000' }}>
-          <TransitionSeries>{items}</TransitionSeries>
-          <ProjectAudio project={project} />
-        </AbsoluteFill>
+      <ProjectSettingsContext.Provider
+        value={{ digits: project.digits, defaultLang: project.defaultLang }}
+      >
+        <ThemeContext.Provider value={theme}>
+          <AbsoluteFill style={{ backgroundColor: '#000000' }}>
+            <TransitionSeries>{items}</TransitionSeries>
+            {project.brand ? <BrandLogo brand={project.brand} /> : null}
+            <ProjectAudio project={project} />
+          </AbsoluteFill>
+        </ThemeContext.Provider>
       </ProjectSettingsContext.Provider>
     </ProjectAssetsContext.Provider>
   );

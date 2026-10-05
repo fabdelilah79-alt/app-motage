@@ -429,5 +429,79 @@
     "centerY": "Centre vertical (%)",
     "add": "Ajouter un mouvement de caméra",
     "remove": "Retirer ce mouvement"
+  },
+  "themes": {
+    "open": "Thème",
+    "title": "Thème et marque",
+    "tabThemes": "Thèmes",
+    "tabPalette": "Couleurs du thème",
+    "tabBrand": "Kit de marque",
+    "help": "Un clic change l'allure de toute la vidéo : fonds, couleurs, polices et style des formes. Les couleurs choisies à la main sur un élément sont conservées.",
+    "paletteHelp": "Modifiez une couleur du thème : tous les éléments qui l'utilisent changent ensemble.",
+    "resetPalette": "Revenir aux couleurs d'origine",
+    "tokens": {
+      "background": "Fond",
+      "surface": "Surface",
+      "text": "Texte",
+      "muted": "Texte discret",
+      "accent1": "Accent 1",
+      "accent2": "Accent 2",
+      "accent3": "Accent 3",
+      "grid": "Lignes / grille"
+    }
+  },
+  "brand": {
+    "help": "Votre logo s'affiche dans un coin de toutes les scènes. Vos couleurs apparaissent dans chaque choix de couleur. Enregistrez le kit pour le réutiliser dans vos autres projets.",
+    "color": "Couleur du kit de marque",
+    "logo": "Logo",
+    "noLogo": "Aucun logo",
+    "noImage": "Importez d'abord une image (onglet Médias).",
+    "corner": "Coin",
+    "corners": {
+      "top-left": "En haut à gauche",
+      "top-right": "En haut à droite",
+      "bottom-left": "En bas à gauche",
+      "bottom-right": "En bas à droite"
+    },
+    "size": "Taille du logo (% de la largeur)",
+    "colors": "Mes couleurs",
+    "removeColor": "Retirer cette couleur",
+    "newColor": "Nouvelle couleur",
+    "addColor": "Ajouter",
+    "addIntro": "Ajouter une scène d'introduction",
+    "addOutro": "Ajouter une scène de conclusion",
+    "saveKit": "Enregistrer comme mon kit",
+    "applyKit": "Utiliser mon kit enregistré",
+    "status": {
+      "saved": "Kit de marque enregistré : il est disponible dans tous vos projets.",
+      "applied": "Kit de marque appliqué à ce projet.",
+      "missing": "Aucun kit enregistré pour l'instant.",
+      "error": "L'opération a échoué. Le serveur local est-il lancé ?"
+    }
+  },
+  "background": {
+    "types": {
+      "theme": "Fond du thème",
+      "color": "Couleur unie",
+      "linear-gradient": "Dégradé",
+      "texture": "Texture",
+      "particles": "Particules",
+      "image": "Image",
+      "video": "Vidéo"
+    },
+    "themeHelp": "Le fond suit le thème du projet.",
+    "texture": "Texture",
+    "textures": {
+      "paper": "Papier",
+      "slate": "Ardoise",
+      "grid": "Quadrillage",
+      "lined": "Lignes de cahier",
+      "dots": "Points",
+      "blueprint": "Plan (blueprint)"
+    },
+    "particleColor": "Couleur des particules",
+    "particleCount": "Nombre de particules",
+    "image": "Image de fond",
+    "video": "Vidéo de fond (muette, en boucle)"
   }
 }

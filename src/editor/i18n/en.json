@@ -429,5 +429,79 @@
     "centerY": "Vertical center (%)",
     "add": "Add a camera move",
     "remove": "Remove this move"
+  },
+  "themes": {
+    "open": "Theme",
+    "title": "Theme and brand",
+    "tabThemes": "Themes",
+    "tabPalette": "Theme colors",
+    "tabBrand": "Brand kit",
+    "help": "One click changes the look of the whole video: backgrounds, colors, fonts and shape style. Colors you picked by hand on an element are kept.",
+    "paletteHelp": "Change a theme color: every element that uses it changes together.",
+    "resetPalette": "Back to the original colors",
+    "tokens": {
+      "background": "Background",
+      "surface": "Surface",
+      "text": "Text",
+      "muted": "Muted text",
+      "accent1": "Accent 1",
+      "accent2": "Accent 2",
+      "accent3": "Accent 3",
+      "grid": "Lines / grid"
+    }
+  },
+  "brand": {
+    "help": "Your logo appears in a corner of every scene. Your colors appear in every color picker. Save the kit to reuse it in your other projects.",
+    "color": "Brand kit color",
+    "logo": "Logo",
+    "noLogo": "No logo",
+    "noImage": "Import an image first (Media tab).",
+    "corner": "Corner",
+    "corners": {
+      "top-left": "Top left",
+      "top-right": "Top right",
+      "bottom-left": "Bottom left",
+      "bottom-right": "Bottom right"
+    },
+    "size": "Logo size (% of width)",
+    "colors": "My colors",
+    "removeColor": "Remove this color",
+    "newColor": "New color",
+    "addColor": "Add",
+    "addIntro": "Add an intro scene",
+    "addOutro": "Add a closing scene",
+    "saveKit": "Save as my kit",
+    "applyKit": "Use my saved kit",
+    "status": {
+      "saved": "Brand kit saved: it is available in all your projects.",
+      "applied": "Brand kit applied to this project.",
+      "missing": "No saved kit yet.",
+      "error": "The operation failed. Is the local server running?"
+    }
+  },
+  "background": {
+    "types": {
+      "theme": "Theme background",
+      "color": "Solid color",
+      "linear-gradient": "Gradient",
+      "texture": "Texture",
+      "particles": "Particles",
+      "image": "Image",
+      "video": "Video"
+    },
+    "themeHelp": "The background follows the project theme.",
+    "texture": "Texture",
+    "textures": {
+      "paper": "Paper",
+      "slate": "Slate",
+      "grid": "Grid",
+      "lined": "Notebook lines",
+      "dots": "Dots",
+      "blueprint": "Blueprint"
+    },
+    "particleColor": "Particle color",
+    "particleCount": "Number of particles",
+    "image": "Background image",
+    "video": "Background video (muted, looped)"
   }
 }

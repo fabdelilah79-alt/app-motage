@@ -63,3 +63,31 @@ describe('état de l’éditeur et annuler / rétablir', () => {
     expect(store().project?.scenes[0]?.elements[0]?.transform.x).toBe(192);
   });
 });
+
+describe('thème du projet dans l’éditeur', () => {
+  beforeEach(() => {
+    store().loadProject(parseProject(makeProjectInput({ themeId: 'notebook', defaultLang: 'ar' })));
+  });
+
+  it('une nouvelle scène suit le fond et la transition du thème, dans le sens de lecture', () => {
+    store().addScene();
+    const scene = store().project?.scenes[1];
+    expect(scene?.background).toEqual({ type: 'theme' });
+    expect(scene?.transitionIn).toEqual({
+      type: 'slide',
+      durationInFrames: 15,
+      direction: 'from-left',
+    });
+  });
+
+  it('change de thème et efface les couleurs modifiées de l’ancien thème', () => {
+    store().setThemeColor('accent1', '#ff0000');
+    expect(store().project?.themeOverrides).toEqual({ accent1: '#ff0000' });
+    store().setThemeColor('accent1', undefined);
+    expect(store().project?.themeOverrides).toEqual({});
+    store().setThemeColor('text', '#000000');
+    store().applyTheme('neon');
+    expect(store().project?.themeId).toBe('neon');
+    expect(store().project?.themeOverrides).toEqual({});
+  });
+});

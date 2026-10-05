@@ -2,9 +2,9 @@ import { useTranslation } from 'react-i18next';
 import type { TextEffects, TextElement } from '../../../shared/schema';
 import { useEditorStore } from '../../store/editorStore';
 import { Field } from '../../ui/field';
-import { Input } from '../../ui/input';
 import { NativeSelect } from '../../ui/native-select';
 import { NumberInput } from '../../ui/number-input';
+import { ColorInput } from '../ColorInput';
 import { EffectSection } from './EffectSection';
 
 type EffectKey = keyof TextEffects;
@@ -48,12 +48,7 @@ export const TextEffectsEditor = ({ element }: { element: TextElement }) => {
     label = 'effects.color',
   ) => (
     <Field key={`${key}-${label}`} label={t(label)}>
-      <Input
-        type="color"
-        className="h-9 p-1"
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-      />
+      <ColorInput value={value} onChange={onChange} />
     </Field>
   );
   const number = (label: string, value: number, onChange: (next: number) => void, step = 1) => (

@@ -48,6 +48,11 @@ toutes les images.
    scène sur la voix ». La musique baisse automatiquement pendant la voix.
 8. **Exporter la vidéo** (en haut à droite) : le fichier MP4 est rangé dans `PhysiMotion/exports`.
 
+9. **Thème** (en haut) : choisir l'allure de toute la vidéo en un clic (tableau noir, cahier,
+   blueprint, néon…), modifier les couleurs du thème, et préparer son **kit de marque** (logo
+   dans un coin de toutes les scènes, couleurs personnelles, scènes d'introduction et de
+   conclusion). « Enregistrer comme mon kit » le rend disponible dans tous les projets.
+
 Les projets sont enregistrés automatiquement (5 s après chaque modification) dans
 `PhysiMotion/projets` de votre dossier personnel.
 
@@ -63,6 +68,16 @@ npm run render:gallery
 
 Fabrique une vidéo MP4 qui présente chaque animation (apparitions, mises en valeur, mouvements,
 disparitions) avec son nom, dans `PhysiMotion/exports`.
+
+## Comparer les 9 thèmes (captures)
+
+```bash
+npm run render:themes
+```
+
+Rend la même scène (`templates/theme-test.json`) dans les 9 thèmes, en images PNG, dans
+`PhysiMotion/exports/captures-themes_…`. Seul le thème change : fond, couleurs, polices et style
+des formes doivent suivre.
 
 ## Créer la vidéo de démonstration (MP4)
 

@@ -11,9 +11,9 @@ import { formatSeconds, framesToSeconds, secondsToFrames } from '../../../shared
 import { usePlayerState } from '../../hooks/usePlayerFrame';
 import { useEditorStore } from '../../store/editorStore';
 import { Button } from '../../ui/button';
-import { Input } from '../../ui/input';
 import { NativeSelect } from '../../ui/native-select';
 import { NumberInput } from '../../ui/number-input';
+import { ColorInput } from '../ColorInput';
 
 type Props = { element: SceneElement; fps: number };
 
@@ -105,15 +105,14 @@ export const KeyframesEditor = ({ element, fps }: Props) => {
                   }
                 />
                 {property === 'color' ? (
-                  <Input
-                    type="color"
-                    aria-label={t('keyframes.value')}
-                    className="h-9 p-1"
+                  <ColorInput
+                    compact
+                    ariaLabel={t('keyframes.value')}
                     value={String(item.value)}
-                    onChange={(event) =>
+                    onChange={(value) =>
                       edit(property, (items) => {
                         const current = items[index];
-                        if (current) items[index] = { ...current, value: event.target.value };
+                        if (current) items[index] = { ...current, value };
                       })
                     }
                   />

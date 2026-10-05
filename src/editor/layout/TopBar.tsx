@@ -1,4 +1,4 @@
-import { ArrowLeft, Clapperboard, Film, Redo2, Save, Settings, Undo2 } from 'lucide-react';
+import { ArrowLeft, Clapperboard, Film, Palette, Redo2, Save, Settings, Undo2 } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ExportDialog } from '../export/ExportDialog';
@@ -8,6 +8,7 @@ import type { SaveStatus } from '../hooks/useAutosave';
 import { useEditorStore } from '../store/editorStore';
 import { redo, undo, useHistoryAvailability } from '../store/history';
 import { useProject } from '../store/selectors';
+import { ThemeDialog } from '../themes/ThemeDialog';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -25,6 +26,7 @@ export const TopBar = ({ saveStatus, onSave }: Props) => {
   const render = useRenderJob();
   const [exportOpen, setExportOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [themeOpen, setThemeOpen] = useState(false);
 
   const startExport = () => {
     setExportOpen(true);
@@ -85,6 +87,10 @@ export const TopBar = ({ saveStatus, onSave }: Props) => {
           )}
           {t(previewMode === 'full' ? 'topBar.backToScene' : 'topBar.previewAll')}
         </Button>
+        <Button size="sm" variant="ghost" onClick={() => setThemeOpen(true)} data-testid="theme-button">
+          <Palette size={14} aria-hidden />
+          {t('themes.open')}
+        </Button>
         <Button
           size="icon"
           variant="ghost"
@@ -101,6 +107,7 @@ export const TopBar = ({ saveStatus, onSave }: Props) => {
       </div>
 
       <ProjectSettingsDialog open={settingsOpen} onOpenChange={setSettingsOpen} />
+      <ThemeDialog open={themeOpen} onOpenChange={setThemeOpen} />
       <ExportDialog
         open={exportOpen}
         onOpenChange={setExportOpen}

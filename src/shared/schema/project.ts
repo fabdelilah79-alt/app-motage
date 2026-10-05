@@ -37,6 +37,15 @@ export const assetSchema = z.object({
 });
 export type Asset = z.infer<typeof assetSchema>;
 
+export const brandSchema = z.object({
+  logoAssetId: idSchema.optional(),
+  logoCorner: z.enum(['top-left', 'top-right', 'bottom-left', 'bottom-right']).default('top-right'),
+  /** Largeur du logo en proportion de la largeur de la vidéo. */
+  logoSize: z.number().min(0.03).max(0.5).default(0.1),
+  colors: z.array(z.string()).default([]),
+});
+export type Brand = z.infer<typeof brandSchema>;
+
 export const projectSchema = z.object({
   schemaVersion: z.literal(CURRENT_SCHEMA_VERSION),
   id: idSchema,
@@ -46,6 +55,12 @@ export const projectSchema = z.object({
   /** Chiffres des textes arabes : 0-9 (« latin ») ou ٠-٩ (« arabic-indic »). */
   digits: z.enum(['latin', 'arabic-indic']).default('latin'),
   assets: z.array(assetSchema).default([]),
+  /** Thème visuel (palette, polices, fond, style de trait) : src/video/themes. */
+  themeId: z.string().default('minimal-light'),
+  /** Couleurs du thème modifiées pour ce projet. */
+  themeOverrides: z.record(z.string(), z.string()).default({}),
+  /** Kit de marque : logo affiché sur toutes les scènes et couleurs personnelles. */
+  brand: brandSchema.optional(),
   /** Musiques de fond (atténuées automatiquement sous les voix off). */
   audioTracks: z.array(audioTrackSchema).default([]),
   scenes: z.array(sceneSchema).min(1),

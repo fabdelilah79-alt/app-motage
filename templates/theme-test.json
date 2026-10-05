@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "id": "test-themes",
+  "title": "Test des thèmes (phase 6)",
+  "format": { "width": 1920, "height": 1080, "fps": 30 },
+  "defaultLang": "ar",
+  "themeId": "minimal-light",
+  "scenes": [
+    {
+      "id": "scene-theme",
+      "name": "Même scène, tous les thèmes",
+      "durationInFrames": 90,
+      "background": { "type": "theme" },
+      "elements": [
+        {
+          "id": "titre-ar",
+          "type": "text",
+          "lang": "ar",
+          "transform": { "x": 160, "y": 70, "width": 1600, "height": 170 },
+          "timing": { "from": 0, "duration": 90 },
+          "animations": {},
+          "content": [
+            { "kind": "text", "text": "الطاقة " },
+            { "kind": "text", "text": "الحركية", "style": { "color": "theme.accent1" } }
+          ],
+          "style": { "fontSize": 120, "fontWeight": 700, "color": "theme.text", "align": "center" }
+        },
+        {
+          "id": "titre-fr",
+          "type": "text",
+          "lang": "fr",
+          "transform": { "x": 160, "y": 250, "width": 1600, "height": 110 },
+          "timing": { "from": 0, "duration": 90 },
+          "animations": {},
+          "content": [
+            { "kind": "text", "text": "Énergie cinétique : " },
+            { "kind": "math", "latex": "E_c = \\frac{1}{2} m v^2" }
+          ],
+          "style": { "fontSize": 64, "color": "theme.muted", "align": "center" }
+        },
+        {
+          "id": "balle",
+          "type": "shape",
+          "shape": "circle",
+          "transform": { "x": 360, "y": 520, "width": 260, "height": 260 },
+          "timing": { "from": 0, "duration": 90 },
+          "animations": {},
+          "fill": "theme.accent2",
+          "stroke": "theme.text",
+          "strokeWidth": 6
+        },
+        {
+          "id": "vitesse",
+          "type": "shape",
+          "shape": "arrow",
+          "transform": { "x": 660, "y": 590, "width": 420, "height": 120 },
+          "timing": { "from": 0, "duration": 90 },
+          "animations": {},
+          "fill": "none",
+          "stroke": "theme.accent1",
+          "strokeWidth": 12
+        },
+        {
+          "id": "carte",
+          "type": "shape",
+          "shape": "rectangle",
+          "transform": { "x": 1160, "y": 480, "width": 460, "height": 340 },
+          "timing": { "from": 0, "duration": 90 },
+          "animations": {},
+          "fill": "theme.surface",
+          "stroke": "theme.accent3",
+          "strokeWidth": 6
+        },
+        {
+          "id": "icone",
+          "type": "icon",
+          "iconId": "atom",
+          "transform": { "x": 1290, "y": 530, "width": 200, "height": 200 },
+          "timing": { "from": 0, "duration": 90 },
+          "animations": {},
+          "color": "theme.accent3",
+          "strokeWidth": 2
+        },
+        {
+          "id": "legende",
+          "type": "text",
+          "lang": "ar",
+          "transform": { "x": 1160, "y": 740, "width": 460, "height": 70 },
+          "timing": { "from": 0, "duration": 90 },
+          "animations": {},
+          "content": [{ "kind": "text", "text": "v = 12 m/s" }],
+          "style": { "fontSize": 44, "color": "theme.text", "align": "center" }
+        }
+      ]
+    }
+  ]
+}

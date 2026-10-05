@@ -2,6 +2,7 @@ import { Bold, Highlighter, Palette } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { TextRunStyle } from '../../../shared/schema';
 import { cn } from '../../ui/cn';
+import { ColorInput } from '../ColorInput';
 
 type Props = { style: TextRunStyle; onChange: (style: TextRunStyle) => void; mathOnly?: boolean };
 
@@ -27,12 +28,11 @@ export const RunStyleBar = ({ style, onChange, mathOnly = false }: Props) => {
         {t('richText.color')}
       </button>
       {style.color !== undefined ? (
-        <input
-          type="color"
-          aria-label={t('richText.color')}
-          className="h-8 w-10 rounded border border-slate-700 bg-slate-900"
+        <ColorInput
+          compact
+          ariaLabel={t('richText.color')}
           value={style.color}
-          onChange={(event) => set({ color: event.target.value })}
+          onChange={(color) => set({ color })}
         />
       ) : null}
       {mathOnly ? null : (
@@ -56,12 +56,11 @@ export const RunStyleBar = ({ style, onChange, mathOnly = false }: Props) => {
             {t('richText.highlight')}
           </button>
           {style.highlight !== undefined ? (
-            <input
-              type="color"
-              aria-label={t('richText.highlight')}
-              className="h-8 w-10 rounded border border-slate-700 bg-slate-900"
+            <ColorInput
+              compact
+              ariaLabel={t('richText.highlight')}
               value={style.highlight}
-              onChange={(event) => set({ highlight: event.target.value })}
+              onChange={(highlight) => set({ highlight })}
             />
           ) : null}
         </>

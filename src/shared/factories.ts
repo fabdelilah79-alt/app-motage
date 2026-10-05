@@ -25,7 +25,8 @@ export const createScene = (format: ProjectFormat, newId: IdGenerator = randomId
   id: `scene-${newId()}`,
   name: '',
   durationInFrames: DEFAULT_SCENE_SECONDS * format.fps,
-  background: { type: 'color', color: '#f8fafc' },
+  // Fond du thème du projet : il change quand on change de thème.
+  background: { type: 'theme' },
   elements: [],
   camera: [],
 });
@@ -47,6 +48,8 @@ export const createProject = (options: NewProjectOptions, newId: IdGenerator = r
     defaultLang: options.defaultLang,
     digits: 'latin',
     assets: [],
+    themeId: 'minimal-light',
+    themeOverrides: {},
     audioTracks: [],
     scenes: [createScene(format, newId)],
   };
@@ -82,7 +85,7 @@ export const createTextElement = (
   style: {
     fontSize: Math.round(format.height / 15),
     fontWeight: 700,
-    color: '#0f172a',
+    color: 'theme.text',
     align: 'center',
     lineHeight: 1.4,
     letterSpacing: 0,

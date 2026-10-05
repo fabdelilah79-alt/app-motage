@@ -13,6 +13,7 @@ import {
 import { fontStackFor } from '../text/fontStack';
 import { countRuns } from '../text/counter';
 import { RichText } from '../text/RichText';
+import { useTheme } from '../themes/ThemeContext';
 
 const JUSTIFY = { start: 'flex-start', center: 'center', end: 'flex-end' } as const;
 
@@ -21,6 +22,7 @@ export const TextElementView: FC<{ element: TextElement; animation: AnimationFra
   animation,
 }) => {
   const { digits } = useProjectSettings();
+  const theme = useTheme();
   const { lang, style } = element;
   const { effects } = style;
   const isArabic = lang === 'ar';
@@ -31,7 +33,7 @@ export const TextElementView: FC<{ element: TextElement; animation: AnimationFra
 
   const paragraph: CSSProperties = {
     margin: 0,
-    fontFamily: fontStackFor(style, lang),
+    fontFamily: fontStackFor(style, lang, theme.fonts),
     fontSize: style.fontSize,
     fontWeight: style.fontWeight,
     color: animatedColor(style.color, animation),

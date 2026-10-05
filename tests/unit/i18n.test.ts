@@ -68,6 +68,15 @@ const DYNAMIC_KEYS = [
     (shape) => `shapes.kinds.${shape}`,
   ),
   ...['whoosh', 'pop', 'click', 'ding'].map((sfx) => `sfx.${sfx}`),
+  ...['background', 'surface', 'text', 'muted', 'accent1', 'accent2', 'accent3', 'grid'].map(
+    (token) => `themes.tokens.${token}`,
+  ),
+  ...['top-left', 'top-right', 'bottom-left', 'bottom-right'].map((c) => `brand.corners.${c}`),
+  ...['saved', 'applied', 'missing', 'error'].map((status) => `brand.status.${status}`),
+  ...['theme', 'color', 'linear-gradient', 'texture', 'particles', 'image', 'video'].map(
+    (type) => `background.types.${type}`,
+  ),
+  ...['paper', 'slate', 'grid', 'lined', 'dots', 'blueprint'].map((x) => `background.textures.${x}`),
 ];
 
 /** Réglages et options des préréglages d'animation (métadonnées du registre). */

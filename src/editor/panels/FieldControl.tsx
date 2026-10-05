@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { framesToSeconds, secondsToFrames } from '../../shared/time';
 import { Field } from '../ui/field';
-import { Input } from '../ui/input';
 import { NativeSelect } from '../ui/native-select';
 import { NumberInput } from '../ui/number-input';
 import { Textarea } from '../ui/textarea';
+import { ColorInput } from './ColorInput';
 import type { FieldDescriptor, FieldValue } from './fieldDescriptors';
 
 type Props<E> = {
@@ -67,13 +67,7 @@ export const FieldControl = <E,>({ descriptor, element, fps, onChange }: Props<E
     case 'color':
       return (
         <Field label={label}>
-          <Input
-            type="color"
-            data-testid={testId}
-            className="h-9 p-1"
-            value={String(value)}
-            onChange={(event) => change(event.target.value)}
-          />
+          <ColorInput testId={testId} value={String(value)} onChange={change} />
         </Field>
       );
     case 'seconds':

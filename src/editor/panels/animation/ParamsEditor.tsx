@@ -4,6 +4,7 @@ import { Field } from '../../ui/field';
 import { Input } from '../../ui/input';
 import { NativeSelect } from '../../ui/native-select';
 import { NumberInput } from '../../ui/number-input';
+import { ColorInput } from '../ColorInput';
 
 type Props = {
   preset: AnimationPreset;
@@ -54,11 +55,9 @@ export const ParamsEditor = ({ preset, params, onChange }: Props) => {
           case 'color':
             return (
               <Field key={field.key} label={label}>
-                <Input
-                  type="color"
-                  className="h-9 p-1"
+                <ColorInput
                   value={typeof value === 'string' ? value : '#000000'}
-                  onChange={(event) => set(field.key, event.target.value)}
+                  onChange={(next) => set(field.key, next)}
                 />
               </Field>
             );

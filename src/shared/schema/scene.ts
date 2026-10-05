@@ -10,7 +10,15 @@ export const gradientStopSchema = z.object({
   position: z.number().min(0).max(100),
 });
 
+export const textureSchema = z.enum(['paper', 'slate', 'grid', 'lined', 'dots', 'blueprint']);
+export type Texture = z.infer<typeof textureSchema>;
+
+/**
+ * Fond d'une scène. « theme » : fond du thème du projet (il change avec le thème).
+ * Les couleurs peuvent aussi désigner une couleur du thème : « theme.accent1 »…
+ */
 export const backgroundSchema = z.discriminatedUnion('type', [
+  z.object({ type: z.literal('theme') }),
   z.object({ type: z.literal('color'), color: z.string() }),
   z.object({
     type: z.literal('linear-gradient'),
@@ -18,6 +26,20 @@ export const backgroundSchema = z.discriminatedUnion('type', [
     angle: z.number().default(180),
     stops: z.array(gradientStopSchema).min(2),
   }),
+  z.object({ type: z.literal('texture'), texture: textureSchema, color: z.string() }),
+  z.object({
+    type: z.literal('particles'),
+    color: z.string(),
+    particleColor: z.string(),
+    count: z.number().int().min(1).max(400).default(60),
+    seed: z.string().default('particules'),
+  }),
+  z.object({
+    type: z.literal('image'),
+    assetId: idSchema,
+    fit: z.enum(['cover', 'contain']).default('cover'),
+  }),
+  z.object({ type: z.literal('video'), assetId: idSchema }),
 ]);
 export type Background = z.infer<typeof backgroundSchema>;
 

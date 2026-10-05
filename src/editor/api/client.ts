@@ -3,8 +3,10 @@ import type { FormatPresetId } from '../../shared/formats';
 import { renderJobStateSchema, type RenderJobState } from '../../shared/render';
 import {
   assetSchema,
+  brandSchema,
   parseProject,
   type Asset,
+  type Brand,
   type Lang,
   type Project,
 } from '../../shared/schema';
@@ -38,6 +40,13 @@ const sendJson = (method: string, data: unknown): RequestInit => ({
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data),
 });
+
+const brandKitResponseSchema = z.object({
+  kit: z
+    .object({ colors: z.array(z.string()), logo: z.object({ file: z.string() }).optional() })
+    .nullable(),
+});
+const applyBrandResponseSchema = z.object({ brand: brandSchema, asset: assetSchema.nullable() });
 
 const projectUrl = (id: string) => `/api/projects/${encodeURIComponent(id)}`;
 
@@ -92,6 +101,22 @@ export const api = {
     const init = { method: 'POST', headers, body: file };
     return assetSchema.parse(await requestJson(url, init));
   },
+
+  /** Kit de marque enregistré (null s'il n'existe pas encore). */
+  getBrandKit: async (): Promise<{ colors: string[]; hasLogo: boolean } | null> => {
+    const { kit } = brandKitResponseSchema.parse(await requestJson('/api/brand'));
+    return kit ? { colors: kit.colors, hasLogo: kit.logo !== undefined } : null;
+  },
+
+  saveBrandKit: async (projectId: string, brand: Brand): Promise<void> => {
+    await requestJson('/api/brand', sendJson('PUT', { projectId, brand }));
+  },
+
+  /** Copie le kit de marque dans le projet (le logo devient un média du projet). */
+  applyBrandKit: async (projectId: string) =>
+    applyBrandResponseSchema.parse(
+      await requestJson(`${projectUrl(projectId)}/brand`, sendJson('POST', {})),
+    ),
 
   startRender: async (project: Project): Promise<RenderJobState> =>
     renderJobStateSchema.parse(await requestJson('/api/render', sendJson('POST', { project }))),

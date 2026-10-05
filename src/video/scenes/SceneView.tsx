@@ -2,8 +2,8 @@ import type { FC } from 'react';
 import { AbsoluteFill, Sequence, useCurrentFrame, useVideoConfig } from 'remotion';
 import type { Scene } from '../../shared/schema';
 import { ElementLayer } from '../elements/ElementLayer';
-import { backgroundStyle } from './backgroundStyle';
 import { cameraAt, cameraTransform } from './camera';
+import { SceneBackground } from './SceneBackground';
 
 export const SceneView: FC<{ scene: Scene }> = ({ scene }) => {
   const frame = useCurrentFrame();
@@ -13,9 +13,8 @@ export const SceneView: FC<{ scene: Scene }> = ({ scene }) => {
 
   return (
     <AbsoluteFill style={{ overflow: 'hidden' }}>
-      <AbsoluteFill
-        style={{ ...backgroundStyle(scene.background), transform: camera, transformOrigin: '0 0' }}
-      >
+      <AbsoluteFill style={{ transform: camera, transformOrigin: '0 0' }}>
+        <SceneBackground background={scene.background} />
         {scene.elements
           .filter((element) => !element.hidden)
           .map((element) => (

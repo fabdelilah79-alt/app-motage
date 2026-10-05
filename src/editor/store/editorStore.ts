@@ -11,6 +11,7 @@ import {
   type Scene,
   type SceneElement,
 } from '../../shared/schema';
+import { resolveTheme } from '../../video/themes/themes';
 import * as mutations from './projectMutations';
 
 export type Selection = { sceneId: string | null; elementId: string | null };
@@ -33,6 +34,10 @@ type EditorState = {
   /** Modification libre du projet, validée par le schéma (ignorée si invalide). */
   updateProject: (recipe: (project: Project) => void) => void;
   setDigits: (digits: Project['digits']) => void;
+  /** Change de thème (les couleurs choisies à la main sur les éléments sont conservées). */
+  applyTheme: (themeId: string) => void;
+  /** Modifie une couleur du thème pour ce projet (undefined : couleur d'origine). */
+  setThemeColor: (token: string, color: string | undefined) => void;
   addScene: () => void;
   duplicateScene: (sceneId: string) => void;
   removeScene: (sceneId: string) => void;
@@ -110,10 +115,33 @@ export const useEditorStore = create<EditorState>()(
             if (state.project) state.project.digits = digits;
           }),
 
+        applyTheme: (themeId) =>
+          set((state) => {
+            if (!state.project) return;
+            state.project.themeId = themeId;
+            state.project.themeOverrides = {};
+          }),
+        setThemeColor: (token, color) =>
+          set((state) => {
+            if (!state.project) return;
+            if (color) state.project.themeOverrides[token] = color;
+            else delete state.project.themeOverrides[token];
+          }),
+
         addScene: () =>
           set((state) => {
             if (!state.project) return;
             const scene = createScene(state.project.format);
+            // Transition par défaut du thème, dans le sens de lecture de la langue du projet.
+            const transition = resolveTheme(state.project.themeId).defaultTransition;
+            if (transition !== 'none') {
+              const rtl = state.project.defaultLang === 'ar';
+              scene.transitionIn = {
+                type: transition,
+                durationInFrames: 15,
+                direction: rtl ? 'from-left' : 'from-right',
+              };
+            }
             mutations.insertScene(state.project, scene, state.selection.sceneId);
             state.selection = { sceneId: scene.id, elementId: null };
           }),
