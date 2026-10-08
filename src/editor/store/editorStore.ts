@@ -23,6 +23,12 @@ type EditorState = {
   previewMode: PreviewMode;
   /** Mode Avancé : images clés par propriété (masqué par défaut). */
   advancedMode: boolean;
+  /**
+   * Vue de placement du canevas (à l'arrêt) : tous les éléments visibles et immobiles.
+   * Désactivée quand on choisit un instant précis sur la timeline.
+   */
+  layoutView: boolean;
+  setLayoutView: (enabled: boolean) => void;
   clipboard: SceneElement | null;
   loadProject: (project: Project) => void;
   closeProject: () => void;
@@ -77,6 +83,7 @@ export const useEditorStore = create<EditorState>()(
         selection: { sceneId: null, elementId: null },
         previewMode: 'scene',
         advancedMode: false,
+        layoutView: true,
         clipboard: null,
 
         loadProject: (project) => {
@@ -89,10 +96,13 @@ export const useEditorStore = create<EditorState>()(
         },
         setPreviewMode: (mode) => set({ previewMode: mode }),
         setAdvancedMode: (enabled) => set({ advancedMode: enabled }),
-        selectScene: (sceneId) => set({ selection: { sceneId, elementId: null } }),
+        setLayoutView: (enabled) => set({ layoutView: enabled }),
+        selectScene: (sceneId) => set({ selection: { sceneId, elementId: null }, layoutView: true }),
         selectElement: (elementId) =>
           set((state) => {
             state.selection.elementId = elementId;
+            // Pour déplacer un élément, on revient à la vue de placement.
+            if (elementId) state.layoutView = true;
           }),
 
         renameProject: (title) =>

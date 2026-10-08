@@ -2,8 +2,11 @@ import { Player } from '@remotion/player';
 import { useEffect, useMemo, useRef } from 'react';
 import { ProjectVideo } from '../../video/ProjectVideo';
 import { useElementSize } from '../hooks/useElementSize';
+import { usePlayerState } from '../hooks/usePlayerFrame';
+import { useEditorStore } from '../store/editorStore';
 import { useCurrentScene } from '../store/selectors';
 import { usePlayerRef } from './PlayerContext';
+import { LayoutViewToggle } from './LayoutViewToggle';
 import { PreviewError } from './PreviewError';
 import { SelectionOverlay } from './SelectionOverlay';
 import { usePreviewProject } from './usePreviewProject';
@@ -19,9 +22,13 @@ export const CanvasArea = () => {
   const scale = Math.max(0, Math.min(available.width / width, available.height / height));
   // Échelle arrondie : l'aperçu n'est pas recalculé à chaque pixel de redimensionnement.
   const previewScale = Math.round(scale * 10) / 10 || 0.1;
+  const { playing } = usePlayerState();
+  const layoutView = useEditorStore((state) => state.layoutView);
+  // À l'arrêt, dans une scène : tout est visible pour placer les éléments ; en lecture : la vraie vidéo.
+  const layoutMode = preview.mode === 'scene' && layoutView && !playing;
   const inputProps = useMemo(
-    () => ({ project: preview.project, filesBaseUrl: '', previewScale }),
-    [preview.project, previewScale],
+    () => ({ project: preview.project, filesBaseUrl: '', previewScale, layoutMode }),
+    [preview.project, previewScale, layoutMode],
   );
 
   // Nouvelle scène sélectionnée : retour au début.
@@ -55,8 +62,14 @@ export const CanvasArea = () => {
           errorFallback={({ error }) => <PreviewError error={error} />}
         />
         {preview.mode === 'scene' && scene ? (
-          <SelectionOverlay scene={scene} scale={scale} format={preview.project.format} />
+          <SelectionOverlay
+            scene={scene}
+            scale={scale}
+            format={preview.project.format}
+            showOutlines={layoutMode}
+          />
         ) : null}
+        {preview.mode === 'scene' ? <LayoutViewToggle active={layoutMode} /> : null}
       </div>
     </main>
   );

@@ -25,6 +25,8 @@ export type ProjectVideoProps = {
   filesBaseUrl?: string;
   /** Aperçu de l'éditeur affiché réduit : la 3D est calculée en plus basse résolution. */
   previewScale?: number;
+  /** Vue de placement de l'éditeur (éléments visibles et immobiles pendant l'édition). */
+  layoutMode?: boolean;
 };
 
 type Size = { width: number; height: number };
@@ -67,7 +69,12 @@ const renderTransition = (
 };
 
 /** Composition racine : scènes enchaînées avec leurs transitions (aperçu ET rendu MP4). */
-export const ProjectVideo: FC<ProjectVideoProps> = ({ project, filesBaseUrl = '', previewScale }) => {
+export const ProjectVideo: FC<ProjectVideoProps> = ({
+  project,
+  filesBaseUrl = '',
+  previewScale,
+  layoutMode = false,
+}) => {
   const { fps, width, height } = useVideoConfig();
   const theme = useMemo(
     () => resolveTheme(project.themeId, project.themeOverrides),
@@ -106,6 +113,7 @@ export const ProjectVideo: FC<ProjectVideoProps> = ({ project, filesBaseUrl = ''
           defaultLang: project.defaultLang,
           subtitleStyle: project.subtitleStyle,
           previewScale,
+          layoutMode,
         }}
       >
         <ThemeContext.Provider value={theme}>

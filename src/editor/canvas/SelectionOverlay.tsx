@@ -5,11 +5,11 @@ import { useEditorStore } from '../store/editorStore';
 import { ElementBox } from './ElementBox';
 import { ElementMoveable } from './ElementMoveable';
 
-type Props = { scene: Scene; scale: number; format: ProjectFormat };
+type Props = { scene: Scene; scale: number; format: ProjectFormat; showOutlines: boolean };
 type BoxRef = MoveableRefObject<HTMLElement> & { attach: (node: HTMLDivElement | null) => void };
 
 /** Calque transparent au-dessus du lecteur : clic pour sélectionner, poignées pour modifier. */
-export const SelectionOverlay = ({ scene, scale, format }: Props) => {
+export const SelectionOverlay = ({ scene, scale, format, showOutlines }: Props) => {
   const selectedId = useEditorStore((state) => state.selection.elementId);
   const selectElement = useEditorStore((state) => state.selectElement);
   const [target, setTarget] = useState<HTMLElement | null>(null);
@@ -56,6 +56,7 @@ export const SelectionOverlay = ({ scene, scale, format }: Props) => {
           element={element}
           scale={scale}
           selected={element.id === selectedId}
+          outlined={showOutlines}
           boxRef={boxFor(element.id).attach}
           onSelect={selectElement}
         />

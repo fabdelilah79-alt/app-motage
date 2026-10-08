@@ -1,17 +1,21 @@
 import type { PointerEvent } from 'react';
 import { usePlayerRef } from '../canvas/PlayerContext';
+import { useEditorStore } from '../store/editorStore';
 
 type Props = { durationInFrames: number; fps: number; pixelsPerFrame: number };
 
 /** Graduation en secondes ; cliquer ou glisser déplace la tête de lecture. */
 export const TimelineRuler = ({ durationInFrames, fps, pixelsPerFrame }: Props) => {
   const playerRef = usePlayerRef();
+  const setLayoutView = useEditorStore((state) => state.setLayoutView);
   const seconds = Math.floor(durationInFrames / fps);
   const ticks = Array.from({ length: seconds + 1 }, (_, second) => second);
 
   const seekTo = (event: PointerEvent<HTMLDivElement>) => {
     const left = event.currentTarget.getBoundingClientRect().left;
     const frame = Math.round((event.clientX - left) / pixelsPerFrame);
+    // Choisir un instant = voir la vidéo à cet instant (avec ses animations).
+    setLayoutView(false);
     playerRef.current?.seekTo(Math.max(0, Math.min(durationInFrames - 1, frame)));
   };
 

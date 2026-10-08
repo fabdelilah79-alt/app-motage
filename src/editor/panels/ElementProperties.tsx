@@ -5,6 +5,7 @@ import { useEditorStore } from '../store/editorStore';
 import { useProject } from '../store/selectors';
 import { Button } from '../ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import { AlignButtons } from './AlignButtons';
 import { AnimationTab } from './AnimationTab';
 import { FieldControl } from './FieldControl';
 import { fieldsFor, type FieldDescriptor, type FieldValue } from './fieldDescriptors';
@@ -70,6 +71,10 @@ export const ElementProperties = ({ element, fps }: Props) => {
             <Trash2 size={16} aria-hidden />
           </Button>
         </div>
+      </div>
+      {/* Toujours visible : placer l'élément d'un clic sur l'image. */}
+      <div className="border-b border-slate-800 px-3 py-2">
+        <AlignButtons element={element} format={format} />
       </div>
       <Tabs defaultValue="content" className="flex min-h-0 flex-1 flex-col">
         <TabsList>

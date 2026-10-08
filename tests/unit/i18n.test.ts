@@ -96,6 +96,7 @@ const DYNAMIC_KEYS = [
     `tour.steps.${step}.title`,
     `tour.steps.${step}.text`,
   ]),
+  ...['left', 'centerX', 'right', 'top', 'centerY', 'bottom'].map((a) => `align.${a}`),
   'subtitles.unsupported',
   'subtitles.failed',
   ...['math', 'plot2d', 'chart', 'vector', 'dimension', 'diagram', 'callout', 'scene3d', 'simulation'].map(

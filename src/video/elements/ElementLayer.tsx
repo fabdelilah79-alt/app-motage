@@ -8,6 +8,8 @@ import { animationTransform, layerAnimationStyle } from '../animations/frameStyl
 import { keyframeColor, keyframeNumber } from '../animations/keyframes';
 import type { AnimationFrame } from '../animations/types';
 import { sfxSrc } from '../media/sfx';
+import { NEUTRAL_FRAME } from '../animations/frame';
+import { useProjectSettings } from '../ProjectSettingsContext';
 import { ELEMENT_VIEWS } from './registry';
 
 /** Un texte arabe (ou forcé de droite à gauche) se décore dans le sens de lecture. */
@@ -24,19 +26,24 @@ const isRtl = (element: SceneElement) =>
 export const ElementLayer: FC<{ element: SceneElement }> = ({ element }) => {
   const frame = useCurrentFrame();
   const { transform, timing, sound, keyframes } = element;
-  const computed = computeElementAnimation(element.animations, timing.duration, frame);
-  const colorOverride = keyframeColor(keyframes?.color, frame);
+  const { layoutMode } = useProjectSettings();
+  // Vue de placement : position de base, sans animation (les poignées tombent juste).
+  const computed = layoutMode
+    ? NEUTRAL_FRAME
+    : computeElementAnimation(element.animations, timing.duration, frame);
+  const colorOverride = layoutMode ? undefined : keyframeColor(keyframes?.color, frame);
   const animation: AnimationFrame = colorOverride ? { ...computed, colorOverride } : computed;
   const View = ELEMENT_VIEWS[element.type] as FC<{
     element: SceneElement;
     animation: AnimationFrame;
   }>;
 
-  const x = keyframeNumber(keyframes?.x, frame) ?? transform.x;
-  const y = keyframeNumber(keyframes?.y, frame) ?? transform.y;
-  const scale = keyframeNumber(keyframes?.scale, frame) ?? transform.scale;
-  const rotation = keyframeNumber(keyframes?.rotation, frame) ?? transform.rotation;
-  const opacity = keyframeNumber(keyframes?.opacity, frame) ?? transform.opacity;
+  const keys = layoutMode ? undefined : keyframes;
+  const x = keyframeNumber(keys?.x, frame) ?? transform.x;
+  const y = keyframeNumber(keys?.y, frame) ?? transform.y;
+  const scale = keyframeNumber(keys?.scale, frame) ?? transform.scale;
+  const rotation = keyframeNumber(keys?.rotation, frame) ?? transform.rotation;
+  const opacity = keyframeNumber(keys?.opacity, frame) ?? transform.opacity;
   const decoration = animation.decoration;
   const decorationProps = decoration
     ? { decoration, width: transform.width, height: transform.height, rtl: isRtl(element) }
@@ -67,7 +74,7 @@ export const ElementLayer: FC<{ element: SceneElement }> = ({ element }) => {
           <Decoration {...decorationProps} />
         ) : null}
       </div>
-      {sound ? (
+      {sound && !layoutMode ? (
         // Effet sonore joué au début de l'apparition (après son éventuel délai).
         <Sequence from={element.animations.enter?.delay ?? 0} layout="none" name="Effet sonore">
           <Audio src={sfxSrc(sound.sfx)} volume={sound.volume} />

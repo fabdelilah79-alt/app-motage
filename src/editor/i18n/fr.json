@@ -883,5 +883,20 @@
         "text": "Quand c'est prêt, fabriquez la vidéo MP4 (ou un GIF, une image). Votre travail est enregistré automatiquement."
       }
     }
+  },
+  "canvas": {
+    "layoutView": "Vue de placement",
+    "timeView": "Vue à l'instant",
+    "layoutViewHelp": "Tous les éléments sont visibles et immobiles pour les placer. Cliquez pour voir la vidéo à l'instant de la tête de lecture.",
+    "timeViewHelp": "La vidéo est montrée telle qu'elle est à la tête de lecture, avec ses animations. Cliquez pour revenir à la vue de placement."
+  },
+  "align": {
+    "title": "Placer sur l'image",
+    "left": "À gauche",
+    "centerX": "Centrer horizontalement",
+    "right": "À droite",
+    "top": "En haut",
+    "centerY": "Centrer verticalement",
+    "bottom": "En bas"
   }
 }

@@ -883,5 +883,20 @@
         "text": "When it is ready, make the MP4 video (or a GIF, an image). Your work is saved automatically."
       }
     }
+  },
+  "canvas": {
+    "layoutView": "Layout view",
+    "timeView": "Time view",
+    "layoutViewHelp": "All elements are visible and still so you can place them. Click to see the video at the playhead.",
+    "timeViewHelp": "The video is shown as it is at the playhead, with its animations. Click to return to the layout view."
+  },
+  "align": {
+    "title": "Place on the frame",
+    "left": "Left",
+    "centerX": "Center horizontally",
+    "right": "Right",
+    "top": "Top",
+    "centerY": "Center vertically",
+    "bottom": "Bottom"
   }
 }
