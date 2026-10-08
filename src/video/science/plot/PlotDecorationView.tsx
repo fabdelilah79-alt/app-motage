@@ -19,7 +19,7 @@ type Props = {
   fontSize: number;
   format: (value: number) => string;
   /** Fenêtre du repère (pour borner les asymptotes et les aires). */
-  window: { xMin: number; xMax: number; yMin: number; yMax: number };
+  bounds: { xMin: number; xMax: number; yMin: number; yMax: number };
 };
 
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
@@ -50,7 +50,7 @@ export const PlotDecorationView: FC<Props> = ({
   fontFamily,
   fontSize,
   format,
-  window,
+  bounds,
 }) => {
   const text = { fill: decoration.color, fontFamily, fontSize: fontSize * 0.8, fontWeight: 700 };
   const thin = Math.max(1.5, fontSize / 14);
@@ -100,13 +100,13 @@ export const PlotDecorationView: FC<Props> = ({
     case 'area': {
       if (!target || target.series.kind !== 'function' || time < decoration.start) return null;
       const progress = progressAt(time, decoration.start, decoration.duration);
-      const a = clamp(decoration.from, window.xMin, window.xMax);
-      const b = a + (clamp(decoration.to, window.xMin, window.xMax) - a) * progress;
+      const a = clamp(decoration.from, bounds.xMin, bounds.xMax);
+      const b = a + (clamp(decoration.to, bounds.xMin, bounds.xMax) - a) * progress;
       const steps = 120;
       const points: string[] = [];
       for (let index = 0; index <= steps; index += 1) {
         const x = a + ((b - a) * index) / steps;
-        const y = clamp(target.point(x)[1], window.yMin, window.yMax);
+        const y = clamp(target.point(x)[1], bounds.yMin, bounds.yMax);
         if (Number.isFinite(y)) points.push(`${frame.sx(x)} ${frame.sy(y)}`);
       }
       if (points.length < 2) return null;

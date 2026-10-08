@@ -87,7 +87,7 @@ export const Plot2DElementView: FC<{ element: Plot2DElement; animation: Animatio
                 fontFamily={fontFamily}
                 fontSize={axes.fontSize}
                 format={format}
-                window={axes}
+                bounds={axes}
               />
             ))}
           {computed.map((item) => (
@@ -114,7 +114,7 @@ export const Plot2DElementView: FC<{ element: Plot2DElement; animation: Animatio
               fontFamily={fontFamily}
               fontSize={axes.fontSize}
               format={format}
-              window={axes}
+              bounds={axes}
             />
           ))}
       </svg>

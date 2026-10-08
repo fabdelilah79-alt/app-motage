@@ -53,6 +53,12 @@ toutes les images.
    dans un coin de toutes les scènes, couleurs personnelles, scènes d'introduction et de
    conclusion). « Enregistrer comme mon kit » le rend disponible dans tous les projets.
 
+10. **Sciences** (onglet de la bibliothèque) : équations (avec palette de symboles et étapes de
+    calcul qui se transforment), repères et courbes (y = f(x), paramétrique, polaire, mesures
+    collées depuis un tableur avec modélisation), graphiques (barres, secteurs, histogramme),
+    vecteurs, cotations, encadrés (Définition, À retenir…) et schémas de mécanique, électricité
+    et optique.
+
 Les projets sont enregistrés automatiquement (5 s après chaque modification) dans
 `PhysiMotion/projets` de votre dossier personnel.
 
@@ -78,6 +84,15 @@ npm run render:themes
 Rend la même scène (`templates/theme-test.json`) dans les 9 thèmes, en images PNG, dans
 `PhysiMotion/exports/captures-themes_…`. Seul le thème change : fond, couleurs, polices et style
 des formes doivent suivre.
+
+## Vidéo de validation « Énergie cinétique »
+
+```bash
+npm run render:science
+```
+
+Formule qui s'écrit terme par terme puis se calcule, courbe Ec = f(v) tracée avec un point
+mobile et sa tangente, chariot avec son vecteur vitesse, encadrés en français et en arabe.
 
 ## Créer la vidéo de démonstration (MP4)
 
