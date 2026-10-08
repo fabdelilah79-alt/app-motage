@@ -5,7 +5,7 @@ import { fontStackFor } from '../text/fontStack';
 import { useTheme } from '../themes/ThemeContext';
 import type { CameraState } from './camera';
 import { projectPoint } from './camera';
-import { isLatexLabel, type Label3D } from './labels3d';
+import { isLatexLabel, type Label3D } from './labelAnchors3d';
 
 type Props = {
   labels: readonly Label3D[];

@@ -8,7 +8,7 @@ import { useTheme } from '../themes/ThemeContext';
 import { Axes3DView } from './Axes3DView';
 import { CAMERA_Z, cameraStateAt, worldTransform } from './camera';
 import { Labels3D } from './Labels3D';
-import { labelsAt } from './labels3d';
+import { labelsAt } from './labelAnchors3d';
 import { Object3DView } from './Objects3D';
 
 /**

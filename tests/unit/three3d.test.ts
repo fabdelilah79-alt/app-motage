@@ -5,7 +5,7 @@ import { FORMAT_PRESETS } from '../../src/shared/formats';
 import { createScene3DElement, SCENE3D_PRESETS } from '../../src/shared/threeFactories';
 import { CAMERA_Z, cameraStateAt, projectPoint, toThree, worldTransform } from '../../src/video/three/camera';
 import { curvePoints, fieldArrows, heightColor, surfaceData, visiblePoints } from '../../src/video/three/geometry3d';
-import { isLatexLabel, labelsAt } from '../../src/video/three/labels3d';
+import { isLatexLabel, labelsAt } from '../../src/video/three/labelAnchors3d';
 
 const W = 1600;
 const H = 900;
