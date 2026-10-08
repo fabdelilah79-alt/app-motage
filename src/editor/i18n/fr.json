@@ -72,7 +72,8 @@
     "presets": "Styles de texte",
     "presetsHelp": "Ajoute un texte déjà mis en forme, dans la langue principale du projet.",
     "shapes": "Formes",
-    "audio": "Audio"
+    "audio": "Audio",
+    "science": "Sciences"
   },
   "properties": {
     "content": "Contenu",
@@ -88,7 +89,14 @@
     "gif": "GIF animé",
     "lottie": "Animation Lottie",
     "icon": "Icône",
-    "shape": "Forme"
+    "shape": "Forme",
+    "math": "Équation",
+    "plot2d": "Repère et courbes",
+    "chart": "Graphique",
+    "vector": "Vecteur",
+    "dimension": "Cotation",
+    "diagram": "Schéma",
+    "callout": "Encadré"
   },
   "fields": {
     "start": "Début",
@@ -170,7 +178,8 @@
       "width": "Largeur (px)",
       "height": "Hauteur (px)",
       "points": "Points du chemin",
-      "amplitude": "Amplitude (px)"
+      "amplitude": "Amplitude (px)",
+      "term": "Numéro du terme"
     },
     "options": {
       "left": "Gauche",
@@ -503,5 +512,157 @@
     "particleCount": "Nombre de particules",
     "image": "Image de fond",
     "video": "Vidéo de fond (muette, en boucle)"
+  },
+  "science": {
+    "mathAndPlots": "Équations, courbes et graphiques",
+    "plotFunction": "Courbe y = f(x)",
+    "plotData": "Données mesurées",
+    "callouts": "Encadrés pédagogiques",
+    "chartKinds": {
+      "bar": "Barres",
+      "pie": "Secteurs",
+      "histogram": "Histogramme"
+    },
+    "calloutKinds": {
+      "definition": "Définition",
+      "remember": "À retenir",
+      "warning": "Attention",
+      "example": "Exemple",
+      "method": "Méthode"
+    },
+    "diagramCategories": {
+      "mechanics": "Schémas — mécanique",
+      "electricity": "Schémas — électricité",
+      "optics": "Schémas — optique",
+      "misc": "Schémas — divers"
+    },
+    "diagramParams": {
+      "coils": "Nombre de spires",
+      "angle": "Angle (°)",
+      "closed": "Interrupteur fermé",
+      "elbow": "Coude",
+      "level": "Niveau (%)"
+    },
+    "diagramOptions": {
+      "horizontal-first": "D'abord horizontal",
+      "vertical-first": "D'abord vertical",
+      "straight": "Droit"
+    },
+    "align": {
+      "start": "À gauche",
+      "center": "Centré",
+      "end": "À droite"
+    },
+    "latex": "Formule (LaTeX)",
+    "latexHelp": "Aperçu en direct dans le canevas. Utilisez la palette pour insérer des symboles.",
+    "latexError": "Formule incomplète ou invalide : vérifiez les accolades { }.",
+    "symbolGroups": {
+      "structures": "Structures",
+      "calculus": "Dérivées et intégrales",
+      "greek": "Lettres grecques",
+      "operators": "Opérateurs",
+      "units": "Unités",
+      "arrows": "Flèches et chimie"
+    },
+    "steps": "Étapes de calcul",
+    "stepsHelp": "À l'instant choisi, l'équation se transforme en la suivante : les termes communs glissent, les autres apparaissent.",
+    "stepAt": "À (s)",
+    "addStep": "Ajouter une étape",
+    "removeStep": "Supprimer l'étape",
+    "axes": "Axes",
+    "bounds": {
+      "xMin": "x minimum",
+      "xMax": "x maximum",
+      "yMin": "y minimum",
+      "yMax": "y maximum",
+      "xStep": "Graduation x (0 = auto)",
+      "yStep": "Graduation y (0 = auto)"
+    },
+    "xLabel": "Nom de l'axe x (unité)",
+    "yLabel": "Nom de l'axe y (unité)",
+    "axesColor": "Couleur des axes",
+    "gridColor": "Couleur du quadrillage",
+    "grid": "Quadrillage",
+    "arrows": "Flèches des axes",
+    "showNumbers": "Nombres des graduations",
+    "series": "Courbes",
+    "seriesKinds": {
+      "function": "Fonction y = f(x)",
+      "parametric": "Paramétrique x(t), y(t)",
+      "polar": "Polaire r(θ)",
+      "data": "Données mesurées"
+    },
+    "removeSeries": "Supprimer la courbe",
+    "expressionError": "Expression invalide : {{message}}",
+    "dataPoints": "Mesures (x ; y), une par ligne",
+    "dataPointsHelp": "Vous pouvez coller deux colonnes depuis un tableur.",
+    "fit": "Modélisation",
+    "fits": {
+      "none": "Aucune",
+      "linear": "Linéaire (y = a·x)",
+      "affine": "Affine (y = a·x + b)",
+      "quadratic": "Parabole (y = a·x² + b·x + c)",
+      "exponential": "Exponentielle (y = A·e^(k·x))"
+    },
+    "showEquation": "Afficher l'équation du modèle",
+    "paramValue": "Valeur",
+    "paramTo": "Jusqu'à (animé)",
+    "newParam": "Nouveau paramètre",
+    "addParam": "Ajouter",
+    "removeParam": "Supprimer le paramètre",
+    "drawStart": "Début du tracé (s)",
+    "drawDuration": "Durée du tracé (s)",
+    "seriesLabel": "Nom de la courbe",
+    "dashed": "Pointillés",
+    "decorations": "Décorations",
+    "decorationKinds": {
+      "movingPoint": "Point mobile",
+      "area": "Aire sous la courbe",
+      "asymptote": "Asymptote",
+      "point": "Point",
+      "annotation": "Annotation"
+    },
+    "removeDecoration": "Supprimer la décoration",
+    "targetSeries": "Courbe",
+    "decoFrom": "De",
+    "decoTo": "À",
+    "decoValue": "Valeur",
+    "orientation": "Orientation",
+    "orientations": {
+      "horizontal": "Horizontale",
+      "vertical": "Verticale"
+    },
+    "decoLabel": "Texte",
+    "showCoords": "Coordonnées",
+    "guides": "Lignes de rappel",
+    "tangent": "Tangente mobile",
+    "chartKind": "Type de graphique",
+    "unit": "Unité",
+    "showValues": "Afficher les valeurs",
+    "growDuration": "Durée de croissance (s)",
+    "stagger": "Décalage entre barres (s)",
+    "chartData": "Données",
+    "itemLabel": "Libellé",
+    "itemValue": "Valeur",
+    "addItem": "Ajouter une valeur",
+    "removeItem": "Supprimer",
+    "rawValues": "Valeurs mesurées",
+    "rawValuesHelp": "Une valeur par ligne (ou séparées par des espaces).",
+    "bins": "Nombre de classes",
+    "vectorLabel": "Nom (LaTeX, ex. \\vec{F})",
+    "vectorValue": "Valeur (norme)",
+    "angle": "Angle (°)",
+    "pxPerUnit": "Échelle (pixels par unité)",
+    "showValue": "Afficher la valeur",
+    "showComponents": "Composantes",
+    "showAngle": "Afficher l'angle",
+    "originX": "Point d'application (horizontal %)",
+    "originY": "Point d'application (vertical %)",
+    "componentColor": "Couleur des composantes",
+    "dimensionLabel": "Valeur affichée",
+    "diagramLabel": "Nom affiché sous le schéma",
+    "accent": "Couleur d'accent",
+    "calloutKind": "Type d'encadré",
+    "calloutTitle": "Titre (vide = titre par défaut)"
   }
 }

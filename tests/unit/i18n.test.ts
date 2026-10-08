@@ -5,6 +5,7 @@ import ar from '../../src/editor/i18n/ar.json';
 import en from '../../src/editor/i18n/en.json';
 import fr from '../../src/editor/i18n/fr.json';
 import { PRESET_LIST } from '../../src/video/animations/registry';
+import { DIAGRAM_LIST } from '../../src/video/science/diagrams/registry';
 
 const flatKeys = (value: unknown, prefix = ''): string[] =>
   typeof value === 'object' && value !== null
@@ -77,6 +78,19 @@ const DYNAMIC_KEYS = [
     (type) => `background.types.${type}`,
   ),
   ...['paper', 'slate', 'grid', 'lined', 'dots', 'blueprint'].map((x) => `background.textures.${x}`),
+  ...['math', 'plot2d', 'chart', 'vector', 'dimension', 'diagram', 'callout'].map(
+    (type) => `elementTypes.${type}`,
+  ),
+  ...['xMin', 'xMax', 'yMin', 'yMax', 'xStep', 'yStep'].map((key) => `science.bounds.${key}`),
+  ...['function', 'parametric', 'polar', 'data'].map((kind) => `science.seriesKinds.${kind}`),
+  ...['none', 'linear', 'affine', 'quadratic', 'exponential'].map((fit) => `science.fits.${fit}`),
+  ...['movingPoint', 'area', 'asymptote', 'point', 'annotation'].map(
+    (kind) => `science.decorationKinds.${kind}`,
+  ),
+  ...['mechanics', 'electricity', 'optics', 'misc'].map((c) => `science.diagramCategories.${c}`),
+  ...['structures', 'calculus', 'greek', 'operators', 'units', 'arrows'].map(
+    (group) => `science.symbolGroups.${group}`,
+  ),
 ];
 
 /** Réglages et options des préréglages d'animation (métadonnées du registre). */
@@ -87,6 +101,18 @@ const presetKeys = PRESET_LIST.flatMap((item) =>
   ]),
 );
 DYNAMIC_KEYS.push(...presetKeys);
+
+/** Réglages des schémas de la bibliothèque. */
+DYNAMIC_KEYS.push(
+  ...DIAGRAM_LIST.flatMap((diagram) =>
+    diagram.params.flatMap((field) => [
+      `science.diagramParams.${field.key}`,
+      ...(field.kind === 'select'
+        ? field.options.map((option) => `science.diagramOptions.${option}`)
+        : []),
+    ]),
+  ),
+);
 
 describe('traductions de l’interface', () => {
   const frKeys = flatKeys(fr).sort();

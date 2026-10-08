@@ -9,6 +9,10 @@ import { AnimationTab } from './AnimationTab';
 import { FieldControl } from './FieldControl';
 import { fieldsFor, type FieldDescriptor, type FieldValue } from './fieldDescriptors';
 import { FontPicker } from './text/FontPicker';
+import { ChartItemsEditor } from './science/ChartItemsEditor';
+import { DiagramParamsEditor } from './science/DiagramParamsEditor';
+import { MathEditor } from './science/MathEditor';
+import { PlotEditor } from './science/PlotEditor';
 import { RichTextEditor } from './text/RichTextEditor';
 import { StylePresetPicker } from './text/StylePresetPicker';
 import { SuggestedDuration } from './text/SuggestedDuration';
@@ -72,7 +76,13 @@ export const ElementProperties = ({ element, fps }: Props) => {
           <TabsTrigger value="animation">{t('properties.animation')}</TabsTrigger>
         </TabsList>
         <TabsContent value="content" className="flex flex-col gap-3">
-          {element.type === 'text' ? <RichTextEditor element={element} /> : null}
+          {element.type === 'text' || element.type === 'callout' ? (
+            <RichTextEditor element={element} />
+          ) : null}
+          {element.type === 'math' ? <MathEditor element={element} fps={fps} /> : null}
+          {element.type === 'plot2d' ? <PlotEditor element={element} fps={fps} /> : null}
+          {element.type === 'chart' ? <ChartItemsEditor element={element} /> : null}
+          {element.type === 'diagram' ? <DiagramParamsEditor element={element} /> : null}
           {element.type === 'text' ? <SuggestedDuration element={element} fps={fps} /> : null}
           {renderTab('content')}
         </TabsContent>

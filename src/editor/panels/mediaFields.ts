@@ -11,6 +11,15 @@ import {
 } from '../../shared/schema';
 import type { FieldDescriptor } from './fieldDescriptors';
 import { booleanField, colorField, numberField, selectField } from './fieldHelpers';
+import {
+  CALLOUT_FIELDS,
+  CHART_FIELDS,
+  DIAGRAM_FIELDS,
+  DIMENSION_FIELDS,
+  MATH_FIELDS,
+  PLOT_FIELDS,
+  VECTOR_FIELDS,
+} from './scienceFields';
 import { TEXT_FIELDS } from './textFields';
 
 type Framed = ImageElement | VideoElement;
@@ -213,4 +222,11 @@ export const ELEMENT_FIELDS: {
   lottie: LOTTIE_FIELDS,
   icon: ICON_FIELDS,
   shape: SHAPE_FIELDS,
+  math: MATH_FIELDS,
+  plot2d: PLOT_FIELDS,
+  chart: CHART_FIELDS,
+  vector: VECTOR_FIELDS,
+  dimension: DIMENSION_FIELDS,
+  diagram: DIAGRAM_FIELDS,
+  callout: CALLOUT_FIELDS,
 };

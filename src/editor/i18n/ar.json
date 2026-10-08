@@ -72,7 +72,8 @@
     "presets": "أنماط النص",
     "presetsHelp": "يضيف نصًا منسقًا مسبقًا بلغة المشروع الرئيسية.",
     "shapes": "أشكال",
-    "audio": "صوت"
+    "audio": "صوت",
+    "science": "علوم"
   },
   "properties": {
     "content": "المحتوى",
@@ -88,7 +89,14 @@
     "gif": "صورة GIF متحركة",
     "lottie": "رسم Lottie متحرك",
     "icon": "أيقونة",
-    "shape": "شكل"
+    "shape": "شكل",
+    "math": "معادلة",
+    "plot2d": "معلم ومنحنيات",
+    "chart": "مخطط",
+    "vector": "متجهة",
+    "dimension": "بُعد",
+    "diagram": "تبيانة",
+    "callout": "إطار"
   },
   "fields": {
     "start": "البداية",
@@ -170,7 +178,8 @@
       "width": "العرض (px)",
       "height": "الارتفاع (px)",
       "points": "نقاط المسار",
-      "amplitude": "السعة (px)"
+      "amplitude": "السعة (px)",
+      "term": "رقم الحدّ"
     },
     "options": {
       "left": "اليسار",
@@ -503,5 +512,157 @@
     "particleCount": "عدد الجسيمات",
     "image": "صورة الخلفية",
     "video": "فيديو الخلفية (صامت، متكرر)"
+  },
+  "science": {
+    "mathAndPlots": "معادلات ومنحنيات ومخططات",
+    "plotFunction": "منحنى y = f(x)",
+    "plotData": "بيانات مقاسة",
+    "callouts": "إطارات تعليمية",
+    "chartKinds": {
+      "bar": "أعمدة",
+      "pie": "قطاعات",
+      "histogram": "مدرج تكراري"
+    },
+    "calloutKinds": {
+      "definition": "تعريف",
+      "remember": "لنتذكر",
+      "warning": "انتبه",
+      "example": "مثال",
+      "method": "طريقة"
+    },
+    "diagramCategories": {
+      "mechanics": "تبيانات — ميكانيك",
+      "electricity": "تبيانات — كهرباء",
+      "optics": "تبيانات — بصريات",
+      "misc": "تبيانات — متنوعة"
+    },
+    "diagramParams": {
+      "coils": "عدد اللفات",
+      "angle": "الزاوية (°)",
+      "closed": "قاطعة مغلقة",
+      "elbow": "الانعطاف",
+      "level": "المستوى (%)"
+    },
+    "diagramOptions": {
+      "horizontal-first": "أفقي أولًا",
+      "vertical-first": "عمودي أولًا",
+      "straight": "مستقيم"
+    },
+    "align": {
+      "start": "يسارًا",
+      "center": "في الوسط",
+      "end": "يمينًا"
+    },
+    "latex": "الصيغة (LaTeX)",
+    "latexHelp": "معاينة مباشرة في اللوحة. استعمل اللوحة لإدراج الرموز.",
+    "latexError": "صيغة ناقصة أو غير صالحة: تحقق من الأقواس { }.",
+    "symbolGroups": {
+      "structures": "بنيات",
+      "calculus": "مشتقات وتكاملات",
+      "greek": "حروف يونانية",
+      "operators": "عمليات",
+      "units": "وحدات",
+      "arrows": "أسهم وكيمياء"
+    },
+    "steps": "مراحل الحساب",
+    "stepsHelp": "في اللحظة المختارة تتحول المعادلة إلى التالية: تنزلق الحدود المشتركة وتظهر الأخرى.",
+    "stepAt": "عند (ث)",
+    "addStep": "إضافة مرحلة",
+    "removeStep": "حذف المرحلة",
+    "axes": "المحاور",
+    "bounds": {
+      "xMin": "x الأدنى",
+      "xMax": "x الأقصى",
+      "yMin": "y الأدنى",
+      "yMax": "y الأقصى",
+      "xStep": "تدريج x (0 = تلقائي)",
+      "yStep": "تدريج y (0 = تلقائي)"
+    },
+    "xLabel": "اسم المحور x (الوحدة)",
+    "yLabel": "اسم المحور y (الوحدة)",
+    "axesColor": "لون المحاور",
+    "gridColor": "لون الشبكة",
+    "grid": "الشبكة",
+    "arrows": "أسهم المحاور",
+    "showNumbers": "أعداد التدريجات",
+    "series": "المنحنيات",
+    "seriesKinds": {
+      "function": "دالة y = f(x)",
+      "parametric": "وسيطية x(t), y(t)",
+      "polar": "قطبية r(θ)",
+      "data": "بيانات مقاسة"
+    },
+    "removeSeries": "حذف المنحنى",
+    "expressionError": "تعبير غير صالح: {{message}}",
+    "dataPoints": "القياسات (x ; y)، قياس في كل سطر",
+    "dataPointsHelp": "يمكنك لصق عمودين من جدول بيانات.",
+    "fit": "النمذجة",
+    "fits": {
+      "none": "بدون",
+      "linear": "خطية (y = a·x)",
+      "affine": "تآلفية (y = a·x + b)",
+      "quadratic": "شلجمية (y = a·x² + b·x + c)",
+      "exponential": "أسية (y = A·e^(k·x))"
+    },
+    "showEquation": "إظهار معادلة النموذج",
+    "paramValue": "القيمة",
+    "paramTo": "إلى (متحرك)",
+    "newParam": "وسيط جديد",
+    "addParam": "إضافة",
+    "removeParam": "حذف الوسيط",
+    "drawStart": "بداية الرسم (ث)",
+    "drawDuration": "مدة الرسم (ث)",
+    "seriesLabel": "اسم المنحنى",
+    "dashed": "منقط",
+    "decorations": "إضافات",
+    "decorationKinds": {
+      "movingPoint": "نقطة متحركة",
+      "area": "المساحة تحت المنحنى",
+      "asymptote": "مقارب",
+      "point": "نقطة",
+      "annotation": "تعليق"
+    },
+    "removeDecoration": "حذف الإضافة",
+    "targetSeries": "المنحنى",
+    "decoFrom": "من",
+    "decoTo": "إلى",
+    "decoValue": "القيمة",
+    "orientation": "الاتجاه",
+    "orientations": {
+      "horizontal": "أفقي",
+      "vertical": "عمودي"
+    },
+    "decoLabel": "النص",
+    "showCoords": "الإحداثيات",
+    "guides": "خطوط الإسقاط",
+    "tangent": "مماس متحرك",
+    "chartKind": "نوع المخطط",
+    "unit": "الوحدة",
+    "showValues": "إظهار القيم",
+    "growDuration": "مدة النمو (ث)",
+    "stagger": "الفارق بين الأعمدة (ث)",
+    "chartData": "البيانات",
+    "itemLabel": "التسمية",
+    "itemValue": "القيمة",
+    "addItem": "إضافة قيمة",
+    "removeItem": "حذف",
+    "rawValues": "القيم المقاسة",
+    "rawValuesHelp": "قيمة في كل سطر (أو مفصولة بمسافات).",
+    "bins": "عدد الفئات",
+    "vectorLabel": "الاسم (LaTeX، مثل \\vec{F})",
+    "vectorValue": "القيمة (المنظم)",
+    "angle": "الزاوية (°)",
+    "pxPerUnit": "السلم (بكسل لكل وحدة)",
+    "showValue": "إظهار القيمة",
+    "showComponents": "المركبات",
+    "showAngle": "إظهار الزاوية",
+    "originX": "نقطة التأثير (أفقيًا %)",
+    "originY": "نقطة التأثير (عموديًا %)",
+    "componentColor": "لون المركبات",
+    "dimensionLabel": "القيمة المعروضة",
+    "diagramLabel": "الاسم تحت التبيانة",
+    "accent": "لون مميز",
+    "calloutKind": "نوع الإطار",
+    "calloutTitle": "العنوان (فارغ = العنوان الافتراضي)"
   }
 }

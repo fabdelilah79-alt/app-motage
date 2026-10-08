@@ -71,3 +71,18 @@ export const colorField = <E>(
   get,
   set: (element, value) => set(element, String(value)),
 });
+
+/** Zone de texte (contenu). */
+export const textField = <E>(
+  id: string,
+  labelKey: string,
+  get: (element: E) => string,
+  set: (element: E, value: string) => void,
+): FieldDescriptor<E> => ({
+  id,
+  labelKey,
+  tab: 'content',
+  kind: 'textarea',
+  get,
+  set: (element, value) => set(element, String(value)),
+});

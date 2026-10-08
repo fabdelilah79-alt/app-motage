@@ -91,7 +91,9 @@ export const texToLayout = (latex: string): MathLayout | null => {
     const math = root ? elementChildren(root)[0] : undefined;
     const viewBox = svg ? String(adaptor.getAttribute(svg, 'viewBox') ?? '') : '';
     const [, minY = 0, width = 0, height = 0] = viewBox.split(/\s+/).map(Number);
-    if (svg && root && math && width > 0 && !latex.includes('\\tag')) {
+    // Erreur de syntaxe : MathJax dessine un message d'erreur (nœud merror) au lieu d'échouer.
+    const hasError = svg ? adaptor.outerHTML(svg).includes('data-mml-node="merror"') : true;
+    if (svg && root && math && width > 0 && !hasError && !latex.includes('\\tag')) {
       layout = {
         minY,
         width,

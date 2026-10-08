@@ -49,11 +49,11 @@ const isHidden = (frame: AnimationFrame) =>
 
 describe('catalogue des animations (section 6.4)', () => {
   it('contient toutes les catégories', () => {
-    expect(presetsOfCategory('enter')).toHaveLength(19);
-    expect(presetsOfCategory('emphasis')).toHaveLength(11);
+    expect(presetsOfCategory('enter')).toHaveLength(20);
+    expect(presetsOfCategory('emphasis')).toHaveLength(13);
     expect(presetsOfCategory('motion')).toHaveLength(4);
     // Symétriques des apparitions (sauf le compteur) + rétrécir en point + balayage.
-    expect(presetsOfCategory('exit')).toHaveLength(20);
+    expect(presetsOfCategory('exit')).toHaveLength(21);
     expect(Object.keys(ANIMATION_PRESETS)).toHaveLength(PRESET_LIST.length);
   });
 

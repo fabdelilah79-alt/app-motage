@@ -1,6 +1,6 @@
 import { Plus, Sigma } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import type { TextElement, TextRun } from '../../../shared/schema';
+import type { CalloutElement, TextElement, TextRun } from '../../../shared/schema';
 import { useEditorStore } from '../../store/editorStore';
 import { Button } from '../../ui/button';
 import { RunEditor } from './RunEditor';
@@ -8,13 +8,13 @@ import { RunEditor } from './RunEditor';
 const SAMPLE_LATEX = 'v = \\frac{d}{t}';
 
 /** Contenu d'un texte riche : segments de texte stylés et formules en ligne. */
-export const RichTextEditor = ({ element }: { element: TextElement }) => {
+export const RichTextEditor = ({ element }: { element: TextElement | CalloutElement }) => {
   const { t } = useTranslation();
   const updateElement = useEditorStore((state) => state.updateElement);
 
   const editRuns = (recipe: (runs: TextRun[]) => void) =>
     updateElement(element.id, (draft) => {
-      if (draft.type === 'text') recipe(draft.content);
+      if (draft.type === 'text' || draft.type === 'callout') recipe(draft.content);
     });
 
   return (

@@ -50,6 +50,15 @@ export const sampleElement = (
     animations: animationsFor(preset, scale),
   };
   const kinds = preset.compatibleElements;
+  if (kinds !== 'all' && kinds.includes('math') && !kinds.includes('shape')) {
+    return {
+      ...base,
+      type: 'math',
+      latex: 'E_c = \\frac{1}{2} m v^2',
+      fontSize: Math.round(box.height * 0.45),
+      color: '#0f172a',
+    };
+  }
   if (kinds !== 'all' && kinds.includes('text') && !kinds.includes('shape')) {
     return {
       ...base,

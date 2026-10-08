@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "id": "energie-cinetique",
+  "title": "Énergie cinétique",
+  "format": { "width": 1920, "height": 1080, "fps": 30 },
+  "defaultLang": "fr",
+  "themeId": "dark-math",
+  "scenes": [
+    {
+      "id": "formule",
+      "name": "La formule",
+      "durationInFrames": 270,
+      "background": { "type": "theme" },
+      "elements": [
+        {
+          "id": "titre",
+          "type": "text",
+          "lang": "fr",
+          "transform": { "x": 160, "y": 80, "width": 1600, "height": 140 },
+          "timing": { "from": 0, "duration": 270 },
+          "animations": { "enter": { "presetId": "enter.word", "duration": 25 } },
+          "content": [{ "kind": "text", "text": "L'énergie cinétique" }],
+          "style": { "fontSize": 96, "fontWeight": 700, "color": "theme.text", "align": "center" }
+        },
+        {
+          "id": "ec",
+          "type": "math",
+          "transform": { "x": 260, "y": 330, "width": 1400, "height": 300 },
+          "timing": { "from": 20, "duration": 250 },
+          "latex": "E_c = \\frac{1}{2} m v^2",
+          "color": "theme.text",
+          "fontSize": 140,
+          "steps": [
+            { "latex": "E_c = \\frac{1}{2} \\times 2 \\times 3^2", "at": 120, "duration": 24 },
+            { "latex": "E_c = 9\\,\\text{J}", "at": 190, "duration": 24 }
+          ],
+          "animations": {
+            "enter": { "presetId": "enter.terms", "duration": 45, "easing": "linear" },
+            "emphasis": [
+              { "presetId": "emphasis.termBox", "duration": 20, "delay": 70, "params": { "term": 5, "color": "#f472b6" } }
+            ]
+          }
+        },
+        {
+          "id": "donnees",
+          "type": "text",
+          "lang": "fr",
+          "transform": { "x": 260, "y": 700, "width": 1400, "height": 100 },
+          "timing": { "from": 100, "duration": 170 },
+          "animations": { "enter": { "presetId": "enter.fade", "duration": 15 } },
+          "content": [
+            { "kind": "text", "text": "avec " },
+            { "kind": "math", "latex": "m = 2\\,\\text{kg}" },
+            { "kind": "text", "text": " et " },
+            { "kind": "math", "latex": "v = 3\\,\\text{m/s}" }
+          ],
+          "style": { "fontSize": 56, "color": "theme.muted", "align": "center" }
+        }
+      ]
+    },
+    {
+      "id": "courbe",
+      "name": "La courbe Ec = f(v)",
+      "durationInFrames": 300,
+      "background": { "type": "theme" },
+      "transitionIn": { "type": "fade", "durationInFrames": 15 },
+      "elements": [
+        {
+          "id": "repere",
+          "type": "plot2d",
+          "transform": { "x": 260, "y": 80, "width": 1400, "height": 900 },
+          "timing": { "from": 0, "duration": 300 },
+          "animations": { "enter": { "presetId": "enter.fade", "duration": 15 } },
+          "axes": {
+            "xMin": 0, "xMax": 10, "yMin": 0, "yMax": 100, "xStep": 1, "yStep": 10,
+            "xLabel": "v (m/s)", "yLabel": "Ec (J)", "fontSize": 32
+          },
+          "series": [
+            {
+              "id": "ec-v",
+              "kind": "function",
+              "expr": "0.5*m*x^2",
+              "params": { "m": { "value": 2 } },
+              "color": "theme.accent1",
+              "label": "m = 2 kg",
+              "drawStart": 20,
+              "drawDuration": 70
+            }
+          ],
+          "decorations": [
+            {
+              "id": "point",
+              "kind": "movingPoint",
+              "seriesId": "ec-v",
+              "from": 0,
+              "to": 9,
+              "start": 110,
+              "duration": 150,
+              "color": "theme.accent2",
+              "tangent": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chariot",
+      "name": "Le chariot",
+      "durationInFrames": 240,
+      "background": { "type": "theme" },
+      "transitionIn": { "type": "slide", "durationInFrames": 15, "direction": "from-right" },
+      "elements": [
+        {
+          "id": "sol",
+          "type": "diagram",
+          "diagramId": "ground",
+          "transform": { "x": 160, "y": 640, "width": 1600, "height": 40 },
+          "timing": { "from": 0, "duration": 240 },
+          "animations": { "enter": { "presetId": "enter.draw", "duration": 25 } }
+        },
+        {
+          "id": "chariot-dessin",
+          "type": "diagram",
+          "diagramId": "cart",
+          "label": "m = 2 kg",
+          "transform": { "x": 400, "y": 480, "width": 300, "height": 160 },
+          "timing": { "from": 10, "duration": 230 },
+          "animations": {
+            "enter": { "presetId": "enter.draw", "duration": 30 },
+            "emphasis": [{ "presetId": "motion.move", "duration": 120, "delay": 60, "params": { "dx": 700, "dy": 0 } }]
+          }
+        },
+        {
+          "id": "vitesse",
+          "type": "vector",
+          "transform": { "x": 620, "y": 420, "width": 400, "height": 120 },
+          "timing": { "from": 40, "duration": 200 },
+          "originX": 0,
+          "originY": 0.6,
+          "angle": 0,
+          "value": 3,
+          "unit": "m/s",
+          "pxPerUnit": 90,
+          "label": "\\vec{v}",
+          "showValue": true,
+          "animations": {
+            "enter": { "presetId": "enter.draw", "duration": 25 },
+            "emphasis": [{ "presetId": "motion.move", "duration": 120, "delay": 30, "params": { "dx": 700, "dy": 0 } }]
+          }
+        },
+        {
+          "id": "retenir",
+          "type": "callout",
+          "calloutKind": "remember",
+          "lang": "fr",
+          "transform": { "x": 160, "y": 760, "width": 780, "height": 240 },
+          "timing": { "from": 60, "duration": 180 },
+          "animations": { "enter": { "presetId": "enter.slide", "duration": 20 } },
+          "content": [
+            { "kind": "text", "text": "Si la vitesse double, l'énergie cinétique est multipliée par 4 : " },
+            { "kind": "math", "latex": "E_c \\propto v^2" }
+          ],
+          "fontSize": 36
+        },
+        {
+          "id": "retenir-ar",
+          "type": "callout",
+          "calloutKind": "remember",
+          "lang": "ar",
+          "transform": { "x": 980, "y": 760, "width": 780, "height": 240 },
+          "timing": { "from": 80, "duration": 160 },
+          "animations": { "enter": { "presetId": "enter.slide", "duration": 20 } },
+          "content": [
+            { "kind": "text", "text": "إذا تضاعفت السرعة تتضاعف الطاقة الحركية أربع مرات: " },
+            { "kind": "math", "latex": "E_c \\propto v^2" }
+          ],
+          "fontSize": 36
+        }
+      ]
+    }
+  ]
+}

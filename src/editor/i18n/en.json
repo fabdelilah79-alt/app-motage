@@ -72,7 +72,8 @@
     "presets": "Text styles",
     "presetsHelp": "Adds a ready-styled text in the project's main language.",
     "shapes": "Shapes",
-    "audio": "Audio"
+    "audio": "Audio",
+    "science": "Science"
   },
   "properties": {
     "content": "Content",
@@ -88,7 +89,14 @@
     "gif": "Animated GIF",
     "lottie": "Lottie animation",
     "icon": "Icon",
-    "shape": "Shape"
+    "shape": "Shape",
+    "math": "Equation",
+    "plot2d": "Axes and curves",
+    "chart": "Chart",
+    "vector": "Vector",
+    "dimension": "Dimension",
+    "diagram": "Diagram",
+    "callout": "Box"
   },
   "fields": {
     "start": "Start",
@@ -170,7 +178,8 @@
       "width": "Width (px)",
       "height": "Height (px)",
       "points": "Path points",
-      "amplitude": "Amplitude (px)"
+      "amplitude": "Amplitude (px)",
+      "term": "Term number"
     },
     "options": {
       "left": "Left",
@@ -503,5 +512,157 @@
     "particleCount": "Number of particles",
     "image": "Background image",
     "video": "Background video (muted, looped)"
+  },
+  "science": {
+    "mathAndPlots": "Equations, curves and charts",
+    "plotFunction": "Curve y = f(x)",
+    "plotData": "Measured data",
+    "callouts": "Teaching boxes",
+    "chartKinds": {
+      "bar": "Bars",
+      "pie": "Pie",
+      "histogram": "Histogram"
+    },
+    "calloutKinds": {
+      "definition": "Definition",
+      "remember": "Remember",
+      "warning": "Warning",
+      "example": "Example",
+      "method": "Method"
+    },
+    "diagramCategories": {
+      "mechanics": "Diagrams — mechanics",
+      "electricity": "Diagrams — electricity",
+      "optics": "Diagrams — optics",
+      "misc": "Diagrams — misc"
+    },
+    "diagramParams": {
+      "coils": "Number of coils",
+      "angle": "Angle (°)",
+      "closed": "Switch closed",
+      "elbow": "Elbow",
+      "level": "Level (%)"
+    },
+    "diagramOptions": {
+      "horizontal-first": "Horizontal first",
+      "vertical-first": "Vertical first",
+      "straight": "Straight"
+    },
+    "align": {
+      "start": "Left",
+      "center": "Center",
+      "end": "Right"
+    },
+    "latex": "Formula (LaTeX)",
+    "latexHelp": "Live preview on the canvas. Use the palette to insert symbols.",
+    "latexError": "Incomplete or invalid formula: check the braces { }.",
+    "symbolGroups": {
+      "structures": "Structures",
+      "calculus": "Derivatives and integrals",
+      "greek": "Greek letters",
+      "operators": "Operators",
+      "units": "Units",
+      "arrows": "Arrows and chemistry"
+    },
+    "steps": "Calculation steps",
+    "stepsHelp": "At the chosen time, the equation turns into the next one: common terms slide, the others appear.",
+    "stepAt": "At (s)",
+    "addStep": "Add a step",
+    "removeStep": "Remove the step",
+    "axes": "Axes",
+    "bounds": {
+      "xMin": "x minimum",
+      "xMax": "x maximum",
+      "yMin": "y minimum",
+      "yMax": "y maximum",
+      "xStep": "x tick step (0 = auto)",
+      "yStep": "y tick step (0 = auto)"
+    },
+    "xLabel": "x axis name (unit)",
+    "yLabel": "y axis name (unit)",
+    "axesColor": "Axes color",
+    "gridColor": "Grid color",
+    "grid": "Grid",
+    "arrows": "Axis arrows",
+    "showNumbers": "Tick numbers",
+    "series": "Curves",
+    "seriesKinds": {
+      "function": "Function y = f(x)",
+      "parametric": "Parametric x(t), y(t)",
+      "polar": "Polar r(θ)",
+      "data": "Measured data"
+    },
+    "removeSeries": "Remove the curve",
+    "expressionError": "Invalid expression: {{message}}",
+    "dataPoints": "Measurements (x ; y), one per line",
+    "dataPointsHelp": "You can paste two columns from a spreadsheet.",
+    "fit": "Model",
+    "fits": {
+      "none": "None",
+      "linear": "Linear (y = a·x)",
+      "affine": "Affine (y = a·x + b)",
+      "quadratic": "Parabola (y = a·x² + b·x + c)",
+      "exponential": "Exponential (y = A·e^(k·x))"
+    },
+    "showEquation": "Show the model equation",
+    "paramValue": "Value",
+    "paramTo": "Up to (animated)",
+    "newParam": "New parameter",
+    "addParam": "Add",
+    "removeParam": "Remove the parameter",
+    "drawStart": "Drawing start (s)",
+    "drawDuration": "Drawing duration (s)",
+    "seriesLabel": "Curve name",
+    "dashed": "Dashed",
+    "decorations": "Decorations",
+    "decorationKinds": {
+      "movingPoint": "Moving point",
+      "area": "Area under the curve",
+      "asymptote": "Asymptote",
+      "point": "Point",
+      "annotation": "Note"
+    },
+    "removeDecoration": "Remove the decoration",
+    "targetSeries": "Curve",
+    "decoFrom": "From",
+    "decoTo": "To",
+    "decoValue": "Value",
+    "orientation": "Orientation",
+    "orientations": {
+      "horizontal": "Horizontal",
+      "vertical": "Vertical"
+    },
+    "decoLabel": "Text",
+    "showCoords": "Coordinates",
+    "guides": "Guide lines",
+    "tangent": "Moving tangent",
+    "chartKind": "Chart type",
+    "unit": "Unit",
+    "showValues": "Show values",
+    "growDuration": "Growth duration (s)",
+    "stagger": "Delay between bars (s)",
+    "chartData": "Data",
+    "itemLabel": "Label",
+    "itemValue": "Value",
+    "addItem": "Add a value",
+    "removeItem": "Remove",
+    "rawValues": "Measured values",
+    "rawValuesHelp": "One value per line (or separated by spaces).",
+    "bins": "Number of bins",
+    "vectorLabel": "Name (LaTeX, e.g. \\vec{F})",
+    "vectorValue": "Value (magnitude)",
+    "angle": "Angle (°)",
+    "pxPerUnit": "Scale (pixels per unit)",
+    "showValue": "Show the value",
+    "showComponents": "Components",
+    "showAngle": "Show the angle",
+    "originX": "Application point (horizontal %)",
+    "originY": "Application point (vertical %)",
+    "componentColor": "Components color",
+    "dimensionLabel": "Displayed value",
+    "diagramLabel": "Name under the diagram",
+    "accent": "Accent color",
+    "calloutKind": "Box type",
+    "calloutTitle": "Title (empty = default title)"
   }
 }

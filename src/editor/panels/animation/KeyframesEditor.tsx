@@ -22,6 +22,14 @@ const baseColorOf = (element: SceneElement): string | undefined => {
   if (element.type === 'text') return element.style.color;
   if (element.type === 'shape') return element.fill;
   if (element.type === 'icon') return element.color;
+  if (
+    element.type === 'math' ||
+    element.type === 'vector' ||
+    element.type === 'dimension' ||
+    element.type === 'diagram'
+  ) {
+    return element.color;
+  }
   return undefined;
 };
 
