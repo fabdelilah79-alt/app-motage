@@ -4,6 +4,7 @@ import type { Scene } from '../../shared/schema';
 import { ElementLayer } from '../elements/ElementLayer';
 import { cameraAt, cameraTransform } from './camera';
 import { SceneBackground } from './SceneBackground';
+import { SubtitlesOverlay } from './SubtitlesOverlay';
 
 export const SceneView: FC<{ scene: Scene }> = ({ scene }) => {
   const frame = useCurrentFrame();
@@ -29,6 +30,7 @@ export const SceneView: FC<{ scene: Scene }> = ({ scene }) => {
             </Sequence>
           ))}
       </AbsoluteFill>
+      <SubtitlesOverlay cues={scene.subtitles} />
     </AbsoluteFill>
   );
 };

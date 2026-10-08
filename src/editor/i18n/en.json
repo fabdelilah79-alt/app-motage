@@ -39,7 +39,14 @@
     "format": "Video format",
     "language": "Main language",
     "create": "Create project",
-    "defaultTitle": "My new video"
+    "defaultTitle": "My new video",
+    "blank": "Blank project",
+    "blankHelp": "One empty scene, you add everything yourself.",
+    "startFrom": "Starting point: a blank project or a template with sample content to replace.",
+    "templateLanguage": "The sample content will be written in this language.",
+    "templateFormat": "Template format: {{format}}.",
+    "fps": "Frames per second",
+    "fpsHelp": "30 suits almost everything; 60 for very fast motion."
   },
   "topBar": {
     "projectName": "Project name",
@@ -250,7 +257,7 @@
     "voiceover": "Voice-over"
   },
   "export": {
-    "title": "Export video (MP4)",
+    "title": "Export",
     "cancel": "Cancel export",
     "savedTo": "File saved:",
     "failedHelp": "Check that the local server is running (npm run dev), then try again.",
@@ -777,5 +784,65 @@
     "freezeAt": "Pause at (s)",
     "freezeAtHelp": "Empty: no pause. Otherwise the simulation stops at that time.",
     "textColor": "Text color"
+  },
+  "exportSettings": {
+    "format": "Format",
+    "formats": {
+      "mp4": "MP4 video (plays everywhere)",
+      "webm": "WebM video",
+      "gif": "Animated GIF (short clip)",
+      "png": "PNG image (thumbnail)"
+    },
+    "quality": "Quality",
+    "qualities": {
+      "draft": "Draft (fast)",
+      "standard": "Standard",
+      "high": "High"
+    },
+    "size": "Size",
+    "fpsInfo": "{{width}} × {{height}} pixels, {{fps}} frames per second",
+    "stillAt": "Image at time (s)",
+    "range": "Part to export",
+    "ranges": {
+      "all": "Whole video",
+      "scene": "A single scene",
+      "interval": "A time range"
+    },
+    "scene": "Scene",
+    "from": "From (s)",
+    "to": "To (s)",
+    "srt": "Also write the subtitle file (.srt)",
+    "longGif": "A GIF longer than 15 seconds will be very heavy: choose a scene or a time range.",
+    "remaining": "Estimated time left: {{minutes}} min {{seconds}} s",
+    "download": "Download the file",
+    "openFolder": "Open the exports folder",
+    "again": "Another export",
+    "downloadSrt": "Download subtitles (.srt)",
+    "start": "Start export"
+  },
+  "subtitles": {
+    "title": "Subtitles",
+    "text": "Subtitle text",
+    "from": "Start (s)",
+    "to": "End (s)",
+    "remove": "Remove the subtitle",
+    "add": "Add",
+    "fromScript": "From the script",
+    "transcribe": "Transcribe the voice-over",
+    "stages": {
+      "download": "Downloading the speech model (only once): {{percent}} %",
+      "decode": "Reading the voice-over: {{percent}} %",
+      "transcribe": "Transcribing…"
+    },
+    "unsupported": "This browser cannot transcribe locally (WebGPU). Use a recent Chrome or Edge at http://localhost:5173.",
+    "failed": "Transcription failed. Check the connection (for the first model download) and try again.",
+    "help": "Transcription runs on your computer: the voice is not sent anywhere.",
+    "burnIn": "Burn subtitles into the video",
+    "position": "Position",
+    "positions": {
+      "bottom": "Bottom",
+      "top": "Top"
+    },
+    "background": "Band behind the text"
   }
 }

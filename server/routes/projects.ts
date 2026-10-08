@@ -15,6 +15,8 @@ const newProjectSchema = z.object({
   title: z.string().trim().min(1).max(120),
   formatId: formatPresetIdSchema,
   defaultLang: langSchema,
+  fps: z.union([z.literal(30), z.literal(60)]).optional(),
+  templateId: z.string().max(60).optional(),
 });
 const saveSchema = z.object({ project: z.unknown() });
 const duplicateSchema = z.object({ title: z.string().trim().min(1).max(120) });

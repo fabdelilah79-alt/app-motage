@@ -99,7 +99,11 @@ export const ProjectVideo: FC<ProjectVideoProps> = ({ project, filesBaseUrl = ''
       value={{ assets: project.assets, projectId: project.id, filesBaseUrl }}
     >
       <ProjectSettingsContext.Provider
-        value={{ digits: project.digits, defaultLang: project.defaultLang }}
+        value={{
+          digits: project.digits,
+          defaultLang: project.defaultLang,
+          subtitleStyle: project.subtitleStyle,
+        }}
       >
         <ThemeContext.Provider value={theme}>
           <AbsoluteFill style={{ backgroundColor: '#000000' }}>

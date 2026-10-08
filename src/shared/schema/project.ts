@@ -46,6 +46,15 @@ export const brandSchema = z.object({
 });
 export type Brand = z.infer<typeof brandSchema>;
 
+/** Affichage des sous-titres incrustés dans la vidéo (style harmonisé avec le thème). */
+export const subtitleStyleSchema = z.object({
+  burnIn: z.boolean().default(false),
+  position: z.enum(['bottom', 'top']).default('bottom'),
+  fontSize: z.number().positive().default(44),
+  background: z.boolean().default(true),
+});
+export type SubtitleStyle = z.infer<typeof subtitleStyleSchema>;
+
 export const projectSchema = z.object({
   schemaVersion: z.literal(CURRENT_SCHEMA_VERSION),
   id: idSchema,
@@ -63,6 +72,7 @@ export const projectSchema = z.object({
   brand: brandSchema.optional(),
   /** Musiques de fond (atténuées automatiquement sous les voix off). */
   audioTracks: z.array(audioTrackSchema).default([]),
+  subtitleStyle: subtitleStyleSchema.prefault({}),
   scenes: z.array(sceneSchema).min(1),
 });
 export type Project = z.infer<typeof projectSchema>;

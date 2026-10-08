@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import type { ExportOptions } from '../../shared/exportOptions';
 import type { FormatPresetId } from '../../shared/formats';
 import { renderJobStateSchema, type RenderJobState } from '../../shared/render';
 import {
@@ -78,6 +79,8 @@ export const api = {
     title: string;
     formatId: FormatPresetId;
     defaultLang: Lang;
+    fps?: 30 | 60;
+    templateId?: string;
   }): Promise<Project> => parseProject(await requestJson('/api/projects', sendJson('POST', input))),
 
   getProject: async (id: string): Promise<Project> =>
@@ -118,13 +121,23 @@ export const api = {
       await requestJson(`${projectUrl(projectId)}/brand`, sendJson('POST', {})),
     ),
 
-  startRender: async (project: Project): Promise<RenderJobState> =>
-    renderJobStateSchema.parse(await requestJson('/api/render', sendJson('POST', { project }))),
+  startRender: async (project: Project, options: ExportOptions): Promise<RenderJobState> =>
+    renderJobStateSchema.parse(
+      await requestJson('/api/render', sendJson('POST', { project, options })),
+    ),
+
+  /** Ouvre le dossier des exports dans l'explorateur de fichiers de l'ordinateur. */
+  openExportsFolder: async (): Promise<void> => {
+    await requestJson('/api/exports/open', sendJson('POST', {}));
+  },
 
   cancelRender: async (id: string): Promise<void> => {
     await requestJson(`/api/render/${encodeURIComponent(id)}`, { method: 'DELETE' });
   },
 };
+
+/** Adresse de téléchargement du fichier exporté. */
+export const renderFileUrl = (id: string): string => `/api/render/${encodeURIComponent(id)}/file`;
 
 export const renderEventsUrl = (id: string): string =>
   `/api/render/${encodeURIComponent(id)}/events`;

@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { isRenderFinished, type RenderJobState } from '../../src/shared/render';
+import { exportOptionsSchema, renderSettings, type ExportOptions } from '../../src/shared/exportOptions';
 import type { Project } from '../../src/shared/schema';
 import { buildOutputFileName } from './outputFileName';
 import type { RenderCallbacks, RenderFunction } from './renderProject';
@@ -19,7 +20,7 @@ type Job = {
 export const isFinished = isRenderFinished;
 
 export type RenderJobManager = {
-  start: (project: Project) => RenderJobState;
+  start: (project: Project, options?: ExportOptions) => RenderJobState;
   get: (id: string) => RenderJobState | undefined;
   /** Abonnement aux changements d'un rendu ; renvoie la fonction de désabonnement. */
   subscribe: (id: string, listener: Listener) => (() => void) | undefined;
@@ -47,11 +48,12 @@ export const createRenderJobManager = ({
     }
   };
 
-  const start = (project: Project): RenderJobState => {
+  const start = (project: Project, options = exportOptionsSchema.parse({})): RenderJobState => {
     const id = randomUUID();
-    const outputPath = path.join(exportsDir, buildOutputFileName(project.title, now()));
+    const { extension } = renderSettings(project, options);
+    const outputPath = path.join(exportsDir, buildOutputFileName(project.title, now(), extension));
     const job: Job = {
-      state: { id, status: 'bundling', progress: 0, outputPath, error: null },
+      state: { id, status: 'bundling', progress: 0, outputPath, error: null, startedAt: null },
       cancelRequested: false,
       cancelCallbacks: [],
       listeners: new Set(),
@@ -59,7 +61,8 @@ export const createRenderJobManager = ({
     jobs.set(id, job);
 
     const callbacks: RenderCallbacks = {
-      onStage: (stage) => update(job, { status: stage }),
+      onStage: (stage) =>
+        update(job, stage === 'rendering' ? { status: stage, startedAt: now().getTime() } : { status: stage }),
       onProgress: (progress) => {
         const rounded = Math.floor(progress * 100) / 100;
         if (rounded !== job.state.progress) {
@@ -91,7 +94,7 @@ export const createRenderJobManager = ({
         update(job, { status: 'error', error: message });
       }
     };
-    render(project, outputPath, callbacks).then(onSuccess, onFailure);
+    render(project, outputPath, callbacks, options).then(onSuccess, onFailure);
 
     return job.state;
   };

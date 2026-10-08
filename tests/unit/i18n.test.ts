@@ -88,6 +88,12 @@ const DYNAMIC_KEYS = [
   ...['empty', 'surface', 'helix', 'field', 'solids'].map((id) => `three.presets.${id}`),
   ...['mechanics', 'waves', 'electricity', 'optics', 'misc'].map((c) => `simulation.categories.${c}`),
   ...['right', 'below'].map((position) => `simulation.positions.${position}`),
+  ...['mp4', 'webm', 'gif', 'png'].map((format) => `exportSettings.formats.${format}`),
+  ...['draft', 'standard', 'high'].map((quality) => `exportSettings.qualities.${quality}`),
+  ...['all', 'scene', 'interval'].map((range) => `exportSettings.ranges.${range}`),
+  ...['download', 'decode', 'transcribe'].map((stage) => `subtitles.stages.${stage}`),
+  'subtitles.unsupported',
+  'subtitles.failed',
   ...['math', 'plot2d', 'chart', 'vector', 'dimension', 'diagram', 'callout', 'scene3d', 'simulation'].map(
     (type) => `elementTypes.${type}`,
   ),

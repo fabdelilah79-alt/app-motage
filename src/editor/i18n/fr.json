@@ -39,7 +39,14 @@
     "format": "Format de la vidéo",
     "language": "Langue principale",
     "create": "Créer le projet",
-    "defaultTitle": "Ma nouvelle vidéo"
+    "defaultTitle": "Ma nouvelle vidéo",
+    "blank": "Projet vide",
+    "blankHelp": "Une scène vierge, vous ajoutez tout vous-même.",
+    "startFrom": "Point de départ : un projet vide ou un modèle avec un contenu d’exemple à remplacer.",
+    "templateLanguage": "Le contenu d’exemple sera écrit dans cette langue.",
+    "templateFormat": "Format du modèle : {{format}}.",
+    "fps": "Images par seconde",
+    "fpsHelp": "30 convient à presque tout ; 60 pour des mouvements très rapides."
   },
   "topBar": {
     "projectName": "Nom du projet",
@@ -250,7 +257,7 @@
     "voiceover": "Voix off"
   },
   "export": {
-    "title": "Exporter la vidéo (MP4)",
+    "title": "Exporter",
     "cancel": "Annuler l'export",
     "savedTo": "Fichier enregistré :",
     "failedHelp": "Vérifiez que le serveur local est lancé (npm run dev), puis réessayez.",
@@ -777,5 +784,65 @@
     "freezeAt": "Pause à (s)",
     "freezeAtHelp": "Vide : pas de pause. Sinon la simulation s'arrête à cet instant.",
     "textColor": "Couleur des textes"
+  },
+  "exportSettings": {
+    "format": "Format",
+    "formats": {
+      "mp4": "Vidéo MP4 (compatible partout)",
+      "webm": "Vidéo WebM",
+      "gif": "GIF animé (court extrait)",
+      "png": "Image PNG (miniature)"
+    },
+    "quality": "Qualité",
+    "qualities": {
+      "draft": "Brouillon (rapide)",
+      "standard": "Standard",
+      "high": "Haute"
+    },
+    "size": "Taille",
+    "fpsInfo": "{{width}} × {{height}} pixels, {{fps}} images par seconde",
+    "stillAt": "Image à l'instant (s)",
+    "range": "Partie à exporter",
+    "ranges": {
+      "all": "Toute la vidéo",
+      "scene": "Une seule scène",
+      "interval": "Un intervalle"
+    },
+    "scene": "Scène",
+    "from": "De (s)",
+    "to": "À (s)",
+    "srt": "Écrire aussi le fichier de sous-titres (.srt)",
+    "longGif": "Un GIF de plus de 15 secondes sera très lourd : choisissez une scène ou un intervalle.",
+    "remaining": "Temps restant estimé : {{minutes}} min {{seconds}} s",
+    "download": "Télécharger le fichier",
+    "openFolder": "Ouvrir le dossier des exports",
+    "again": "Autre export",
+    "downloadSrt": "Télécharger les sous-titres (.srt)",
+    "start": "Lancer l’export"
+  },
+  "subtitles": {
+    "title": "Sous-titres",
+    "text": "Texte du sous-titre",
+    "from": "Début (s)",
+    "to": "Fin (s)",
+    "remove": "Supprimer le sous-titre",
+    "add": "Ajouter",
+    "fromScript": "Depuis le script",
+    "transcribe": "Transcrire la voix off",
+    "stages": {
+      "download": "Téléchargement du modèle de reconnaissance (une seule fois) : {{percent}} %",
+      "decode": "Lecture de la voix off : {{percent}} %",
+      "transcribe": "Transcription en cours…"
+    },
+    "unsupported": "Ce navigateur ne permet pas la transcription locale (WebGPU). Utilisez Chrome ou Edge récent, à l'adresse http://localhost:5173.",
+    "failed": "La transcription a échoué. Vérifiez la connexion (pour le premier téléchargement du modèle) puis réessayez.",
+    "help": "La transcription se fait sur votre ordinateur : la voix n'est envoyée nulle part.",
+    "burnIn": "Incruster les sous-titres dans la vidéo",
+    "position": "Position",
+    "positions": {
+      "bottom": "En bas",
+      "top": "En haut"
+    },
+    "background": "Bandeau derrière le texte"
   }
 }

@@ -30,6 +30,7 @@ test('créer un projet, le remplir et exporter un MP4', async ({ page }) => {
   await expect(page.getByTestId('save-status')).toHaveText(/Enregistré/);
 
   await page.getByTestId('export-button').click();
+  await page.getByTestId('export-start').click();
   await expect(page.getByTestId('export-status')).toHaveAttribute('data-status', 'done', {
     timeout: 5 * 60_000,
   });

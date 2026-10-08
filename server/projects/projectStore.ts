@@ -3,11 +3,19 @@ import path from 'node:path';
 import { createProject, randomId, type IdGenerator } from '../../src/shared/factories';
 import type { FormatPresetId } from '../../src/shared/formats';
 import { parseProject, type Asset, type Lang, type Project } from '../../src/shared/schema';
+import { createProjectFromTemplate, getTemplate } from '../../src/shared/templates/registry';
 import { MEDIA_TYPES, PROJECT_ID_PATTERN, assetFileName, newProjectId } from './fileNames';
 
 export type ProjectSummary = { id: string; title: string; updatedAt: string };
 
-export type NewProjectInput = { title: string; formatId: FormatPresetId; defaultLang: Lang };
+export type NewProjectInput = {
+  title: string;
+  formatId: FormatPresetId;
+  defaultLang: Lang;
+  fps?: 30 | 60;
+  /** Modèle de vidéo (src/shared/templates) ; absent = projet vide. */
+  templateId?: string;
+};
 
 export class ProjectNotFoundError extends Error {
   constructor(id: string) {
@@ -76,7 +84,11 @@ export const createProjectStore = (projectsDir: string, newId: IdGenerator = ran
   };
 
   const create = async (input: NewProjectInput): Promise<Project> => {
-    const project = createProject({ id: newProjectId(input.title, newId()), ...input }, newId);
+    const id = newProjectId(input.title, newId());
+    const template = getTemplate(input.templateId);
+    const project = template
+      ? createProjectFromTemplate({ id, title: input.title, defaultLang: input.defaultLang }, template, newId)
+      : createProject({ id, title: input.title, formatId: input.formatId, defaultLang: input.defaultLang, fps: input.fps }, newId);
     await write(project);
     return project;
   };

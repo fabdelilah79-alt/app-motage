@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { isRenderFinished, renderJobStateSchema, type RenderJobState } from '../../shared/render';
+import type { ExportOptions } from '../../shared/exportOptions';
 import type { Project } from '../../shared/schema';
 import { api, renderEventsUrl } from '../api/client';
 
@@ -14,12 +15,12 @@ export const useRenderJob = () => {
     sourceRef.current = null;
   }, []);
 
-  const start = useCallback(async (project: Project) => {
+  const start = useCallback(async (project: Project, options: ExportOptions) => {
     stopListening();
     setJob(null);
     setFailed(false);
     try {
-      const started = await api.startRender(project);
+      const started = await api.startRender(project, options);
       setJob(started);
       const source = new EventSource(renderEventsUrl(started.id));
       sourceRef.current = source;

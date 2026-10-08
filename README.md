@@ -34,7 +34,8 @@ toutes les images.
 
 ## Utiliser l'éditeur (en bref)
 
-1. **Nouveau projet** : choisir un nom, un format (16:9, 9:16, 1:1) et la langue principale.
+1. **Nouveau projet** : partir d'un projet vide ou d'un des 8 modèles (« Notion en 60 secondes »,
+   « Exercice corrigé pas à pas », « Short vertical »…), choisir un nom et la langue.
 2. **Bibliothèque** (à gauche) : cliquer sur « Texte en arabe / français / anglais » ou importer une image.
 3. **Canevas** (au centre) : cliquer sur un élément pour le sélectionner, puis le déplacer,
    l'agrandir ou le faire pivoter avec les poignées.
@@ -46,7 +47,9 @@ toutes les images.
    Un son peut devenir la musique de fond ou la voix off de la scène.
 7. **Audio** : écrire le texte de la voix off, l'enregistrer au micro, puis « Caler la durée de la
    scène sur la voix ». La musique baisse automatiquement pendant la voix.
-8. **Exporter la vidéo** (en haut à droite) : le fichier MP4 est rangé dans `PhysiMotion/exports`.
+8. **Exporter** (en haut à droite) : MP4, WebM, GIF ou image PNG ; qualité brouillon / standard /
+   haute ; toute la vidéo, une scène ou un intervalle ; temps restant affiché ; bouton pour
+   télécharger le fichier ou ouvrir le dossier `PhysiMotion/exports`.
 
 9. **Thème** (en haut) : choisir l'allure de toute la vidéo en un clic (tableau noir, cahier,
    blueprint, néon…), modifier les couleurs du thème, et préparer son **kit de marque** (logo
@@ -66,6 +69,11 @@ toutes les images.
 12. **Simulations** (onglet de la bibliothèque) : chute libre, projectile, pendule, masse-ressort,
     onde sur une corde, circuit RC, réfraction… Réglez les paramètres (avec leurs unités), les
     vecteurs, le graphique synchronisé, le ralenti et la pause.
+
+13. **Sous-titres** (propriétés de la scène, sans élément sélectionné) : saisie, création depuis le
+    script, ou transcription automatique de la voix off sur votre ordinateur (Chrome ou Edge
+    récent ; le modèle de reconnaissance est téléchargé une seule fois). Cochez « Incruster les
+    sous-titres » pour les voir dans la vidéo, ou exportez un fichier `.srt`.
 
 Les projets sont enregistrés automatiquement (5 s après chaque modification) dans
 `PhysiMotion/projets` de votre dossier personnel.
@@ -138,7 +146,7 @@ une seule fois.
 | `npx playwright install chromium` (une fois)    | Installe le navigateur des tests bout en bout    |
 | `npm run test:e2e`                              | Tests bout en bout (ouvre l'application)         |
 
-Après la mise à jour vers la phase 8, relancer `npm install` (nouveaux paquets 3D).
+Après chaque mise à jour (nouveaux paquets : 3D, sous-titres), relancer `npm install`.
 
 Avant `npm run test:e2e`, arrêter `npm run dev` : les tests lancent leur propre copie de
 l'application, avec un dossier de données séparé (`.e2e-data`). Le test d'export fabrique un

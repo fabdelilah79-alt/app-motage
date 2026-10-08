@@ -9,6 +9,7 @@ import { registerBrandRoutes } from './routes/brand';
 import { registerFileRoutes } from './routes/files';
 import { registerProjectRoutes } from './routes/projects';
 import { registerRenderRoutes } from './routes/render';
+import { openInFileExplorer } from './openFolder';
 
 type ServerOptions = {
   logger?: boolean;
@@ -17,6 +18,8 @@ type ServerOptions = {
   /** Dossier du kit de marque (par défaut <données>/marque). */
   brandDir?: string;
   jobs?: RenderJobManager;
+  /** Ouverture d'un dossier dans l'explorateur (remplacée dans les tests). */
+  openFolder?: (dir: string) => void;
 };
 
 export const buildServer = ({
@@ -24,6 +27,7 @@ export const buildServer = ({
   projectsDir,
   brandDir,
   jobs,
+  openFolder = openInFileExplorer,
 }: ServerOptions = {}) => {
   const app = Fastify({ logger });
   const store = createProjectStore(projectsDir ?? PROJECTS_DIR);
@@ -36,6 +40,8 @@ export const buildServer = ({
   registerRenderRoutes(
     app,
     jobs ?? createRenderJobManager({ render: renderProject, exportsDir: EXPORTS_DIR }),
+    EXPORTS_DIR,
+    openFolder,
   );
 
   return app;

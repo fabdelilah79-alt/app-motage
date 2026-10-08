@@ -89,4 +89,15 @@ describe('projets enregistrés sur le disque', () => {
     const expected = path.join(dir, project.id, 'project.json');
     expect(store.resolveFile(project.id, 'project.json')).toBe(expected);
   });
+
+  it('crée un projet depuis un modèle, ou un projet vide à 60 images/s', async () => {
+    const store = createProjectStore(dir, newId);
+    const fromTemplate = await store.create({ ...input('Short'), templateId: 'vertical-short', defaultLang: 'ar' });
+    expect(fromTemplate.format).toMatchObject({ width: 1080, height: 1920, fps: 30 });
+    expect(fromTemplate.themeId).toBe('neon');
+    expect(fromTemplate.scenes.length).toBeGreaterThan(1);
+    const blank = await store.create({ ...input('Rapide'), fps: 60 });
+    expect(blank.format.fps).toBe(60);
+    expect(blank.scenes).toHaveLength(1);
+  });
 });

@@ -71,6 +71,15 @@ export const sceneTransitionSchema = z.object({
 });
 export type SceneTransition = z.infer<typeof sceneTransitionSchema>;
 
+/** Sous-titre d'une scène : texte affiché de `from` à `to` (frames relatives à la scène). */
+export const subtitleCueSchema = z.object({
+  id: idSchema,
+  from: z.number().int().min(0),
+  to: z.number().int().min(0),
+  text: z.string(),
+});
+export type SubtitleCue = z.infer<typeof subtitleCueSchema>;
+
 export const sceneSchema = z.object({
   id: idSchema,
   name: z.string().default(''),
@@ -84,6 +93,8 @@ export const sceneSchema = z.object({
   voiceover: voiceoverSchema.optional(),
   /** Mouvements de caméra (zoom sur une zone, panoramique, travelling, retour au plan large). */
   camera: z.array(cameraMoveSchema).default([]),
+  /** Sous-titres (saisis, tirés du script ou transcrits automatiquement). */
+  subtitles: z.array(subtitleCueSchema).default([]),
 });
 export type Scene = z.infer<typeof sceneSchema>;
 export type SceneInput = z.input<typeof sceneSchema>;

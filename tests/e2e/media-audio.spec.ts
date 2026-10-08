@@ -36,6 +36,7 @@ test('voix off enregistrée, musique et vidéo découpée, puis export', async (
 
   await page.getByTestId('save-status').click();
   await page.getByTestId('export-button').click();
+  await page.getByTestId('export-start').click();
   await expect(page.getByTestId('export-status')).toHaveAttribute('data-status', 'done', {
     timeout: 5 * 60_000,
   });

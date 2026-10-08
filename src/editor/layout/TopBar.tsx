@@ -28,10 +28,6 @@ export const TopBar = ({ saveStatus, onSave }: Props) => {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [themeOpen, setThemeOpen] = useState(false);
 
-  const startExport = () => {
-    setExportOpen(true);
-    void render.start(useEditorStore.getState().project ?? project);
-  };
 
   return (
     <header className="flex h-14 shrink-0 items-center gap-2 border-b border-slate-800 bg-slate-900 px-3">
@@ -101,20 +97,14 @@ export const TopBar = ({ saveStatus, onSave }: Props) => {
           <Settings size={18} aria-hidden />
         </Button>
         <LanguageSwitcher />
-        <Button variant="primary" onClick={startExport} data-testid="export-button">
+        <Button variant="primary" onClick={() => setExportOpen(true)} data-testid="export-button">
           {t('topBar.export')}
         </Button>
       </div>
 
       <ProjectSettingsDialog open={settingsOpen} onOpenChange={setSettingsOpen} />
       <ThemeDialog open={themeOpen} onOpenChange={setThemeOpen} />
-      <ExportDialog
-        open={exportOpen}
-        onOpenChange={setExportOpen}
-        job={render.job}
-        failed={render.failed}
-        onCancel={() => void render.cancel()}
-      />
+      <ExportDialog open={exportOpen} onOpenChange={setExportOpen} project={project} render={render} />
     </header>
   );
 };

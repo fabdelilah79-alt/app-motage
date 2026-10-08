@@ -29,6 +29,7 @@ export const createScene = (format: ProjectFormat, newId: IdGenerator = randomId
   background: { type: 'theme' },
   elements: [],
   camera: [],
+  subtitles: [],
 });
 
 type NewProjectOptions = {
@@ -36,10 +37,12 @@ type NewProjectOptions = {
   title: string;
   formatId: FormatPresetId;
   defaultLang: Lang;
+  /** 30 (par défaut) ou 60 images par seconde. */
+  fps?: 30 | 60;
 };
 
 export const createProject = (options: NewProjectOptions, newId: IdGenerator = randomId) => {
-  const format = { ...FORMAT_PRESETS[options.formatId] };
+  const format = { ...FORMAT_PRESETS[options.formatId], fps: options.fps ?? 30 };
   const project: Project = {
     schemaVersion: CURRENT_SCHEMA_VERSION,
     id: options.id,
@@ -51,6 +54,7 @@ export const createProject = (options: NewProjectOptions, newId: IdGenerator = r
     themeId: 'minimal-light',
     themeOverrides: {},
     audioTracks: [],
+    subtitleStyle: { burnIn: false, position: 'bottom', fontSize: 44, background: true },
     scenes: [createScene(format, newId)],
   };
   return project;

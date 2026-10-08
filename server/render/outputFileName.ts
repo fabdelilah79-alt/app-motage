@@ -10,9 +10,9 @@ export const slugify = (title: string): string =>
     .replace(/^-+|-+$/g, '')
     .slice(0, 60);
 
-/** Nom du fichier MP4 exporté, ex. « la-chute-libre_2026-10-03_14-05-09.mp4 ». */
-export const buildOutputFileName = (title: string, date: Date): string => {
+/** Nom du fichier exporté, ex. « la-chute-libre_2026-10-03_14-05-09.mp4 ». */
+export const buildOutputFileName = (title: string, date: Date, extension = 'mp4'): string => {
   const day = `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
   const time = `${pad(date.getHours())}-${pad(date.getMinutes())}-${pad(date.getSeconds())}`;
-  return `${slugify(title) || 'video'}_${day}_${time}.mp4`;
+  return `${slugify(title) || 'video'}_${day}_${time}.${extension}`;
 };
