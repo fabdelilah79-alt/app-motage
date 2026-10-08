@@ -10,6 +10,7 @@ import {
   mathElementSchema,
   vectorElementSchema,
 } from './science';
+import { scene3dElementSchema } from './three';
 import { textRunSchema, textStyleSchema } from './text';
 
 export { timingSchema, transformSchema, type Timing, type Transform } from './elementBase';
@@ -120,6 +121,7 @@ export const sceneElementSchema = z.discriminatedUnion('type', [
   dimensionElementSchema,
   diagramElementSchema,
   calloutElementSchema,
+  scene3dElementSchema,
 ]);
 export type SceneElement = z.infer<typeof sceneElementSchema>;
 export type SceneElementInput = z.input<typeof sceneElementSchema>;

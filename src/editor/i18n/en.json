@@ -73,7 +73,8 @@
     "presetsHelp": "Adds a ready-styled text in the project's main language.",
     "shapes": "Shapes",
     "audio": "Audio",
-    "science": "Science"
+    "science": "Science",
+    "three": "3D"
   },
   "properties": {
     "content": "Content",
@@ -96,7 +97,8 @@
     "vector": "Vector",
     "dimension": "Dimension",
     "diagram": "Diagram",
-    "callout": "Box"
+    "callout": "Box",
+    "scene3d": "3D scene"
   },
   "fields": {
     "start": "Start",
@@ -664,5 +666,78 @@
     "accent": "Accent color",
     "calloutKind": "Box type",
     "calloutTitle": "Title (empty = default title)"
+  },
+  "three": {
+    "help": "Animated 3D scenes: the camera orbits the axes, curves are drawn, surfaces grow.",
+    "presets": {
+      "empty": "Empty 3D axes",
+      "surface": "Surface z = f(x, y)",
+      "helix": "Charged particle in a B field",
+      "field": "Vector field",
+      "solids": "Solids"
+    },
+    "camera": "Camera",
+    "views": {
+      "iso": "3/4 view",
+      "front": "Front",
+      "side": "Side",
+      "top": "Top"
+    },
+    "azimuth": "Turn (°)",
+    "elevation": "Height (°)",
+    "distance": "Distance (zoom)",
+    "orbitSpeed": "Orbit (° per second)",
+    "fov": "Field of view (°)",
+    "axesFlags": {
+      "show": "Show axes",
+      "grid": "Grid",
+      "labels": "Axis names"
+    },
+    "axisNames": {
+      "xLabel": "x axis",
+      "yLabel": "y axis",
+      "zLabel": "z axis"
+    },
+    "axesSize": "Size",
+    "objects": "3D objects",
+    "kinds": {
+      "surface": "Surface",
+      "curve": "3D curve",
+      "vectorField": "Vector field",
+      "solid": "Solid",
+      "arrow": "Arrow",
+      "label": "Label"
+    },
+    "removeObject": "Remove the object",
+    "resolution": "Detail",
+    "heightColors": "Colors by height",
+    "radius": "Thickness",
+    "particle": "Particle at the end of the curve",
+    "count": "Arrows per axis",
+    "extent": "Extent",
+    "scale": "Scale",
+    "shape": "Shape",
+    "shapes": {
+      "sphere": "Sphere",
+      "cube": "Cube",
+      "cylinder": "Cylinder",
+      "cone": "Cone",
+      "plane": "Plane"
+    },
+    "position": "Position (x, y, z)",
+    "rotation": "Rotation (°)",
+    "size": "Size",
+    "from": "Start (x, y, z)",
+    "to": "End (x, y, z)",
+    "text": "Text",
+    "material": "Material",
+    "materials": {
+      "matte": "Matte",
+      "glossy": "Glossy",
+      "wireframe": "Wireframe",
+      "translucent": "Translucent"
+    },
+    "appearDuration": "Appearance duration (s)",
+    "objectLabel": "Displayed name (text or LaTeX)"
   }
 }

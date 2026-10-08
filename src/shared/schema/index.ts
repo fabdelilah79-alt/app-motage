@@ -8,3 +8,4 @@ export * from './project';
 export * from './scene';
 export * from './science';
 export * from './text';
+export * from './three';

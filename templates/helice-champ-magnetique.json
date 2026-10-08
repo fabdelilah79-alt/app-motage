@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "id": "helice-champ-magnetique",
+  "title": "Particule chargée dans un champ magnétique",
+  "format": { "width": 1920, "height": 1080, "fps": 30 },
+  "defaultLang": "fr",
+  "themeId": "dark-math",
+  "scenes": [
+    {
+      "id": "helice",
+      "name": "Mouvement hélicoïdal",
+      "durationInFrames": 300,
+      "background": { "type": "theme" },
+      "elements": [
+        {
+          "id": "titre",
+          "type": "text",
+          "lang": "fr",
+          "transform": { "x": 120, "y": 30, "width": 1680, "height": 110 },
+          "timing": { "from": 0, "duration": 300 },
+          "animations": { "enter": { "presetId": "enter.word", "duration": 25 } },
+          "content": [
+            { "kind": "text", "text": "Particule chargée dans un champ " },
+            { "kind": "math", "latex": "\\vec{B}" },
+            { "kind": "text", "text": " uniforme" }
+          ],
+          "style": { "fontSize": 64, "fontWeight": 700, "color": "theme.text", "align": "center" }
+        },
+        {
+          "id": "scene3d",
+          "type": "scene3d",
+          "transform": { "x": 160, "y": 150, "width": 1600, "height": 900 },
+          "timing": { "from": 0, "duration": 300 },
+          "animations": { "enter": { "presetId": "enter.fade", "duration": 15 } },
+          "camera": {
+            "azimuth": { "value": 35 },
+            "elevation": { "value": 15, "to": 30, "start": 0, "duration": 240 },
+            "distance": { "value": 20, "to": 15, "start": 0, "duration": 240 },
+            "orbitSpeed": 24
+          },
+          "axes": { "size": 5, "xLabel": "x", "yLabel": "y", "zLabel": "z" },
+          "objects": [
+            {
+              "id": "champ",
+              "kind": "vectorField",
+              "fx": "0",
+              "fy": "0",
+              "fz": "1",
+              "count": 3,
+              "extent": 4,
+              "scale": 2,
+              "color": "theme.accent3",
+              "material": "translucent",
+              "duration": 20
+            },
+            {
+              "id": "b",
+              "kind": "arrow",
+              "from": [4.5, -4.5, -2],
+              "to": [4.5, -4.5, 3],
+              "radius": 0.08,
+              "color": "theme.accent3",
+              "label": "\\vec{B}",
+              "duration": 20
+            },
+            {
+              "id": "trajectoire",
+              "kind": "curve",
+              "x": "R*cos(omega*t)",
+              "y": "R*sin(omega*t)",
+              "z": "v*t - 4",
+              "tMin": 0,
+              "tMax": 8,
+              "radius": 0.07,
+              "params": { "R": { "value": 2 }, "omega": { "value": 2.5 }, "v": { "value": 1 } },
+              "color": "theme.accent1",
+              "label": "q",
+              "start": 20,
+              "duration": 220
+            },
+            {
+              "id": "nom-ar",
+              "kind": "label",
+              "position": [-3.5, 3.5, 4.5],
+              "text": "مسار حلزوني (v = 1 m/s)",
+              "lang": "ar",
+              "color": "theme.accent2",
+              "fontSize": 40,
+              "start": 60,
+              "duration": 20
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

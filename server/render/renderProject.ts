@@ -45,13 +45,21 @@ export const getServeUrl = (): Promise<string> => {
   return serveUrlPromise;
 };
 
+/** WebGL (scènes 3D) dans Chrome headless : moteur ANGLE, recommandé par Remotion. */
+export const CHROMIUM_OPTIONS = { gl: 'angle' } as const;
+
 /** Rend un projet en MP4 (H.264) avec Chrome headless + FFmpeg, et renvoie le chemin du fichier. */
 export const renderProject: RenderFunction = async (project, outputLocation, callbacks) => {
   callbacks.onStage?.('bundling');
   const serveUrl = await getServeUrl();
   const { renderMedia, selectComposition } = await import('@remotion/renderer');
   const inputProps = { project, filesBaseUrl: FILES_BASE_URL };
-  const composition = await selectComposition({ serveUrl, id: COMPOSITION_ID, inputProps });
+  const composition = await selectComposition({
+    serveUrl,
+    id: COMPOSITION_ID,
+    inputProps,
+    chromiumOptions: CHROMIUM_OPTIONS,
+  });
 
   callbacks.onStage?.('rendering');
   await mkdir(path.dirname(outputLocation), { recursive: true });
@@ -61,6 +69,7 @@ export const renderProject: RenderFunction = async (project, outputLocation, cal
     codec: 'h264',
     outputLocation,
     inputProps,
+    chromiumOptions: CHROMIUM_OPTIONS,
     cancelSignal: callbacks.cancelSignal,
     onProgress: ({ progress }) => callbacks.onProgress?.(progress),
   });

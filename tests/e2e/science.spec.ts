@@ -25,3 +25,17 @@ test('ajouter une équation, une courbe, un schéma et un encadré', async ({ pa
   await page.getByTestId('add-callout-remember').click();
   await expect(page.getByTestId('element-box')).toHaveCount(4);
 });
+
+// Phase 8 : scène 3D (hélice) et vues de caméra.
+test('ajouter une scène 3D et changer de vue', async ({ page }) => {
+  await page.goto('/');
+  await page.getByTestId('new-project').click();
+  await page.getByTestId('new-project-title').fill('3D e2e');
+  await page.getByTestId('new-project-submit').click();
+  await page.getByTestId('tab-three').click();
+  await page.getByTestId('add-scene3d-helix').click();
+  await expect(page.getByTestId('element-box')).toHaveCount(1);
+  await page.getByTestId('view-top').click();
+  await page.getByTestId('add-object-label').click();
+  await expect(page.locator('canvas').first()).toBeAttached();
+});

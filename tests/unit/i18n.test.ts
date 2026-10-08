@@ -78,7 +78,14 @@ const DYNAMIC_KEYS = [
     (type) => `background.types.${type}`,
   ),
   ...['paper', 'slate', 'grid', 'lined', 'dots', 'blueprint'].map((x) => `background.textures.${x}`),
-  ...['math', 'plot2d', 'chart', 'vector', 'dimension', 'diagram', 'callout'].map(
+  ...['iso', 'front', 'side', 'top'].map((view) => `three.views.${view}`),
+  ...['show', 'grid', 'labels'].map((flag) => `three.axesFlags.${flag}`),
+  ...['xLabel', 'yLabel', 'zLabel'].map((name) => `three.axisNames.${name}`),
+  ...['surface', 'curve', 'vectorField', 'solid', 'arrow', 'label'].map((k) => `three.kinds.${k}`),
+  ...['sphere', 'cube', 'cylinder', 'cone', 'plane'].map((shape) => `three.shapes.${shape}`),
+  ...['matte', 'glossy', 'wireframe', 'translucent'].map((m) => `three.materials.${m}`),
+  ...['empty', 'surface', 'helix', 'field', 'solids'].map((id) => `three.presets.${id}`),
+  ...['math', 'plot2d', 'chart', 'vector', 'dimension', 'diagram', 'callout', 'scene3d'].map(
     (type) => `elementTypes.${type}`,
   ),
   ...['xMin', 'xMax', 'yMin', 'yMax', 'xStep', 'yStep'].map((key) => `science.bounds.${key}`),

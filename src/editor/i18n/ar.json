@@ -73,7 +73,8 @@
     "presetsHelp": "يضيف نصًا منسقًا مسبقًا بلغة المشروع الرئيسية.",
     "shapes": "أشكال",
     "audio": "صوت",
-    "science": "علوم"
+    "science": "علوم",
+    "three": "ثلاثي الأبعاد"
   },
   "properties": {
     "content": "المحتوى",
@@ -96,7 +97,8 @@
     "vector": "متجهة",
     "dimension": "بُعد",
     "diagram": "تبيانة",
-    "callout": "إطار"
+    "callout": "إطار",
+    "scene3d": "مشهد ثلاثي الأبعاد"
   },
   "fields": {
     "start": "البداية",
@@ -664,5 +666,78 @@
     "accent": "لون مميز",
     "calloutKind": "نوع الإطار",
     "calloutTitle": "العنوان (فارغ = العنوان الافتراضي)"
+  },
+  "three": {
+    "help": "مشاهد ثلاثية الأبعاد متحركة: تدور الكاميرا حول المعلم، وتُرسم المنحنيات، وتنمو السطوح.",
+    "presets": {
+      "empty": "معلم ثلاثي فارغ",
+      "surface": "سطح z = f(x, y)",
+      "helix": "دقيقة مشحونة في مجال B",
+      "field": "مجال متجهي",
+      "solids": "مجسمات"
+    },
+    "camera": "الكاميرا",
+    "views": {
+      "iso": "منظور 3/4",
+      "front": "من الأمام",
+      "side": "من الجانب",
+      "top": "من الأعلى"
+    },
+    "azimuth": "الدوران (°)",
+    "elevation": "الارتفاع (°)",
+    "distance": "المسافة (تكبير)",
+    "orbitSpeed": "المدار (° في الثانية)",
+    "fov": "زاوية الرؤية (°)",
+    "axesFlags": {
+      "show": "إظهار المعلم",
+      "grid": "الشبكة",
+      "labels": "أسماء المحاور"
+    },
+    "axisNames": {
+      "xLabel": "المحور x",
+      "yLabel": "المحور y",
+      "zLabel": "المحور z"
+    },
+    "axesSize": "الحجم",
+    "objects": "أجسام ثلاثية الأبعاد",
+    "kinds": {
+      "surface": "سطح",
+      "curve": "منحنى ثلاثي",
+      "vectorField": "مجال متجهي",
+      "solid": "مجسم",
+      "arrow": "سهم",
+      "label": "تسمية"
+    },
+    "removeObject": "حذف الجسم",
+    "resolution": "الدقة",
+    "heightColors": "ألوان حسب الارتفاع",
+    "radius": "السُّمك",
+    "particle": "دقيقة في طرف المنحنى",
+    "count": "أسهم لكل محور",
+    "extent": "الامتداد",
+    "scale": "السلم",
+    "shape": "الشكل",
+    "shapes": {
+      "sphere": "كرة",
+      "cube": "مكعب",
+      "cylinder": "أسطوانة",
+      "cone": "مخروط",
+      "plane": "مستوى"
+    },
+    "position": "الموضع (x, y, z)",
+    "rotation": "الدوران (°)",
+    "size": "الحجم",
+    "from": "البداية (x, y, z)",
+    "to": "النهاية (x, y, z)",
+    "text": "النص",
+    "material": "المادة",
+    "materials": {
+      "matte": "مطفأ",
+      "glossy": "لامع",
+      "wireframe": "سلكي",
+      "translucent": "شبه شفاف"
+    },
+    "appearDuration": "مدة الظهور (ث)",
+    "objectLabel": "الاسم المعروض (نص أو LaTeX)"
   }
 }

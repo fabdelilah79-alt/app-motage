@@ -73,7 +73,8 @@
     "presetsHelp": "Ajoute un texte déjà mis en forme, dans la langue principale du projet.",
     "shapes": "Formes",
     "audio": "Audio",
-    "science": "Sciences"
+    "science": "Sciences",
+    "three": "3D"
   },
   "properties": {
     "content": "Contenu",
@@ -96,7 +97,8 @@
     "vector": "Vecteur",
     "dimension": "Cotation",
     "diagram": "Schéma",
-    "callout": "Encadré"
+    "callout": "Encadré",
+    "scene3d": "Scène 3D"
   },
   "fields": {
     "start": "Début",
@@ -664,5 +666,78 @@
     "accent": "Couleur d'accent",
     "calloutKind": "Type d'encadré",
     "calloutTitle": "Titre (vide = titre par défaut)"
+  },
+  "three": {
+    "help": "Scènes 3D animées : la caméra tourne autour du repère, les courbes se tracent, les surfaces poussent.",
+    "presets": {
+      "empty": "Repère 3D vide",
+      "surface": "Surface z = f(x, y)",
+      "helix": "Particule chargée dans un champ B",
+      "field": "Champ de vecteurs",
+      "solids": "Solides"
+    },
+    "camera": "Caméra",
+    "views": {
+      "iso": "Vue 3/4",
+      "front": "De face",
+      "side": "De profil",
+      "top": "De dessus"
+    },
+    "azimuth": "Tour (°)",
+    "elevation": "Hauteur (°)",
+    "distance": "Distance (zoom)",
+    "orbitSpeed": "Orbite (° par seconde)",
+    "fov": "Angle de vue (°)",
+    "axesFlags": {
+      "show": "Afficher le repère",
+      "grid": "Quadrillage",
+      "labels": "Noms des axes"
+    },
+    "axisNames": {
+      "xLabel": "Axe x",
+      "yLabel": "Axe y",
+      "zLabel": "Axe z"
+    },
+    "axesSize": "Taille",
+    "objects": "Objets 3D",
+    "kinds": {
+      "surface": "Surface",
+      "curve": "Courbe 3D",
+      "vectorField": "Champ de vecteurs",
+      "solid": "Solide",
+      "arrow": "Flèche",
+      "label": "Étiquette"
+    },
+    "removeObject": "Supprimer l'objet",
+    "resolution": "Finesse",
+    "heightColors": "Couleurs selon la hauteur",
+    "radius": "Épaisseur",
+    "particle": "Particule au bout de la courbe",
+    "count": "Flèches par axe",
+    "extent": "Étendue",
+    "scale": "Échelle",
+    "shape": "Forme",
+    "shapes": {
+      "sphere": "Sphère",
+      "cube": "Cube",
+      "cylinder": "Cylindre",
+      "cone": "Cône",
+      "plane": "Plan"
+    },
+    "position": "Position (x, y, z)",
+    "rotation": "Rotation (°)",
+    "size": "Taille",
+    "from": "Départ (x, y, z)",
+    "to": "Arrivée (x, y, z)",
+    "text": "Texte",
+    "material": "Matériau",
+    "materials": {
+      "matte": "Mat",
+      "glossy": "Brillant",
+      "wireframe": "Filaire",
+      "translucent": "Translucide"
+    },
+    "appearDuration": "Durée d'apparition (s)",
+    "objectLabel": "Nom affiché (texte ou LaTeX)"
   }
 }

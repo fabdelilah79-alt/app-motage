@@ -1,4 +1,4 @@
-import { Atom, AudioLines, ImageIcon, Shapes, Type } from 'lucide-react';
+import { Atom, AudioLines, Box, ImageIcon, Shapes, Type } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { AudioPanel } from '../audio/AudioPanel';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
@@ -6,12 +6,14 @@ import { MediaLibrary } from './MediaLibrary';
 import { ScienceLibrary } from './ScienceLibrary';
 import { ShapesLibrary } from './ShapesLibrary';
 import { TextLibrary } from './TextLibrary';
+import { ThreeLibrary } from './ThreeLibrary';
 
 const TABS = [
   { value: 'text', icon: Type, labelKey: 'library.text' },
   { value: 'media', icon: ImageIcon, labelKey: 'library.media' },
   { value: 'shapes', icon: Shapes, labelKey: 'library.shapes' },
   { value: 'science', icon: Atom, labelKey: 'library.science' },
+  { value: 'three', icon: Box, labelKey: 'library.three' },
   { value: 'audio', icon: AudioLines, labelKey: 'library.audio' },
 ] as const;
 
@@ -46,6 +48,9 @@ export const LibraryPanel = () => {
         </TabsContent>
         <TabsContent value="science">
           <ScienceLibrary />
+        </TabsContent>
+        <TabsContent value="three">
+          <ThreeLibrary />
         </TabsContent>
         <TabsContent value="audio">
           <AudioPanel />

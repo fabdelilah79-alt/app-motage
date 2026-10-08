@@ -59,6 +59,10 @@ toutes les images.
     vecteurs, cotations, encadrés (Définition, À retenir…) et schémas de mécanique, électricité
     et optique.
 
+11. **3D** (onglet de la bibliothèque) : repère 3D, surfaces z = f(x, y), courbes 3D (hélice),
+    champs de vecteurs, solides, flèches et étiquettes ; caméra en orbite, zoom, vues de face /
+    dessus / profil.
+
 Les projets sont enregistrés automatiquement (5 s après chaque modification) dans
 `PhysiMotion/projets` de votre dossier personnel.
 
@@ -94,6 +98,14 @@ npm run render:science
 Formule qui s'écrit terme par terme puis se calcule, courbe Ec = f(v) tracée avec un point
 mobile et sa tangente, chariot avec son vecteur vitesse, encadrés en français et en arabe.
 
+## Vidéo de validation 3D
+
+```bash
+npm run render:3d
+```
+
+Hélice d'une particule chargée dans un champ magnétique, caméra en orbite, en 1080p.
+
 ## Créer la vidéo de démonstration (MP4)
 
 ```bash
@@ -115,6 +127,8 @@ une seule fois.
 | `npm test`                                      | Tests unitaires                                  |
 | `npx playwright install chromium` (une fois)    | Installe le navigateur des tests bout en bout    |
 | `npm run test:e2e`                              | Tests bout en bout (ouvre l'application)         |
+
+Après la mise à jour vers la phase 8, relancer `npm install` (nouveaux paquets 3D).
 
 Avant `npm run test:e2e`, arrêter `npm run dev` : les tests lancent leur propre copie de
 l'application, avec un dossier de données séparé (`.e2e-data`). Le test d'export fabrique un

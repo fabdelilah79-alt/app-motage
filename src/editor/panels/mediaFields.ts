@@ -229,4 +229,5 @@ export const ELEMENT_FIELDS: {
   dimension: DIMENSION_FIELDS,
   diagram: DIAGRAM_FIELDS,
   callout: CALLOUT_FIELDS,
+  scene3d: [],
 };

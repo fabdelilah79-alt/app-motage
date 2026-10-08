@@ -2,7 +2,7 @@ import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import type { Project } from '../../src/shared/schema';
 import { FILES_BASE_URL } from '../config';
-import { COMPOSITION_ID, getServeUrl } from './renderProject';
+import { CHROMIUM_OPTIONS, COMPOSITION_ID, getServeUrl } from './renderProject';
 
 /**
  * Rend des images fixes (PNG) d'un projet à plusieurs frames : sert à vérifier visuellement
@@ -17,7 +17,12 @@ export const renderStills = async (
   const serveUrl = await getServeUrl();
   const { renderStill, selectComposition } = await import('@remotion/renderer');
   const inputProps = { project, filesBaseUrl: FILES_BASE_URL };
-  const composition = await selectComposition({ serveUrl, id: COMPOSITION_ID, inputProps });
+  const composition = await selectComposition({
+    serveUrl,
+    id: COMPOSITION_ID,
+    inputProps,
+    chromiumOptions: CHROMIUM_OPTIONS,
+  });
   await mkdir(outputDir, { recursive: true });
 
   const files: string[] = [];
@@ -25,7 +30,14 @@ export const renderStills = async (
     const safeFrame = Math.min(Math.max(0, frame), composition.durationInFrames - 1);
     const name = `${prefix}-image-${String(safeFrame).padStart(4, '0')}.png`;
     const output = path.join(outputDir, name);
-    await renderStill({ composition, serveUrl, output, inputProps, frame: safeFrame });
+    await renderStill({
+      composition,
+      serveUrl,
+      output,
+      inputProps,
+      frame: safeFrame,
+      chromiumOptions: CHROMIUM_OPTIONS,
+    });
     files.push(output);
   }
   return files;
