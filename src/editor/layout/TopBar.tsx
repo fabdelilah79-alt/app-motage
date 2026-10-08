@@ -1,4 +1,4 @@
-import { ArrowLeft, Clapperboard, Film, Palette, Redo2, Save, Settings, Undo2 } from 'lucide-react';
+import { ArrowLeft, CircleHelp, Clapperboard, Film, Palette, Redo2, Save, Settings, Undo2 } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ExportDialog } from '../export/ExportDialog';
@@ -9,6 +9,7 @@ import { useEditorStore } from '../store/editorStore';
 import { redo, undo, useHistoryAvailability } from '../store/history';
 import { useProject } from '../store/selectors';
 import { ThemeDialog } from '../themes/ThemeDialog';
+import { useTourStore } from '../tour/tourStore';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -27,6 +28,7 @@ export const TopBar = ({ saveStatus, onSave }: Props) => {
   const [exportOpen, setExportOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [themeOpen, setThemeOpen] = useState(false);
+  const startTour = useTourStore((state) => state.start);
 
 
   return (
@@ -83,7 +85,7 @@ export const TopBar = ({ saveStatus, onSave }: Props) => {
           )}
           {t(previewMode === 'full' ? 'topBar.backToScene' : 'topBar.previewAll')}
         </Button>
-        <Button size="sm" variant="ghost" onClick={() => setThemeOpen(true)} data-testid="theme-button">
+        <Button size="sm" variant="ghost" onClick={() => setThemeOpen(true)} data-testid="theme-button" data-tour="theme">
           <Palette size={14} aria-hidden />
           {t('themes.open')}
         </Button>
@@ -96,8 +98,11 @@ export const TopBar = ({ saveStatus, onSave }: Props) => {
         >
           <Settings size={18} aria-hidden />
         </Button>
+        <Button size="icon" variant="ghost" onClick={startTour} aria-label={t('tour.open')} data-testid="tour-button">
+          <CircleHelp size={18} aria-hidden />
+        </Button>
         <LanguageSwitcher />
-        <Button variant="primary" onClick={() => setExportOpen(true)} data-testid="export-button">
+        <Button variant="primary" onClick={() => setExportOpen(true)} data-testid="export-button" data-tour="export">
           {t('topBar.export')}
         </Button>
       </div>

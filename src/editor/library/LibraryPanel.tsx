@@ -23,7 +23,7 @@ const TABS = [
 export const LibraryPanel = () => {
   const { t } = useTranslation();
   return (
-    <aside className="flex w-80 shrink-0 flex-col border-e border-slate-800 bg-slate-900">
+    <aside data-tour="library" className="flex w-80 shrink-0 flex-col border-e border-slate-800 bg-slate-900">
       <Tabs defaultValue="text" className="flex min-h-0 flex-1 flex-col">
         <TabsList className="px-1">
           {TABS.map(({ value, icon: Icon, labelKey }) => (

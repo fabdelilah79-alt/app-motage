@@ -23,6 +23,8 @@ export type ProjectVideoProps = {
   project: Project;
   /** Adresse du serveur local pour les médias importés ('' dans l'éditeur). */
   filesBaseUrl?: string;
+  /** Aperçu de l'éditeur affiché réduit : la 3D est calculée en plus basse résolution. */
+  previewScale?: number;
 };
 
 type Size = { width: number; height: number };
@@ -65,7 +67,7 @@ const renderTransition = (
 };
 
 /** Composition racine : scènes enchaînées avec leurs transitions (aperçu ET rendu MP4). */
-export const ProjectVideo: FC<ProjectVideoProps> = ({ project, filesBaseUrl = '' }) => {
+export const ProjectVideo: FC<ProjectVideoProps> = ({ project, filesBaseUrl = '', previewScale }) => {
   const { fps, width, height } = useVideoConfig();
   const theme = useMemo(
     () => resolveTheme(project.themeId, project.themeOverrides),
@@ -103,6 +105,7 @@ export const ProjectVideo: FC<ProjectVideoProps> = ({ project, filesBaseUrl = ''
           digits: project.digits,
           defaultLang: project.defaultLang,
           subtitleStyle: project.subtitleStyle,
+          previewScale,
         }}
       >
         <ThemeContext.Provider value={theme}>

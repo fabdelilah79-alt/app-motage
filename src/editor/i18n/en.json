@@ -260,7 +260,7 @@
     "title": "Export",
     "cancel": "Cancel export",
     "savedTo": "File saved:",
-    "failedHelp": "Check that the local server is running (npm run dev), then try again.",
+    "failedHelp": "Check that PhysiMotion is running (the “Lancer PhysiMotion” window is open), then try again.",
     "status": {
       "bundling": "Preparing the video…",
       "rendering": "Rendering frames… {{percent}} %",
@@ -270,10 +270,16 @@
     }
   },
   "errors": {
-    "serverUnreachable": "The local server is not responding. Run “npm run dev” and reload the page.",
+    "serverUnreachable": "The local server is not responding. Close this page, run “Lancer PhysiMotion” again (or npm start), then reload the page.",
     "createProject": "Could not create the project.",
     "loadProject": "Could not open this project.",
-    "upload": "Import failed: check the file format (images, GIF, MP4, WebM, MOV, MP3, WAV, M4A, Lottie JSON)."
+    "upload": "Import failed: check the file format (images, GIF, MP4, WebM, MOV, MP3, WAV, M4A, Lottie JSON).",
+    "preview": "The preview cannot be displayed.",
+    "previewHelp": "An element of the scene has an incorrect setting. Undo the last change (Ctrl+Z) or delete the element.",
+    "details": "Technical details",
+    "crash": "Oops, something went wrong.",
+    "crashHelp": "Your project is saved automatically. Reload the page to continue.",
+    "reload": "Reload the page"
   },
   "richText": {
     "help": "A text can mix styled segments and formulas (LaTeX).",
@@ -844,5 +850,38 @@
       "top": "Top"
     },
     "background": "Band behind the text"
+  },
+  "tour": {
+    "open": "User guide",
+    "skip": "Close the guide",
+    "previous": "Previous",
+    "next": "Next",
+    "finish": "Finish",
+    "steps": {
+      "library": {
+        "title": "1. The library",
+        "text": "Click an item to add it to the scene: texts, media, shapes, equations, curves, 3D, simulations."
+      },
+      "canvas": {
+        "title": "2. The canvas",
+        "text": "This is your video. Click an element to select it, then move, resize or rotate it."
+      },
+      "properties": {
+        "title": "3. Properties",
+        "text": "Adjust the selected element: content, style and animation. With nothing selected: the scene (duration, background, transition, subtitles)."
+      },
+      "timeline": {
+        "title": "4. Scenes and timeline",
+        "text": "Add and reorder scenes, then choose when each element appears by dragging its bar."
+      },
+      "theme": {
+        "title": "5. The theme",
+        "text": "Change the look of the whole video in one click: chalkboard, notebook, neon… and add your logo."
+      },
+      "export": {
+        "title": "6. Export",
+        "text": "When it is ready, make the MP4 video (or a GIF, an image). Your work is saved automatically."
+      }
+    }
   }
 }

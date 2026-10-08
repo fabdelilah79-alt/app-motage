@@ -16,7 +16,7 @@ import { MathElementView } from '../science/MathElementView';
 import { Plot2DElementView } from '../science/plot/Plot2DElementView';
 import { VectorElementView } from '../science/VectorElementView';
 import { SimulationElementView } from '../simulations/SimulationElementView';
-import { Scene3DElementView } from '../three/Scene3DElementView';
+import { LazyScene3DElementView } from '../three/LazyScene3DElementView';
 
 type ElementViewRegistry = {
   [Type in ElementType]: FC<{
@@ -42,6 +42,6 @@ export const ELEMENT_VIEWS: ElementViewRegistry = {
   dimension: DimensionElementView,
   diagram: DiagramElementView,
   callout: CalloutElementView,
-  scene3d: Scene3DElementView,
+  scene3d: LazyScene3DElementView,
   simulation: SimulationElementView,
 };

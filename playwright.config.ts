@@ -5,6 +5,16 @@ export default defineConfig({
   timeout: 60_000,
   use: {
     baseURL: 'http://localhost:5173',
+    // Le guide du premier lancement est déjà « vu » (il a son propre test : tour.spec.ts).
+    storageState: {
+      cookies: [],
+      origins: [
+        {
+          origin: 'http://localhost:5173',
+          localStorage: [{ name: 'physimotion.tourSeen', value: '1' }],
+        },
+      ],
+    },
   },
   projects: [
     {

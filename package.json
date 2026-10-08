@@ -8,6 +8,7 @@
     "node": ">=22.12.0"
   },
   "scripts": {
+    "start": "tsx server/start.ts",
     "dev": "concurrently --kill-others-on-fail --names editor,server --prefix-colors cyan,magenta \"npm:dev:editor\" \"npm:dev:server\"",
     "dev:editor": "vite",
     "dev:server": "tsx watch server/index.ts",

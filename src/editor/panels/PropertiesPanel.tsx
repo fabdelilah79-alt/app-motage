@@ -17,6 +17,7 @@ export const PropertiesPanel = () => {
     <aside
       className="flex w-80 shrink-0 flex-col border-s border-slate-800 bg-slate-900"
       data-testid="properties-panel"
+      data-tour="properties"
     >
       {element ? (
         <ElementProperties key={element.id} element={element} fps={fps} />

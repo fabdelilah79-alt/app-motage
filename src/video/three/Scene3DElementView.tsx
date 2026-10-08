@@ -22,7 +22,9 @@ export const Scene3DElementView: FC<{ element: Scene3DElement; animation: Animat
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const theme = useTheme();
-  const { defaultLang } = useProjectSettings();
+  const { defaultLang, previewScale } = useProjectSettings();
+  // Aperçu réduit dans l'éditeur : moins de pixels à calculer (l'export reste en pleine résolution).
+  const dpr = previewScale ? Math.max(0.25, Math.min(1, previewScale * 1.25)) : 1;
   const { width, height } = element.transform;
   const camera = cameraStateAt(element.camera, frame, fps);
   const world = worldTransform(camera);
@@ -35,7 +37,8 @@ export const Scene3DElementView: FC<{ element: Scene3DElement; animation: Animat
         width={width}
         height={height}
         camera={{ position: [0, 0, CAMERA_Z], fov: camera.fov, near: 0.1, far: 500 }}
-        gl={{ alpha: true, antialias: true, preserveDrawingBuffer: true }}
+        dpr={dpr}
+        gl={{ alpha: true, antialias: !previewScale, preserveDrawingBuffer: true }}
         style={{ position: 'absolute', inset: 0 }}
       >
         <hemisphereLight args={['#ffffff', palette.background, 0.9]} />

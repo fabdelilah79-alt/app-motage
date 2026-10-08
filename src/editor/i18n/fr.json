@@ -260,7 +260,7 @@
     "title": "Exporter",
     "cancel": "Annuler l'export",
     "savedTo": "Fichier enregistré :",
-    "failedHelp": "Vérifiez que le serveur local est lancé (npm run dev), puis réessayez.",
+    "failedHelp": "Vérifiez que PhysiMotion est bien lancé (fenêtre « Lancer PhysiMotion » ouverte), puis réessayez.",
     "status": {
       "bundling": "Préparation de la vidéo…",
       "rendering": "Fabrication des images… {{percent}} %",
@@ -270,10 +270,16 @@
     }
   },
   "errors": {
-    "serverUnreachable": "Le serveur local ne répond pas. Lancez « npm run dev » puis rechargez la page.",
+    "serverUnreachable": "Le serveur local ne répond pas. Fermez cette page, relancez « Lancer PhysiMotion » (ou npm start), puis rechargez la page.",
     "createProject": "Impossible de créer le projet.",
     "loadProject": "Impossible d'ouvrir ce projet.",
-    "upload": "L'import a échoué : vérifiez le format du fichier (images, GIF, MP4, WebM, MOV, MP3, WAV, M4A, JSON Lottie)."
+    "upload": "L'import a échoué : vérifiez le format du fichier (images, GIF, MP4, WebM, MOV, MP3, WAV, M4A, JSON Lottie).",
+    "preview": "L'aperçu ne peut pas s'afficher.",
+    "previewHelp": "Un élément de la scène a un réglage incorrect. Annulez la dernière modification (Ctrl+Z) ou supprimez l'élément en cause.",
+    "details": "Détails techniques",
+    "crash": "Oups, quelque chose s'est mal passé.",
+    "crashHelp": "Votre projet est enregistré automatiquement. Rechargez la page pour continuer.",
+    "reload": "Recharger la page"
   },
   "richText": {
     "help": "Un texte peut mêler des segments stylés et des formules (LaTeX).",
@@ -844,5 +850,38 @@
       "top": "En haut"
     },
     "background": "Bandeau derrière le texte"
+  },
+  "tour": {
+    "open": "Guide d'utilisation",
+    "skip": "Fermer le guide",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "finish": "Terminer",
+    "steps": {
+      "library": {
+        "title": "1. La bibliothèque",
+        "text": "Cliquez sur un élément pour l'ajouter à la scène : textes, médias, formes, équations, courbes, 3D, simulations."
+      },
+      "canvas": {
+        "title": "2. Le canevas",
+        "text": "C'est votre vidéo. Cliquez sur un élément pour le sélectionner, puis déplacez-le, agrandissez-le ou faites-le pivoter."
+      },
+      "properties": {
+        "title": "3. Les propriétés",
+        "text": "Réglez l'élément sélectionné : contenu, style et animation. Sans sélection : la scène (durée, fond, transition, sous-titres)."
+      },
+      "timeline": {
+        "title": "4. Les scènes et la timeline",
+        "text": "Ajoutez et réordonnez les scènes, puis choisissez quand chaque élément apparaît en glissant sa barre."
+      },
+      "theme": {
+        "title": "5. Le thème",
+        "text": "Changez l'allure de toute la vidéo en un clic : tableau noir, cahier, néon… et ajoutez votre logo."
+      },
+      "export": {
+        "title": "6. Exporter",
+        "text": "Quand c'est prêt, fabriquez la vidéo MP4 (ou un GIF, une image). Votre travail est enregistré automatiquement."
+      }
+    }
   }
 }

@@ -1,0 +1,4 @@
+# Lanceurs : fins de ligne adaptées à chaque système.
+*.bat text eol=crlf
+*.command text eol=lf
+*.sh text eol=lf

@@ -92,6 +92,10 @@ const DYNAMIC_KEYS = [
   ...['draft', 'standard', 'high'].map((quality) => `exportSettings.qualities.${quality}`),
   ...['all', 'scene', 'interval'].map((range) => `exportSettings.ranges.${range}`),
   ...['download', 'decode', 'transcribe'].map((stage) => `subtitles.stages.${stage}`),
+  ...['library', 'canvas', 'properties', 'timeline', 'theme', 'export'].flatMap((step) => [
+    `tour.steps.${step}.title`,
+    `tour.steps.${step}.text`,
+  ]),
   'subtitles.unsupported',
   'subtitles.failed',
   ...['math', 'plot2d', 'chart', 'vector', 'dimension', 'diagram', 'callout', 'scene3d', 'simulation'].map(

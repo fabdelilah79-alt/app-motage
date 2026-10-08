@@ -3,23 +3,40 @@
 Application de création de vidéos explicatives de physique en motion design (français / arabe / anglais).
 Le plan complet est dans [`PLAN.md`](PLAN.md), les règles de travail dans [`CLAUDE.md`](CLAUDE.md).
 
-## Installation (une seule fois)
+## Installation et lancement (le plus simple)
 
-1. Installer **Node.js version 22 ou plus récente** depuis <https://nodejs.org> (bouton « LTS »).
-2. Télécharger ce dépôt (bouton vert **Code → Download ZIP** sur GitHub, puis décompresser), ou `git clone`.
-3. Ouvrir un terminal **dans le dossier du projet** et taper :
+1. Installer **Node.js version 22 ou plus récente** depuis <https://nodejs.org> (bouton « LTS »),
+   en laissant toutes les options par défaut.
+2. Télécharger ce dépôt (bouton vert **Code → Download ZIP** sur GitHub), puis le décompresser
+   dans un dossier de votre choix (ex. « Documents »).
+3. Double-cliquer sur le lanceur :
+   - **Windows** : `Lancer PhysiMotion.bat`
+   - **macOS** : `Lancer PhysiMotion.command` (la première fois : clic droit → Ouvrir → Ouvrir)
+   - **Linux** : `lancer-physimotion.sh`
+
+La première fois, l'installation prend quelques minutes (connexion Internet nécessaire). Ensuite
+le navigateur s'ouvre tout seul sur <http://localhost:3210>. **Laissez la fenêtre noire ouverte**
+pendant votre travail ; pour arrêter, fermez-la. Au premier lancement, un petit guide présente
+l'éditeur (bouton « ? » en haut pour le revoir).
+
+### En cas de problème
+
+| Ce que vous voyez | Que faire |
+| --- | --- |
+| « Node.js n'est pas installé » | Installer Node.js (étape 1), puis relancer le lanceur. |
+| « port 3210 occupé » | PhysiMotion est déjà ouvert : aller sur <http://localhost:3210>. |
+| « Le serveur local ne répond pas » | La fenêtre noire a été fermée : relancer le lanceur. |
+| Premier export très long | Normal : un navigateur spécial (≈ 100 Mo) est téléchargé une seule fois. |
+| Transcription impossible | Utiliser Chrome ou Edge récent sur <http://localhost:3210>. |
+
+## Lancement pour le développement
 
 ```bash
 npm install
-```
-
-## Lancer l'application
-
-```bash
 npm run dev
 ```
 
-Puis ouvrir <http://localhost:5173> dans le navigateur. Pour arrêter : `Ctrl + C` dans le terminal.
+Puis ouvrir <http://localhost:5173>. Pour arrêter : `Ctrl + C` dans le terminal.
 
 ## Vérifier le rendu du texte (captures)
 

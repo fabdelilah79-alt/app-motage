@@ -4,6 +4,7 @@ import { ProjectVideo } from '../../video/ProjectVideo';
 import { useElementSize } from '../hooks/useElementSize';
 import { useCurrentScene } from '../store/selectors';
 import { usePlayerRef } from './PlayerContext';
+import { PreviewError } from './PreviewError';
 import { SelectionOverlay } from './SelectionOverlay';
 import { usePreviewProject } from './usePreviewProject';
 
@@ -16,9 +17,11 @@ export const CanvasArea = () => {
   const available = useElementSize(containerRef);
   const { width, height, fps } = preview.project.format;
   const scale = Math.max(0, Math.min(available.width / width, available.height / height));
+  // Échelle arrondie : l'aperçu n'est pas recalculé à chaque pixel de redimensionnement.
+  const previewScale = Math.round(scale * 10) / 10 || 0.1;
   const inputProps = useMemo(
-    () => ({ project: preview.project, filesBaseUrl: '' }),
-    [preview.project],
+    () => ({ project: preview.project, filesBaseUrl: '', previewScale }),
+    [preview.project, previewScale],
   );
 
   // Nouvelle scène sélectionnée : retour au début.
@@ -29,6 +32,7 @@ export const CanvasArea = () => {
   return (
     <main
       ref={containerRef}
+      data-tour="canvas"
       dir="ltr"
       className="flex min-w-0 flex-1 items-center justify-center bg-slate-950 p-6"
     >
@@ -48,6 +52,7 @@ export const CanvasArea = () => {
           controls={preview.mode === 'full'}
           clickToPlay={preview.mode === 'full'}
           acknowledgeRemotionLicense
+          errorFallback={({ error }) => <PreviewError error={error} />}
         />
         {preview.mode === 'scene' && scene ? (
           <SelectionOverlay scene={scene} scale={scale} format={preview.project.format} />

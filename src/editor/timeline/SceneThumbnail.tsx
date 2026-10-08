@@ -12,8 +12,10 @@ export const SceneThumbnail = ({ project, scene, width }: Props) => {
     () => ({
       project: { ...project, scenes: [{ ...scene, transitionIn: undefined }] },
       filesBaseUrl: '',
+      // Vignette minuscule : la 3D éventuelle est calculée en très basse résolution.
+      previewScale: width / format.width,
     }),
-    [project, scene],
+    [project, scene, width, format.width],
   );
 
   return (

@@ -1,6 +1,7 @@
 import { DirectionProvider } from '@radix-ui/react-direction';
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ErrorBoundary } from './ErrorBoundary';
 import { useHashRoute } from './hooks/useHashRoute';
 import { uiDirection } from './i18n';
 import { EditorScreen } from './screens/EditorScreen';
@@ -12,11 +13,13 @@ export const App: FC = () => {
 
   return (
     <DirectionProvider dir={uiDirection(i18n.language)}>
-      {route.name === 'project' ? (
-        <EditorScreen key={route.projectId} projectId={route.projectId} />
-      ) : (
-        <HomeScreen />
-      )}
+      <ErrorBoundary>
+        {route.name === 'project' ? (
+          <EditorScreen key={route.projectId} projectId={route.projectId} />
+        ) : (
+          <HomeScreen />
+        )}
+      </ErrorBoundary>
     </DirectionProvider>
   );
 };

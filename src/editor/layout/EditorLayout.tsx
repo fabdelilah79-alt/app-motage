@@ -9,6 +9,7 @@ import { PropertiesPanel } from '../panels/PropertiesPanel';
 import { useEditorStore } from '../store/editorStore';
 import { SceneTimeline } from '../timeline/SceneTimeline';
 import { ScenesStrip } from '../timeline/ScenesStrip';
+import { OnboardingTour } from '../tour/OnboardingTour';
 import { TopBar } from './TopBar';
 
 const Workspace = () => {
@@ -24,10 +25,11 @@ const Workspace = () => {
         <CanvasArea />
         <PropertiesPanel />
       </div>
-      <div className="flex h-72 shrink-0 flex-col border-t border-slate-800 bg-slate-900">
+      <div data-tour="timeline" className="flex h-72 shrink-0 flex-col border-t border-slate-800 bg-slate-900">
         <ScenesStrip />
         <SceneTimeline />
       </div>
+      <OnboardingTour />
     </div>
   );
 };
