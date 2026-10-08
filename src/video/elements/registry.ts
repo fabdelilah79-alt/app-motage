@@ -8,6 +8,13 @@ import { LottieElementView } from './LottieElementView';
 import { ShapeElementView } from './ShapeElementView';
 import { TextElementView } from './TextElementView';
 import { VideoElementView } from './VideoElementView';
+import { CalloutElementView } from '../science/CalloutElementView';
+import { ChartElementView } from '../science/ChartElementView';
+import { DiagramElementView } from '../science/diagrams/DiagramElementView';
+import { DimensionElementView } from '../science/DimensionElementView';
+import { MathElementView } from '../science/MathElementView';
+import { Plot2DElementView } from '../science/plot/Plot2DElementView';
+import { VectorElementView } from '../science/VectorElementView';
 
 type ElementViewRegistry = {
   [Type in ElementType]: FC<{
@@ -26,4 +33,11 @@ export const ELEMENT_VIEWS: ElementViewRegistry = {
   lottie: LottieElementView,
   icon: IconElementView,
   shape: ShapeElementView,
+  math: MathElementView,
+  plot2d: Plot2DElementView,
+  chart: ChartElementView,
+  vector: VectorElementView,
+  dimension: DimensionElementView,
+  diagram: DiagramElementView,
+  callout: CalloutElementView,
 };

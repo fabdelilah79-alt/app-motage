@@ -45,6 +45,8 @@ export type AnimationFrame = {
   decoration?: Decoration;
   /** Textes : les nombres défilent de 0 jusqu'à leur valeur (0 à 1). */
   counter?: number;
+  /** Équations : surbrillance ou encadrement d'un terme (numéro à partir de 0). */
+  term?: { index: number; progress: number; color: string; style: 'highlight' | 'box' };
 };
 
 export type AnimationCategory = 'enter' | 'emphasis' | 'exit' | 'motion';

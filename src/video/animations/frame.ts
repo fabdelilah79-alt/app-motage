@@ -50,4 +50,5 @@ export const combineFrames = (a: AnimationFrame, b: AnimationFrame): AnimationFr
   colorOverride: b.colorOverride ?? a.colorOverride,
   decoration: b.decoration ?? a.decoration,
   counter: b.counter ?? a.counter,
+  term: b.term ?? a.term,
 });

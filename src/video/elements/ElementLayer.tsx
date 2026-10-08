@@ -12,8 +12,9 @@ import { ELEMENT_VIEWS } from './registry';
 
 /** Un texte arabe (ou forcé de droite à gauche) se décore dans le sens de lecture. */
 const isRtl = (element: SceneElement) =>
-  element.type === 'text' &&
-  (element.direction === 'rtl' || (element.direction === 'auto' && element.lang === 'ar'));
+  (element.type === 'text' &&
+    (element.direction === 'rtl' || (element.direction === 'auto' && element.lang === 'ar'))) ||
+  (element.type === 'callout' && element.lang === 'ar');
 
 /**
  * Place un élément dans la scène et applique ses animations (frame relative à l'élément).

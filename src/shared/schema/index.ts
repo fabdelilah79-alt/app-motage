@@ -3,6 +3,8 @@ export * from './common';
 export * from './element';
 export * from './media';
 export * from './migrations';
+export * from './plot';
 export * from './project';
 export * from './scene';
+export * from './science';
 export * from './text';

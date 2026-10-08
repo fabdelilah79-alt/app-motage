@@ -25,6 +25,7 @@ import {
   emphasisUnderline,
 } from './presets/emphasis';
 import { exitShrink, exitSweep, mirrorAsExit } from './presets/exit';
+import { emphasisTerm, emphasisTermBox, enterTerms } from './presets/science';
 import { motionFloat, motionMove, motionOrbit, motionPath } from './presets/motion';
 import {
   enterLetter,
@@ -52,6 +53,7 @@ const ENTERS: readonly AnimationPreset[] = [
   enterLetter,
   enterLine,
   enterMask,
+  enterTerms,
   enterDraw,
   enterHandwriting,
   enterGlitch,
@@ -77,6 +79,8 @@ const EMPHASES: readonly AnimationPreset[] = [
   emphasisCircle,
   emphasisArrow,
   emphasisGlow,
+  emphasisTerm,
+  emphasisTermBox,
 ];
 
 const MOTIONS: readonly AnimationPreset[] = [motionMove, motionPath, motionOrbit, motionFloat];
