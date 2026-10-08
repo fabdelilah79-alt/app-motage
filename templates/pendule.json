@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "pendule-graphe",
+  "title": "Pendule simple et graphe θ(t)",
+  "format": { "width": 1920, "height": 1080, "fps": 30 },
+  "defaultLang": "fr",
+  "themeId": "lab",
+  "scenes": [
+    {
+      "id": "pendule",
+      "name": "Pendule et graphe synchronisé",
+      "durationInFrames": 360,
+      "background": { "type": "theme" },
+      "elements": [
+        {
+          "id": "titre",
+          "type": "text",
+          "lang": "fr",
+          "transform": { "x": 120, "y": 30, "width": 1680, "height": 100 },
+          "timing": { "from": 0, "duration": 360 },
+          "animations": { "enter": { "presetId": "enter.word", "duration": 20 } },
+          "content": [
+            { "kind": "text", "text": "Pendule simple : " },
+            { "kind": "math", "latex": "T_0 = 2\\pi\\sqrt{\\frac{L}{g}}" }
+          ],
+          "style": { "fontSize": 60, "fontWeight": 700, "color": "theme.text", "align": "center" }
+        },
+        {
+          "id": "simulation",
+          "type": "simulation",
+          "simId": "pendulum",
+          "transform": { "x": 80, "y": 160, "width": 1760, "height": 880 },
+          "timing": { "from": 0, "duration": 360 },
+          "animations": { "enter": { "presetId": "enter.fade", "duration": 15 } },
+          "params": { "L": 1, "theta0": 25, "m": 0.5, "b": 0.15 },
+          "display": { "vectors": ["velocity", "weight", "tension"], "trajectory": true, "values": true, "energyBars": true },
+          "graph": { "quantity": "theta", "position": "right" },
+          "playbackRate": 1
+        }
+      ]
+    }
+  ]
+}

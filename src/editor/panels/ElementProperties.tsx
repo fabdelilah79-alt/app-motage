@@ -14,6 +14,7 @@ import { DiagramParamsEditor } from './science/DiagramParamsEditor';
 import { MathEditor } from './science/MathEditor';
 import { PlotEditor } from './science/PlotEditor';
 import { RichTextEditor } from './text/RichTextEditor';
+import { SimulationEditor } from './simulation/SimulationEditor';
 import { Scene3DEditor } from './three/Scene3DEditor';
 import { StylePresetPicker } from './text/StylePresetPicker';
 import { SuggestedDuration } from './text/SuggestedDuration';
@@ -85,6 +86,7 @@ export const ElementProperties = ({ element, fps }: Props) => {
           {element.type === 'chart' ? <ChartItemsEditor element={element} /> : null}
           {element.type === 'diagram' ? <DiagramParamsEditor element={element} /> : null}
           {element.type === 'scene3d' ? <Scene3DEditor element={element} fps={fps} /> : null}
+          {element.type === 'simulation' ? <SimulationEditor element={element} fps={fps} /> : null}
           {element.type === 'text' ? <SuggestedDuration element={element} fps={fps} /> : null}
           {renderTab('content')}
         </TabsContent>

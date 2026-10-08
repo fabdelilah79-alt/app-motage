@@ -5,6 +5,7 @@ import ar from '../../src/editor/i18n/ar.json';
 import en from '../../src/editor/i18n/en.json';
 import fr from '../../src/editor/i18n/fr.json';
 import { PRESET_LIST } from '../../src/video/animations/registry';
+import { SIMULATIONS } from '../../src/shared/simulations/registry';
 import { DIAGRAM_LIST } from '../../src/video/science/diagrams/registry';
 
 const flatKeys = (value: unknown, prefix = ''): string[] =>
@@ -85,7 +86,9 @@ const DYNAMIC_KEYS = [
   ...['sphere', 'cube', 'cylinder', 'cone', 'plane'].map((shape) => `three.shapes.${shape}`),
   ...['matte', 'glossy', 'wireframe', 'translucent'].map((m) => `three.materials.${m}`),
   ...['empty', 'surface', 'helix', 'field', 'solids'].map((id) => `three.presets.${id}`),
-  ...['math', 'plot2d', 'chart', 'vector', 'dimension', 'diagram', 'callout', 'scene3d'].map(
+  ...['mechanics', 'waves', 'electricity', 'optics', 'misc'].map((c) => `simulation.categories.${c}`),
+  ...['right', 'below'].map((position) => `simulation.positions.${position}`),
+  ...['math', 'plot2d', 'chart', 'vector', 'dimension', 'diagram', 'callout', 'scene3d', 'simulation'].map(
     (type) => `elementTypes.${type}`,
   ),
   ...['xMin', 'xMax', 'yMin', 'yMax', 'xStep', 'yStep'].map((key) => `science.bounds.${key}`),
@@ -108,6 +111,9 @@ const presetKeys = PRESET_LIST.flatMap((item) =>
   ]),
 );
 DYNAMIC_KEYS.push(...presetKeys);
+
+/** Vecteurs proposés par les simulations. */
+DYNAMIC_KEYS.push(...SIMULATIONS.flatMap((model) => model.vectors.map((v) => `simulation.vectors.${v}`)));
 
 /** Réglages des schémas de la bibliothèque. */
 DYNAMIC_KEYS.push(

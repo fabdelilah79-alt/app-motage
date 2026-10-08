@@ -39,3 +39,18 @@ test('ajouter une scène 3D et changer de vue', async ({ page }) => {
   await page.getByTestId('add-object-label').click();
   await expect(page.locator('canvas').first()).toBeAttached();
 });
+
+// Phase 9 : simulation du pendule avec graphique synchronisé.
+test('ajouter un pendule et régler sa longueur', async ({ page }) => {
+  await page.goto('/');
+  await page.getByTestId('new-project').click();
+  await page.getByTestId('new-project-title').fill('Simulations e2e');
+  await page.getByTestId('new-project-submit').click();
+  await page.getByTestId('tab-simulations').click();
+  await page.getByTestId('add-simulation-pendulum').click();
+  await expect(page.getByTestId('sim-graph')).toHaveValue('theta');
+  await page.getByTestId('sim-param-L').fill('2');
+  await expect(page.getByTestId('sim-param-L')).toHaveValue('2');
+  await page.getByTestId('sim-graph').selectOption('ec');
+  await expect(page.getByTestId('element-box')).toHaveCount(1);
+});

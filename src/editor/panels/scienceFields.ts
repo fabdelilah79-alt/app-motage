@@ -8,6 +8,7 @@ import {
   type DimensionElement,
   type MathElement,
   type Plot2DElement,
+  type SimulationElement,
   type VectorElement,
 } from '../../shared/schema';
 import type { FieldDescriptor } from './fieldDescriptors';
@@ -77,4 +78,11 @@ export const CALLOUT_FIELDS: FieldDescriptor<CalloutElement>[] = [
   textField<CalloutElement>('title', 'science.calloutTitle', (e) => e.title, (e, v) => void (e.title = v)),
   selectField<CalloutElement, CalloutElement['lang']>('lang', 'fields.lang', langSchema.options, 'langs', (e) => e.lang, (e, v) => void (e.lang = v), 'content'),
   numberField<CalloutElement>('fontSize', 'fields.fontSize', (e) => e.fontSize, (e, v) => void (e.fontSize = Math.max(8, v)), { min: 8, step: 2 }),
+];
+
+export const SIMULATION_FIELDS: FieldDescriptor<SimulationElement>[] = [
+  colorField<SimulationElement>('color', 'fields.color', (e) => e.color, (e, v) => void (e.color = v)),
+  colorField<SimulationElement>('accent', 'science.accent', (e) => e.accent, (e, v) => void (e.accent = v)),
+  colorField<SimulationElement>('textColor', 'simulation.textColor', (e) => e.textColor, (e, v) => void (e.textColor = v)),
+  numberField<SimulationElement>('fontSize', 'fields.fontSize', (e) => e.fontSize, (e, v) => void (e.fontSize = Math.max(8, v)), { min: 8, step: 2 }),
 ];

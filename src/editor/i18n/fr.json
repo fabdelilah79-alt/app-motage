@@ -74,7 +74,8 @@
     "shapes": "Formes",
     "audio": "Audio",
     "science": "Sciences",
-    "three": "3D"
+    "three": "3D",
+    "simulations": "Simulations"
   },
   "properties": {
     "content": "Contenu",
@@ -98,7 +99,8 @@
     "dimension": "Cotation",
     "diagram": "Schéma",
     "callout": "Encadré",
-    "scene3d": "Scène 3D"
+    "scene3d": "Scène 3D",
+    "simulation": "Simulation"
   },
   "fields": {
     "start": "Début",
@@ -739,5 +741,41 @@
     },
     "appearDuration": "Durée d'apparition (s)",
     "objectLabel": "Nom affiché (texte ou LaTeX)"
+  },
+  "simulation": {
+    "categories": {
+      "mechanics": "Mécanique",
+      "waves": "Ondes",
+      "electricity": "Électricité",
+      "optics": "Optique",
+      "misc": "Divers"
+    },
+    "essential": "Simulation essentielle",
+    "display": "Affichage",
+    "vectors": {
+      "velocity": "Vitesse",
+      "weight": "Poids",
+      "tension": "Tension du fil",
+      "components": "Composantes de la vitesse",
+      "force": "Force",
+      "acceleration": "Accélération",
+      "normal": "Réaction normale",
+      "friction": "Frottement"
+    },
+    "trajectory": "Trajectoire",
+    "values": "Valeurs numériques",
+    "energyBars": "Barres des énergies",
+    "graph": "Graphique synchronisé",
+    "noGraph": "Aucun",
+    "graphPosition": "Place du graphique",
+    "positions": {
+      "right": "À côté",
+      "below": "En dessous"
+    },
+    "playbackRate": "Vitesse de lecture",
+    "playbackRateHelp": "0,25 = ralenti × 4 ; 2 = accéléré × 2.",
+    "freezeAt": "Pause à (s)",
+    "freezeAtHelp": "Vide : pas de pause. Sinon la simulation s'arrête à cet instant.",
+    "textColor": "Couleur des textes"
   }
 }

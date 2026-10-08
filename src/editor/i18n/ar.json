@@ -74,7 +74,8 @@
     "shapes": "أشكال",
     "audio": "صوت",
     "science": "علوم",
-    "three": "ثلاثي الأبعاد"
+    "three": "ثلاثي الأبعاد",
+    "simulations": "محاكاة"
   },
   "properties": {
     "content": "المحتوى",
@@ -98,7 +99,8 @@
     "dimension": "بُعد",
     "diagram": "تبيانة",
     "callout": "إطار",
-    "scene3d": "مشهد ثلاثي الأبعاد"
+    "scene3d": "مشهد ثلاثي الأبعاد",
+    "simulation": "محاكاة"
   },
   "fields": {
     "start": "البداية",
@@ -739,5 +741,41 @@
     },
     "appearDuration": "مدة الظهور (ث)",
     "objectLabel": "الاسم المعروض (نص أو LaTeX)"
+  },
+  "simulation": {
+    "categories": {
+      "mechanics": "الميكانيك",
+      "waves": "الموجات",
+      "electricity": "الكهرباء",
+      "optics": "البصريات",
+      "misc": "متنوع"
+    },
+    "essential": "محاكاة أساسية",
+    "display": "العرض",
+    "vectors": {
+      "velocity": "السرعة",
+      "weight": "الوزن",
+      "tension": "توتر الخيط",
+      "components": "مركبات السرعة",
+      "force": "القوة",
+      "acceleration": "التسارع",
+      "normal": "التأثير المنظمي",
+      "friction": "الاحتكاك"
+    },
+    "trajectory": "المسار",
+    "values": "القيم العددية",
+    "energyBars": "أعمدة الطاقات",
+    "graph": "مخطط متزامن",
+    "noGraph": "بدون",
+    "graphPosition": "موضع المخطط",
+    "positions": {
+      "right": "بجانبها",
+      "below": "تحتها"
+    },
+    "playbackRate": "سرعة التشغيل",
+    "playbackRateHelp": "0,25 = تبطيء × 4 ؛ 2 = تسريع × 2.",
+    "freezeAt": "توقف عند (ث)",
+    "freezeAtHelp": "فارغ: بدون توقف. وإلا تتوقف المحاكاة عند هذه اللحظة.",
+    "textColor": "لون النصوص"
   }
 }

@@ -18,6 +18,7 @@ import {
   DIMENSION_FIELDS,
   MATH_FIELDS,
   PLOT_FIELDS,
+  SIMULATION_FIELDS,
   VECTOR_FIELDS,
 } from './scienceFields';
 import { TEXT_FIELDS } from './textFields';
@@ -230,4 +231,5 @@ export const ELEMENT_FIELDS: {
   diagram: DIAGRAM_FIELDS,
   callout: CALLOUT_FIELDS,
   scene3d: [],
+  simulation: SIMULATION_FIELDS,
 };

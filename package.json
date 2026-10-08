@@ -22,7 +22,8 @@
     "render:gallery": "tsx server/render-gallery.ts",
     "render:themes": "tsx server/render-themes.ts",
     "render:science": "tsx server/render-template.ts templates/energie-cinetique.json",
-    "render:3d": "tsx server/render-template.ts templates/helice-champ-magnetique.json"
+    "render:3d": "tsx server/render-template.ts templates/helice-champ-magnetique.json",
+    "render:pendulum": "tsx server/render-template.ts templates/pendule.json"
   },
   "dependencies": {
     "@dnd-kit/core": "6.3.1",

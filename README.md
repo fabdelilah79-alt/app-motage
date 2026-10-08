@@ -63,6 +63,10 @@ toutes les images.
     champs de vecteurs, solides, flèches et étiquettes ; caméra en orbite, zoom, vues de face /
     dessus / profil.
 
+12. **Simulations** (onglet de la bibliothèque) : chute libre, projectile, pendule, masse-ressort,
+    onde sur une corde, circuit RC, réfraction… Réglez les paramètres (avec leurs unités), les
+    vecteurs, le graphique synchronisé, le ralenti et la pause.
+
 Les projets sont enregistrés automatiquement (5 s après chaque modification) dans
 `PhysiMotion/projets` de votre dossier personnel.
 
@@ -105,6 +109,12 @@ npm run render:3d
 ```
 
 Hélice d'une particule chargée dans un champ magnétique, caméra en orbite, en 1080p.
+
+## Vidéo de validation « pendule + graphe θ(t) »
+
+```bash
+npm run render:pendulum
+```
 
 ## Créer la vidéo de démonstration (MP4)
 

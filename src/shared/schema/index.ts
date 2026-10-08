@@ -6,6 +6,7 @@ export * from './migrations';
 export * from './plot';
 export * from './project';
 export * from './scene';
+export * from './simulation';
 export * from './science';
 export * from './text';
 export * from './three';

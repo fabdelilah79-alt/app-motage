@@ -1,10 +1,11 @@
-import { Atom, AudioLines, Box, ImageIcon, Shapes, Type } from 'lucide-react';
+import { Activity, Atom, AudioLines, Box, ImageIcon, Shapes, Type } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { AudioPanel } from '../audio/AudioPanel';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { MediaLibrary } from './MediaLibrary';
 import { ScienceLibrary } from './ScienceLibrary';
 import { ShapesLibrary } from './ShapesLibrary';
+import { SimulationLibrary } from './SimulationLibrary';
 import { TextLibrary } from './TextLibrary';
 import { ThreeLibrary } from './ThreeLibrary';
 
@@ -14,6 +15,7 @@ const TABS = [
   { value: 'shapes', icon: Shapes, labelKey: 'library.shapes' },
   { value: 'science', icon: Atom, labelKey: 'library.science' },
   { value: 'three', icon: Box, labelKey: 'library.three' },
+  { value: 'simulations', icon: Activity, labelKey: 'library.simulations' },
   { value: 'audio', icon: AudioLines, labelKey: 'library.audio' },
 ] as const;
 
@@ -21,7 +23,7 @@ const TABS = [
 export const LibraryPanel = () => {
   const { t } = useTranslation();
   return (
-    <aside className="flex w-72 shrink-0 flex-col border-e border-slate-800 bg-slate-900">
+    <aside className="flex w-80 shrink-0 flex-col border-e border-slate-800 bg-slate-900">
       <Tabs defaultValue="text" className="flex min-h-0 flex-1 flex-col">
         <TabsList className="px-1">
           {TABS.map(({ value, icon: Icon, labelKey }) => (
@@ -51,6 +53,9 @@ export const LibraryPanel = () => {
         </TabsContent>
         <TabsContent value="three">
           <ThreeLibrary />
+        </TabsContent>
+        <TabsContent value="simulations">
+          <SimulationLibrary />
         </TabsContent>
         <TabsContent value="audio">
           <AudioPanel />
